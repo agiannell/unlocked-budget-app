@@ -25,7 +25,7 @@ const express = require('express'),
           app.listen(SERVER_PORT, () => console.log(`Budgeting on port ${ SERVER_PORT }`));
       });
 
-// auth endpoints
+// auth endpoints lookin so fly
 
 
 // budget endpoints
