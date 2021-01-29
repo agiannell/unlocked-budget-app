@@ -3,6 +3,7 @@ const express = require('express'),
       massive = require('massive'),
       session = require('express-session'),
       authCtrl = require('./controllers/authController'),
+      userCtrl = require('./controllers/userController'),
       budgetCtrl = require('./controllers/budgetController'),
       transCtrl = require('./controllers/transactionController'),
       { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env,
@@ -25,7 +26,12 @@ const express = require('express'),
           app.listen(SERVER_PORT, () => console.log(`Budgeting on port ${ SERVER_PORT }`));
       });
 
-// auth endpoints lookin so fly
+// auth endpoints
+app.post('/auth/register', authCtrl.register);
+app.post('/auth/login', authCtrl.login);
+app.get('/auth/logout', authCtrl.logout);
+
+// user endpoints
 
 
 // budget endpoints

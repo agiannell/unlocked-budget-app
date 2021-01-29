@@ -9,7 +9,7 @@ create table users (
 
 create table groups (
   group_id serial primary key,
-  name varchar,
+  name varchar
 );
 
 create table categories (
