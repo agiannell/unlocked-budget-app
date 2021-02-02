@@ -24,8 +24,8 @@ module.exports = {
             .catch(err => res.status(500).send(err));
     },
     getCategories: (req, res) => {
-        const { groupId } = req.body,
-              db = req.app.get;
+        const { groupId } = req.params,
+              db = req.app.get('db');
         
         db.budget.get_categories(groupId)
             .then(cat => res.status(200).send(cat))
