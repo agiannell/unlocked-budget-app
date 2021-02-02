@@ -35,6 +35,6 @@ app.get('/auth/logout', authCtrl.logout);
 
 
 // budget endpoints
-
+app.post('/api/')
 
 // transaction endpoints

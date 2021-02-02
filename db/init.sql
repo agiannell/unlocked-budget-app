@@ -16,7 +16,6 @@ create table groups (
 create table categories (
   cat_id serial primary key,
   group_id int references groups(group_id),
-  user_id int references users(user_id),
   name varchar,
   amount numeric
 );
