@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs'),
 module.exports = {
     register: async(req, res) => {
         const { first_name, last_name, email, password } = req.body,
-              profile_pic = '../img/default-profile-pic.svg',
+              profile_pic = 'https://unlocked-budget-app.s3-us-west-2.amazonaws.com/default-profile-pic/default-profile-pic.svg',
               db = req.app.get('db');
 
         const [ foundUser ] = await db.users.check_user(email);
