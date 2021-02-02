@@ -5,7 +5,6 @@ const Dash = props => {
     return (
         <section>
             <h1>Dash</h1>
-            <img src={ props.userReducer.user.profile_pic } alt={ props.userReducer.user.first_name } />
         </section>
     )
 }

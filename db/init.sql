@@ -9,6 +9,7 @@ create table users (
 
 create table groups (
   group_id serial primary key,
+  user_id int references users(user_id),
   name varchar
 );
 
@@ -23,14 +24,9 @@ create table categories (
 create table transactions (
   trans_id serial primary key,
   user_id int references users(user_id),
+  cat_id int references categories(cat_id),
   name varchar,
   date date,
   amount numeric,
   notes text
-);
-
-create table users_groups (
-  users_groups_id serial primary key,
-  user_id int references users(user_id),
-  group_id int references groups(group_id)
 );
