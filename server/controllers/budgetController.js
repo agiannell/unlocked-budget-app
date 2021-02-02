@@ -34,7 +34,7 @@ module.exports = {
     updateGroup: (req, res) => {
         const { groupName } = req.body,
               { groupId } = req.params,
-              db = re.app.get('db');
+              db = req.app.get('db');
 
         db.budget.update_group(groupId, groupName)
             .then(group => res.status(200).send(group))
@@ -43,24 +43,24 @@ module.exports = {
     updateCatName: (req, res) => {
         const { catName } = req.body,
               { catId } = req.params,
-              db = re.app.get('db');
+              db = req.app.get('db');
 
-        db.budget.update_category_name(catName, catId)
+        db.budget.update_category_name(catId, catName)
             .then(cat => res.status(200).send(cat))
             .catch(err => res.status(500).send(err));
     },
     updateCatAmount: (req, res) => {
         const { catAmount } = req.body,
               { catId } = req.params,
-              db = re.app.get('db');
+              db = req.app.get('db');
 
-        db.budget.update_category_amount(catAmount, catId)
+        db.budget.update_category_amount(catId, catAmount)
             .then(cat => res.status(200).send(cat))
             .catch(err => res.status(500).send(err));
     },
     deleteGroup: (req, res) => {
         const { groupId } = req.params,
-              db = re.app.get('db');
+              db = req.app.get('db');
 
         db.budget.delete_group(groupId)
             .then(() => res.sendStatus(200))
@@ -68,7 +68,7 @@ module.exports = {
     },
     deleteCategory: (req, res) => {
         const { catId } = req.params,
-              db = re.app.get('db');
+              db = req.app.get('db');
 
         db.budget.delete_category(catId)
             .then(() => res.sendStatus(200))

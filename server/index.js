@@ -37,12 +37,12 @@ app.get('/auth/logout', authCtrl.logout);
 // budget endpoints
 app.post('/api/group', budgetCtrl.createGroup);
 app.post('/api/category', budgetCtrl.createCategory);
-app.get('/api/groups/:id', budgetCtrl.getUserGroups);
-app.get('/api/categories/:id', budgetCtrl.getCategories);
-app.put('/api/group/:id', budgetCtrl.updateGroup);
-app.put('/api/category-name/:id', budgetCtrl.updateCatName);
-app.put('/api/category-amount/:id', budgetCtrl.updateCatAmount);
-app.delete('/api/group/:id', budgetCtrl.deleteGroup);
-app.delete('/api/category/:id', budgetCtrl.deleteCategory);
+app.get('/api/groups/:userId', budgetCtrl.getUserGroups);
+app.get('/api/categories/:groupId', budgetCtrl.getCategories);
+app.put('/api/group/:groupId', budgetCtrl.updateGroup);
+app.put('/api/category-name/:catId', budgetCtrl.updateCatName);
+app.put('/api/category-amount/:catId', budgetCtrl.updateCatAmount);
+app.delete('/api/group/:groupId', budgetCtrl.deleteGroup);
+app.delete('/api/category/:catId', budgetCtrl.deleteCategory);
 
 // transaction endpoints
