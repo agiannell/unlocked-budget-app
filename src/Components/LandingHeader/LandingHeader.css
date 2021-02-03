@@ -1,0 +1,21 @@
+header {
+  border: 2px dotted blue;
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+}
+header img {
+  border: 2px dotted green;
+  height: 60px;
+}
+
+.container {
+  border: 2px dotted yellowgreen;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*# sourceMappingURL=LandingHeader.css.map */
