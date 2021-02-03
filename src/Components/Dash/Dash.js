@@ -23,9 +23,10 @@ const Dash = props => {
         getGroups();
     }, [])
 
+    console.log(props)
     return (
         <section>
-            <DashHeader />
+            <DashHeader push={ props.history.push } />
             <section className='dash-main'>
                 <section className='budget'>
                     { groups.map(e => (
@@ -34,6 +35,8 @@ const Dash = props => {
                         id={ e.group_id }
                         name={ e.name } />
                     )) }
+                    <button className='add-group'>Add Group</button>
+                    <div className='empty'></div>
                 </section>
                 <section className='chart'>
                     Chart stuff

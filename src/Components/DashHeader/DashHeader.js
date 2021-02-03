@@ -14,13 +14,27 @@ const DashHeader = props => {
             })
             .catch(err => console.log(err))
     }, [])
-    
+
+    const logout = () => {
+        axios.get('auth/logout')
+            .then(() => {
+                props.clearUser()
+                props.push('/signin')
+            })
+            .catch(err => console.log(err));
+    }
+
+    console.log(props)
     return (
         <header className='dash-header'>
             <img src={ logo } alt='logo' />
-            <Link to='profile'><img className='profile-pic' src={ props.user.profile_pic } alt={ props.user.first_name } /></Link>
-            <p>{ props.user.first_name }</p>
-            <button className='sign-out'>Sign Out</button>
+            <section className='dash-nav'>
+                <div className='user'>
+                    <Link to='profile'><img src={ props.user.profile_pic } alt={ props.user.first_name } /></Link>
+                    <p>{ props.user.first_name }</p>
+                </div>
+                <button className='sign-out' onClick={ logout }>Sign Out</button>
+            </section>
         </header>
     )
 }

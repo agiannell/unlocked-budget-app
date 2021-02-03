@@ -27,6 +27,7 @@ button {
   height: 40px;
   width: 100px;
   letter-spacing: .12em;
+  outline: none;
   -webkit-transition: .2s;
   transition: .2s;
 }

@@ -2,14 +2,39 @@
 @import '../../scss/mixins';
 
 .dash-main {
-    @include border(blue);
-    @include flex(center, row);
+    // @include border(blue);
+    @include flex(space-between, row);
     align-items: flex-start;
-    height: 100%;
+    height: 100vh;
+    padding: 0 15%;
     padding-top: 150px;
 }
 
 .budget {
-    @include border(purple);
-    @include flex(center, column);
+    // @include border(purple);
+    @include flex(flex-start, column);
+    align-items: flex-start;
+    height: calc(100vh - 150px);
+    width: 750px;
+    overflow: scroll;
+    text-align: left;
+    padding: 20px;
+}
+
+.chart {
+    @include border(orange);
+    height: calc(100vh - 150px);
+    width: 500px;
+    overflow: scroll;
+}
+
+.add-group {
+    width: 100%;
+    padding: 10px 0;
+}
+
+.empty {
+    // @include border(green);
+    margin-top: 20px;
+    width: 100%;
 }

@@ -1,0 +1,29 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.categories {
+    // @include border(yellowgreen);
+    margin-bottom: 10px;
+    @include flex(space-between, row);
+    border-bottom: 1px solid $gray;
+    padding: 5px 0;
+
+    h1 {
+        font-family: oscine, sans-serif;
+        font-weight: 500;
+        font-size: 1.2em;
+    }
+}
+
+.cat-money {
+    // @include border(red);
+    @include flex(space-between, row);
+    width: 250px;
+
+    p {
+        // @include border(orange);
+        color: $gray;
+        // margin-right: 20px;
+        width: 110px;
+    }
+}

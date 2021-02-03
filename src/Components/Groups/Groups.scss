@@ -1,0 +1,34 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.groups {
+    // @include border(green);
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 2px rgba(0,0,0,0.2);
+    padding: 10px;
+
+}
+
+.group-titles {
+    // @include border(green);
+    @include flex(space-between, row);
+    
+    h1 {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+    }
+}
+
+.group-money {
+    @include flex(space-between, row);
+    width: 250px;
+    
+    h2 {
+        // @include border(blue);
+        font-size: 1em;
+        width: 110px;
+    }
+}

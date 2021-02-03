@@ -37,7 +37,10 @@
   box-shadow: 0 0 10px 3px rgba(0,0,0,.2);
 
   h2 {
+    // @include border(green);
     margin-bottom: 20px;
+    width: 350px;
+    text-align: left;
   }
 }
 

@@ -2,10 +2,10 @@
 @import '../../scss/mixins';
 
 .dash-header {
-    @include border(red);
+    // @include border(red);
     @include flex(space-between, row);
     width: 100%;
-    height: 75px;
+    height: 100px;
     padding: 0 15%;
     position: fixed;
 
@@ -14,7 +14,28 @@
     }
 }
 
-.profile-pic {
-    border-radius: 50%;
-    height: 40px;
+
+.dash-nav {
+    // @include border(green);
+    @include flex(space-between, row);
+    width: 320px;
+}
+
+.user {
+    // @include border(orange);
+    @include flex(space-between, row);
+
+    img {
+        border-radius: 50%;
+        height: 40px;
+        margin-right: 10px;
+    }
+}
+
+.sign-out {
+    width: 150px;
+
+    &:hover {
+        background-color: $red;
+    }
 }
