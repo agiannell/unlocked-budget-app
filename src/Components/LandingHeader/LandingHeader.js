@@ -4,11 +4,9 @@ import logo from '../../img/logo-linear-color.svg';
 
 const LandingHeader = props => {
     return (
-        <header>
-            <section className='container'>
+        <header className='landing-header'>
                 <img src={ logo } alt='logo' />
                 <Link to='/signin'><button>Sign In</button></Link>
-            </section>
         </header>
     )
 }

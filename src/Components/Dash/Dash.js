@@ -1,7 +1,9 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import DashHeader from '../DashHeader/DashHeader'
 import Groups from '../Groups/Groups';
+import './Dash.css';
 
 const Dash = props => {
     const [ groups, setGroups ] = useState([]);
@@ -15,11 +17,15 @@ const Dash = props => {
     };
 
     useEffect(() => {
+        if(!props.user) {
+            props.history.push('/signin')
+        }
         getGroups();
     }, [])
 
     return (
         <section>
+            <DashHeader />
             <h1>Dash</h1>
             { groups.map(e => (
                 <Groups 

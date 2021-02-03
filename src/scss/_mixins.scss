@@ -4,3 +4,7 @@
     justify-content: $justify;
     flex-direction: $direction;
 }
+
+@mixin border($color) {
+    border: 2px dotted $color;
+}

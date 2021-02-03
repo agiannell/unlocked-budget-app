@@ -32,6 +32,8 @@
   width: 420px;
   padding: 25px 10px;
   @include flex(space-evenly, column);
+  background-color: #fff;
+  border-radius: 5px;
   box-shadow: 0 0 10px 3px rgba(0,0,0,.2);
 
   h2 {
@@ -62,5 +64,24 @@
 
   span {
     font-size: 1.2em;
+  }
+}
+
+.landing-footer {
+  height: 50px;
+  width: 100%;
+  background-color: $purple;
+  position: absolute;
+  bottom: 0;
+  color: #fff;
+  @include flex(space-around, row);
+
+  p {
+    font-weight: 700;
+  }
+
+  img {
+    height: 25px;
+    margin: 0 10px;
   }
 }

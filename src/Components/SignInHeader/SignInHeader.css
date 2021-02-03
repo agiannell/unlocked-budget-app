@@ -1,0 +1,10 @@
+.sign-in-header {
+  width: 100%;
+  position: fixed;
+}
+
+.sign-in-header img {
+  height: 200px;
+  margin: 30px auto;
+}
+/*# sourceMappingURL=SignInHeader.css.map */

@@ -1,7 +1,5 @@
-.landing-header {
-  height: 150px;
-  width: 100%;
-  padding: 0 15%;
+.dash-header {
+  border: 2px dotted red;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -15,10 +13,13 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  width: 100%;
+  height: 75px;
+  padding: 0 15%;
   position: fixed;
 }
 
-.landing-header img {
+.dash-header img {
   height: 60px;
 }
-/*# sourceMappingURL=LandingHeader.css.map */
+/*# sourceMappingURL=DashHeader.css.map */

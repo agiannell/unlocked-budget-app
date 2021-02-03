@@ -1,0 +1,53 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.sign-in-main {
+    @include border(cyan);
+    height: 100vh;
+    @include flex(center, column);
+
+    form {
+        // @include border(green);
+        @include flex(center, column);
+        padding: 30px;
+        background-color: #fff;
+        box-shadow: 0 0 5px 3px rgba(0,0,0,0.2);
+        border-radius: 5px;
+        margin-top: 150px;
+        margin-bottom: 20px;
+
+        input {
+            width: 300px;
+            height: 40px;
+            margin-bottom: 20px;
+            padding: 0 10px;
+            border-bottom: 1px solid $purple;
+            outline: none;
+            color: $gray;
+            letter-spacing: .1em;
+            font-size: 1.1em;
+
+            &::placeholder {
+                color: #b3b3b3;
+                letter-spacing: .1em;
+                font-size: 1.1em;
+            }
+        }
+
+        button {
+            margin-top: 40px;
+            width: 100%;
+        }
+    }
+
+    p {
+        color: $gray;
+
+        span {
+            text-decoration: underline;
+            font-weight: 700;
+            text-underline-offset: .5px;
+            cursor: pointer;
+        }
+    }
+}

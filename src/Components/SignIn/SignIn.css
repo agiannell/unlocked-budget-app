@@ -1,0 +1,93 @@
+.sign-in-main {
+  border: 2px dotted cyan;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.sign-in-main form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 30px;
+  background-color: #fff;
+  -webkit-box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  margin-top: 150px;
+  margin-bottom: 20px;
+}
+
+.sign-in-main form input {
+  width: 300px;
+  height: 40px;
+  margin-bottom: 20px;
+  padding: 0 10px;
+  border-bottom: 1px solid #484D6D;
+  outline: none;
+  color: #666;
+  letter-spacing: .1em;
+  font-size: 1.1em;
+}
+
+.sign-in-main form input::-webkit-input-placeholder {
+  color: #b3b3b3;
+  letter-spacing: .1em;
+  font-size: 1.1em;
+}
+
+.sign-in-main form input:-ms-input-placeholder {
+  color: #b3b3b3;
+  letter-spacing: .1em;
+  font-size: 1.1em;
+}
+
+.sign-in-main form input::-ms-input-placeholder {
+  color: #b3b3b3;
+  letter-spacing: .1em;
+  font-size: 1.1em;
+}
+
+.sign-in-main form input::placeholder {
+  color: #b3b3b3;
+  letter-spacing: .1em;
+  font-size: 1.1em;
+}
+
+.sign-in-main form button {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.sign-in-main p {
+  color: #666;
+}
+
+.sign-in-main p span {
+  text-decoration: underline;
+  font-weight: 700;
+  text-underline-offset: .5px;
+  cursor: pointer;
+}
+/*# sourceMappingURL=SignIn.css.map */

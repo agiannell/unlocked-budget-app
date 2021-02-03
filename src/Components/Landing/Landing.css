@@ -75,6 +75,8 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  background-color: #fff;
+  border-radius: 5px;
   -webkit-box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.2);
           box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.2);
 }
@@ -131,5 +133,35 @@
 
 .trans-content span {
   font-size: 1.2em;
+}
+
+.landing-footer {
+  height: 50px;
+  width: 100%;
+  background-color: #484D6D;
+  position: absolute;
+  bottom: 0;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.landing-footer p {
+  font-weight: 700;
+}
+
+.landing-footer img {
+  height: 25px;
+  margin: 0 10px;
 }
 /*# sourceMappingURL=Landing.css.map */

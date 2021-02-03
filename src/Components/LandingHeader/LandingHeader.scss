@@ -1,11 +1,12 @@
 @import '../../scss/variables';
 @import '../../scss/mixins';
 
-header {
+.landing-header {
   // border: 2px dotted blue;
   height: 150px;
   width: 100%;
-  @include flex(center, row);
+  padding: 0 15%;
+  @include flex(space-between, row);
   position: fixed;
 
   img {
@@ -14,8 +15,9 @@ header {
   }
 }
 
-.container {
-  // border: 2px dotted yellowgreen;
-  width: 70%;
-  @include flex(space-between, row);
-}
+// .container {
+//   border: 2px dotted yellowgreen;
+//   width: 70%;
+//   margin: 0 auto;
+//   @include flex(space-between, row);
+// }

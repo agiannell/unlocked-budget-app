@@ -1,0 +1,11 @@
+{
+    "version": 3,
+    "mappings": "AAGA,AAAA,eAAe,CAAC;EAEZ,KAAK,EAAE,IAAI;EACX,QAAQ,EAAE,KAAK;CAMlB;;AATD,AAKI,eALW,CAKX,GAAG,CAAC;EACA,MAAM,EAAE,KAAK;EACb,MAAM,EAAE,SAAS;CACpB",
+    "sources": [
+        "SignInHeader.scss",
+        "../../scss/_variables.scss",
+        "../../scss/_mixins.scss"
+    ],
+    "names": [],
+    "file": "SignInHeader.css"
+}

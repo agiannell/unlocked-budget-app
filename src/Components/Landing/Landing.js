@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom';
 import LandingHeader from '../LandingHeader/LandingHeader';
+import FBLogo from '../../img/fb-logo-white.svg'
+import IGLogo from '../../img/ig-logo-white.svg'
+import twitterLogo from '../../img/twitter-logo-white.svg'
 import './Landing.css'
 
 function Landing() {
@@ -67,6 +70,14 @@ function Landing() {
                     </section>
                 </section>
             </section>
+            <footer className='landing-footer'>
+                <p>&copy; 2021 GNL designs</p>
+                <div className='social-icons'>
+                    <img src={ FBLogo } alt='facebook logo' />
+                    <img src={ IGLogo } alt='instagram logo' />
+                    <img src={ twitterLogo } alt='twitter logo' />
+                </div>
+            </footer>
         </section>
     );
 }

@@ -1,0 +1,13 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.sign-in-header {
+    // @include border(red);
+    width: 100%;
+    position: fixed;
+
+    img {
+        height: 200px;
+        margin: 30px auto;
+    }
+}
