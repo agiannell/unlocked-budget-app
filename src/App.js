@@ -1,5 +1,4 @@
 import routes from './routes';
-import './css/reset.css';
 import './css/App.css';
 
 function App() {

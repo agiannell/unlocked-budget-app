@@ -1,35 +1,66 @@
-@import '../../variables';
+@import '../../scss/variables';
+@import '../../scss/mixins';
 
 .landing-main {
-  border: 2px dotted red;
+  // border: 2px dotted red;
   height: 100vh;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  // padding: 0 15%;
+  @include flex(center, row);
 }
 
 .landing-content {
-  border: 2px dotted orange;
+  // border: 2px dotted yellowgreen;
+  width: 900px;
+  color: $gray;
+  @include flex(space-between, row);
 }
 
 .landing-info {
-  border: 2px dotted blue;
-  width: 400px;text-align: left;
+  // border: 2px dotted blue;
+  width: 400px;
+  text-align: left;
   height: 300px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  @include flex(space-between, column);
+  align-items: flex-start;
+
   p {
     line-height: 1.5em;
   }
 }
 
 .budget-preview {
-  border: 2px dotted rebeccapurple;
+  // border: 2px dotted rebeccapurple;
+  width: 420px;
+  padding: 25px 10px;
+  @include flex(space-evenly, column);
+  box-shadow: 0 0 10px 3px rgba(0,0,0,.2);
+
+  h2 {
+    margin-bottom: 20px;
+  }
 }
 
 .transaction {
-  border: 2px dotted red;
+  border: 1px solid $red;
+  height: 40px;
+  width: 350px;
+  border-radius: 20px;
+  @include flex(space-between, row);
+  padding: 0 10px;
+  margin: 10px 0;
+  box-shadow: 0 0 5px 1px rgba(0,0,0,.1);
+  
+  span {
+    font-size: .7em;
+    font-weight: 700;
+  }
+}
+
+.trans-content {
+  // border: 2px dotted pink;
+  width: 230px;
+  @include flex(space-between, row)
+
+  span {
+    font-size: 1.2em;
+  }
 }

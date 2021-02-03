@@ -15,7 +15,55 @@ function Landing() {
                     </section>
                     <section className='budget-preview'>
                         <h2>Your Transactions</h2>
-                        <div className='transaction'></div>
+                        <div className='transaction'>
+                            <span>JAN<br />1</span>
+                            <div className='trans-content'>
+                                <span>Groceries</span>
+                                <span>-$87.24</span>
+                            </div>
+                        </div>
+                        <div className='transaction'>
+                            <span>JAN<br />1</span>
+                            <div className='trans-content'>
+                                <span>Coffee</span>
+                                <span>-$5.68</span>
+                            </div>
+                        </div>
+                        <div className='transaction'>
+                            <span>JAN<br />1</span>
+                            <div className='trans-content'>
+                                <span>Shell Gas</span>
+                                <span>-$20.00</span>
+                            </div>
+                        </div>
+                        <div className='transaction'>
+                            <span>JAN<br />2</span>
+                            <div className='trans-content'>
+                                <span>Disney +</span>
+                                <span>-$6.99</span>
+                            </div>
+                        </div>
+                        <div className='transaction'>
+                            <span>JAN<br />2</span>
+                            <div className='trans-content'>
+                                <span>In-n-Out</span>
+                                <span>-$11.56</span>
+                            </div>
+                        </div>
+                        <div className='transaction'>
+                            <span>JAN<br />3</span>
+                            <div className='trans-content'>
+                                <span>Target</span>
+                                <span>-$98.42</span>
+                            </div>
+                        </div>
+                        <div className='transaction'>
+                            <span>JAN<br />3</span>
+                            <div className='trans-content'>
+                                <span>Costco</span>
+                                <span>-$223.78</span>
+                            </div>
+                        </div>
                     </section>
                 </section>
             </section>

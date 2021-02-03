@@ -1,8 +1,47 @@
 @import url("https://use.typekit.net/zsi5xde.css");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
 .App {
   text-align: center;
   font-family: oscine, sans-serif;
-  letter-spacing: 0.1em;
+  letter-spacing: .1em;
 }
 
 button {
@@ -14,7 +53,13 @@ button {
   font-weight: 700;
   height: 40px;
   width: 100px;
-  letter-spacing: 0.12em;
+  letter-spacing: .12em;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+button:hover {
+  background-color: #63667F;
 }
 
 h1 {
@@ -29,5 +74,4 @@ h2 {
   font-size: 1.5em;
   font-weight: 700;
 }
-
 /*# sourceMappingURL=App.css.map */

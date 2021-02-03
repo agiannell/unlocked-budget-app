@@ -1,4 +1,5 @@
-@import '../variables';
+@import '../scss/reset';
+@import '../scss/variables';
 @import url("https://use.typekit.net/zsi5xde.css");
     // font-family: oscine, sans-serif;
     // font-family: aglet-slab, sans-serif;
@@ -19,6 +20,11 @@ button {
     height: 40px;
     width: 100px;
     letter-spacing: .12em;
+    transition: .2s;
+
+    &:hover {
+        background-color: $light-purple;
+    }
 }
 
 h1 {

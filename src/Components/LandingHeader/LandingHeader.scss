@@ -1,24 +1,21 @@
-@import '../../variables';
+@import '../../scss/variables';
+@import '../../scss/mixins';
 
 header {
-  border: 2px dotted blue;
-  height: 75px;
+  // border: 2px dotted blue;
+  height: 150px;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  box-sizing: border-box;
+  @include flex(center, row);
   position: fixed;
+
   img {
-    border: 2px dotted green;
+    // border: 2px dotted green;
     height: 60px;
   }
 }
 
 .container {
-  border: 2px dotted yellowgreen;
-  width: 80%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
+  // border: 2px dotted yellowgreen;
+  width: 70%;
+  @include flex(space-between, row);
 }
