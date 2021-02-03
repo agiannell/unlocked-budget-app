@@ -1,0 +1,35 @@
+@import '../variables';
+@import url("https://use.typekit.net/zsi5xde.css");
+    // font-family: oscine, sans-serif;
+    // font-family: aglet-slab, sans-serif;
+
+.App {
+    text-align: center;
+    font-family: oscine, sans-serif;
+    letter-spacing: .1em;
+}
+
+button {
+    border: none;
+    color: #fff;
+    background-color: $purple;
+    font-family: oscine, sans-serif;
+    font-size: 1.2em;
+    font-weight: 700;
+    height: 40px;
+    width: 100px;
+    letter-spacing: .12em;
+}
+
+h1 {
+    color: $purple;
+    font-family: aglet-slab, sans-serif;
+    font-weight: 700;
+    font-size: 3em;
+}
+
+h2 {
+    color: $purple;
+    font-size: 1.5em;
+    font-weight: 700;
+}

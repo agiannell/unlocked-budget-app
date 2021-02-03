@@ -1,11 +1,13 @@
-@use '../../variables';
+@import '../../variables';
 
 header {
   border: 2px dotted blue;
   height: 75px;
+  width: 100%;
   display: flex;
   justify-content: center;
   box-sizing: border-box;
+  position: fixed;
   img {
     border: 2px dotted green;
     height: 60px;

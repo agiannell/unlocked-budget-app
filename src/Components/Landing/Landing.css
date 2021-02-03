@@ -1,7 +1,35 @@
 .landing-main {
   border: 2px dotted red;
-  height: 200px;
+  height: 100vh;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.landing-content {
+  border: 2px dotted orange;
+}
+
+.landing-info {
+  border: 2px dotted blue;
+  width: 400px;
+  text-align: left;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.landing-info p {
+  line-height: 1.5em;
+}
+
+.budget-preview {
+  border: 2px dotted rebeccapurple;
+}
+
+.transaction {
+  border: 2px dotted red;
 }
 
 /*# sourceMappingURL=Landing.css.map */

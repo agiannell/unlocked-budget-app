@@ -1,5 +1,33 @@
+@import url("https://use.typekit.net/zsi5xde.css");
 .App {
-  background-color: #efe9f4;
   text-align: center;
-  height: 100vh;
+  font-family: oscine, sans-serif;
+  letter-spacing: 0.1em;
 }
+
+button {
+  border: none;
+  color: #fff;
+  background-color: #484D6D;
+  font-family: oscine, sans-serif;
+  font-size: 1.2em;
+  font-weight: 700;
+  height: 40px;
+  width: 100px;
+  letter-spacing: 0.12em;
+}
+
+h1 {
+  color: #484D6D;
+  font-family: aglet-slab, sans-serif;
+  font-weight: 700;
+  font-size: 3em;
+}
+
+h2 {
+  color: #484D6D;
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+/*# sourceMappingURL=App.css.map */

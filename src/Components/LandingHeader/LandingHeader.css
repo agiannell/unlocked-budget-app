@@ -1,9 +1,11 @@
 header {
   border: 2px dotted blue;
   height: 75px;
+  width: 100%;
   display: flex;
   justify-content: center;
   box-sizing: border-box;
+  position: fixed;
 }
 header img {
   border: 2px dotted green;
