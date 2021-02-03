@@ -58,7 +58,7 @@
 .trans-content {
   // border: 2px dotted pink;
   width: 230px;
-  @include flex(space-between, row)
+  @include flex(space-between, row);
 
   span {
     font-size: 1.2em;
