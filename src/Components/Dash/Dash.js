@@ -26,13 +26,19 @@ const Dash = props => {
     return (
         <section>
             <DashHeader />
-            <h1>Dash</h1>
-            { groups.map(e => (
-                <Groups 
-                    key={ e.group_id }
-                    id={ e.group_id }
-                    name={ e.name } />
-            )) }
+            <section className='dash-main'>
+                <section className='budget'>
+                    { groups.map(e => (
+                        <Groups 
+                        key={ e.group_id }
+                        id={ e.group_id }
+                        name={ e.name } />
+                    )) }
+                </section>
+                <section className='chart'>
+                    Chart stuff
+                </section>
+            </section>
         </section>
     )
 }

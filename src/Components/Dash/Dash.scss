@@ -1,0 +1,15 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.dash-main {
+    @include border(blue);
+    @include flex(center, row);
+    align-items: flex-start;
+    height: 100%;
+    padding-top: 150px;
+}
+
+.budget {
+    @include border(purple);
+    @include flex(center, column);
+}
