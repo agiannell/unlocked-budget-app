@@ -57,6 +57,7 @@
 
 .landing-info p {
   line-height: 1.5em;
+  text-transform: initial;
 }
 
 .budget-preview {
@@ -160,6 +161,7 @@
 
 .landing-footer p {
   font-weight: 700;
+  text-transform: initial;
 }
 
 .landing-footer img {

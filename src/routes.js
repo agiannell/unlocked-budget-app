@@ -3,6 +3,7 @@ import Landing from './Components/Landing/Landing';
 import SignIn from './Components/SignIn/SignIn';
 import Dash from './Components/Dash/Dash';
 import Profile from './Components/Profile/Profile';
+import Welcome from './Components/Welcome/welcomeRoutes';
 
 export default (
     <Switch>
@@ -10,5 +11,6 @@ export default (
         <Route path='/signin' component={ SignIn } />
         <Route path='/dash' component={ Dash } />
         <Route path='/profile/:id' component={ Profile } />
+        <Route path='/welcome' component={ Welcome } />
     </Switch>
 )
