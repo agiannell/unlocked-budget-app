@@ -2,7 +2,7 @@
 @import '../../scss/mixins';
 
 .sign-in-main {
-    @include border(cyan);
+    // @include border(cyan);
     height: 100vh;
     @include flex(center, column);
 
