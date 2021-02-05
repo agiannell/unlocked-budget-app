@@ -21,12 +21,15 @@ const IncomeEntry = props => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const { group_id } = groupInfo
-        const paychecksArr = [paycheck1, paycheck2, paycheck3];
+        const { group_id } = groupInfo,
+              paychecksArr = [paycheck1, paycheck2, paycheck3];
+        let sum
 
         paychecksArr.map((e, i) => {
             axios.post('/api/category', { group_id, categoryName: e.name, categoryAmount: e.amount })
-                .then()
+                .then(() => { 
+                    sum += e.amount
+                 })
                 .catch(err => console.log(err))
         })
 
@@ -78,6 +81,6 @@ const IncomeEntry = props => {
     )
 }
 
-const mapStateToProps = reduxState => ({ user: reduxState.userReducer.user })
+const mapStateToProps = reduxState => reduxState
 
 export default connect(mapStateToProps)(IncomeEntry);
