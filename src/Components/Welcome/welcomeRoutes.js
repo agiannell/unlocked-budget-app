@@ -1,6 +1,5 @@
 import { Switch, Route } from 'react-router-dom';
 import Hello from './welcomeComponents/Hello/Hello';
-import ChecklistIncome from './welcomeComponents/ChecklistIncome/ChecklistIncome';
 import IncomeIntro from './welcomeComponents/IncomeIntro/IncomeIntro';
 import IncomeEntry from './welcomeComponents/IncomeEntry/IncomeEntry';
 import IncomeInsight from './welcomeComponents/IncomeInsight/IncomeInsight';
@@ -25,7 +24,6 @@ import FinalInsight from './welcomeComponents/FinalInsight/FinalInsight';
 export default (
     <Switch>
         <Route exact path='/welcome/hello' component={ Hello } />
-        <Route path='/welcome/checklist-income' component={ ChecklistIncome } />
         <Route path='/welcome/income-intro' component={ IncomeIntro } />
         <Route path='/welcome/income-entry' component={ IncomeEntry } />
         <Route path='/welcome/income-insight' component={ IncomeInsight } />

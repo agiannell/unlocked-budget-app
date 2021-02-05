@@ -20,7 +20,7 @@ const SignIn = props => {
             axios.post('/auth/register', { firstName, lastName, email, password })
             .then(res => {
                 props.getUser(res.data)
-                props.history.push('/welcome')
+                props.history.push('/welcome/hello')
             })
             .catch(err => console.log(err));
         } else {

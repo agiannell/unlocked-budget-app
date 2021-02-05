@@ -1,8 +1,10 @@
 import { createStore, combineReducers } from 'redux';
 import userReducer from './userReducer';
+import welcomeReducer from './welcomeReducer';
 
-const reducer = combineReducers({
-    userReducer
+const rootReducer = combineReducers({
+    userReducer,
+    welcomeReducer
 })
 
-export default createStore(reducer);
+export default createStore(rootReducer);
