@@ -24,7 +24,7 @@ const DashHeader = props => {
             .catch(err => console.log(err));
     }
 
-    console.log(props)
+    // console.log(props)
     return (
         <header className='dash-header'>
             <img src={ logo } alt='logo' />

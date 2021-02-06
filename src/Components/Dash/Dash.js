@@ -23,7 +23,7 @@ const Dash = props => {
         getGroups();
     }, [props.user.user_id, props.history])
 
-    console.log(props)
+    // console.log(props)
     return (
         <section>
             <DashHeader push={ props.history.push } />

@@ -7,45 +7,49 @@ const FinalInsight = props => {
     const [ expenseSum, setExpenseSum ] = useState(0),
           [ incomeSum, setIncomeSum ] = useState(0),
           [ leftToBudget, setLeftToBudget ] = useState(0),
-          [ medicine, setMedicine ] = useState({ name: 'medicine', amount: 0.00, group: 'health' }),
-          [ doctorVisits, setDoctorVisits ] = useState({ name: 'doctor visits', amount: 0.00, group: 'health' }),
-          [ emergencyFund, setEmergencyFund ] = useState({ name: 'emergency fund', amount: 0.00, group: 'savings' }),
-          [ retirement, setRetirement ] = useState({ name: 'retirement', amount: 0.00, group: 'savings' }),
-          [ groupInfo, setGroupInfo ] = useState({}),
-          groupName = 'income';
-
+          [ groupInfo, setGroupInfo ] = useState({});
+          
     useEffect(() => {
-        const { user_id } = props.user;
-
+        const { user_id } = props.user,
+              groupName = 'income';
+        
         axios.get(`/api/category-sum/${ user_id }/${ groupName }`)
-            .then(res => {
-                setIncomeSum(res.data[0].sum)
-            })
-            .catch(err => console.log(err));
-
+        .then(res => {
+            setIncomeSum(res.data[0].sum)
+        })
+        .catch(err => console.log(err));
+        
         axios.get(`/api/expense-sum/${ user_id }`)
-            .then(res => {
-                setExpenseSum(res.data[0].sum)
-            })
-            .catch(err => console.log(err));
-
+        .then(res => {
+            setExpenseSum(res.data[0].sum)
+        })
+        .catch(err => console.log(err));
+        
         setLeftToBudget(incomeSum - expenseSum);
         
-    }, [props.user, groupName, incomeSum, expenseSum])
-
+    }, [props.user, incomeSum, expenseSum])
+            
     const handleSubmit = () => {
-        const groupsArr = ['health', 'savings'],
-              catArr = [medicine, doctorVisits, emergencyFund, retirement],
-              { user_id } = props.user;
+        const { user_id } = props.user,
+                groupsArr = ['health', 'savings'],
+                catArr = [
+                    { name: 'medicine', amount: 0, category: 'health' },
+                    { name: 'doctor visits', amount: 0, category: 'health' },
+                    { name: 'emergency fund', amount: 0, category: 'savings' },
+                    { name: 'retirement', amount: 0, category: 'savings' }
+                ];
+        let group_id
             
         groupsArr.map(e => (
             axios.post('/api/group', { user_id, groupName: e })
             .then(res => {
-                setGroupInfo(res.data[0])
+                // console.log(res.data[0])
+                group_id = res.data[0].group_id
+                console.log(group_id)
                 catArr.map(el => {
                     if(el.group === e) {
                         return (
-                            axios.post('/api/category', { group_id: groupInfo.group_id, categoryName: el.name, categoryAmount: el.amount  })
+                            axios.post('/api/category', { group_id, categoryName: el.name, categoryAmount: el.amount  })
                                 .then()
                                 .catch(err => console.log(err))
                         )
