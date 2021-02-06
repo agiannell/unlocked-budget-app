@@ -1,3 +1,4 @@
+import { connect } from 'react-redux';
 import './ChecklistExpenses.css'
 
 const ChecklistExpenses = props => {
@@ -8,4 +9,6 @@ const ChecklistExpenses = props => {
     )
 }
 
-export default ChecklistExpenses;
+const mapStateToProps = reduxState => reduxState;
+
+export default connect(mapStateToProps)(ChecklistExpenses);

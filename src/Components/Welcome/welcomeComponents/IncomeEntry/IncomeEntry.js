@@ -10,33 +10,31 @@ const IncomeEntry = props => {
           [ groupInfo, setGroupInfo ] = useState({});
 
     useEffect(() => {
-        const { user_id } = props.user
+        const { user_id } = props.userReducer.user
 
         axios.post('/api/group', { user_id, groupName: 'income' })
             .then(res => {
                 setGroupInfo(res.data)
             })
             .catch(err => console.log(err))
-    }, [])
+    }, [props.userReducer.user])
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const { group_id } = groupInfo,
+        const { group_id } = groupInfo[0],
               paychecksArr = [paycheck1, paycheck2, paycheck3];
-        let sum
 
-        paychecksArr.map((e, i) => {
+        paychecksArr.map(e => (
             axios.post('/api/category', { group_id, categoryName: e.name, categoryAmount: e.amount })
                 .then(() => { 
-                    sum += e.amount
-                 })
+                })
                 .catch(err => console.log(err))
-        })
+        ))
 
         props.history.push('/welcome/income-insight');
     }
 
-    console.log(paycheck1, props)
+    console.log(props);
     return (
         <section className='income-entry'>
             <h1>Enter your paychecks</h1>
@@ -59,7 +57,7 @@ const IncomeEntry = props => {
                 <div className='paycheck-line'>
                     <input 
                         value={ paycheck2.name }
-                        onChange={ e => setPaycheck1((s) => ({ ...s, name: e.target.value })) } />
+                        onChange={ e => setPaycheck2((s) => ({ ...s, name: e.target.value })) } />
                     <input 
                         value={ paycheck2.amount }
                         onChange={ e => setPaycheck2((s) => ({ ...s, amount: +e.target.value })) } />
@@ -68,7 +66,7 @@ const IncomeEntry = props => {
                 <div className='paycheck-line'>
                     <input 
                         value={ paycheck3.name }
-                        onChange={ e => setPaycheck1((s) => ({ ...s, name: e.target.value })) } />
+                        onChange={ e => setPaycheck3((s) => ({ ...s, name: e.target.value })) } />
                     <input 
                         value={ paycheck3.amount }
                         onChange={ e => setPaycheck3((s) => ({ ...s, amount: +e.target.value })) } />
@@ -76,7 +74,7 @@ const IncomeEntry = props => {
                 </div>
             </form>
             <button onClick={ e => handleSubmit(e) }>Continue</button>
-            <span>&#60; Back</span>
+            <span onClick={ props.history.goBack }>&#60; Back</span>
         </section>
     )
 }

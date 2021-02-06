@@ -6,17 +6,17 @@ import './Groups.css'
 const Groups = props => {
     const [ categories, setCategories ] = useState([]);
 
-    const getCategories = () => {
-        axios.get(`/api/categories/${ props.id }`)
-            .then(res => {
-                setCategories(res.data)
-            })
-            .catch(err => console.log(err))
-    }
-
     useEffect(() => {
+        const getCategories = () => {
+            axios.get(`/api/categories/${ props.id }`)
+                .then(res => {
+                    setCategories(res.data)
+                })
+                .catch(err => console.log(err))
+        }
+
         getCategories()
-    }, [])
+    }, [props.id])
 
     return (
         <section className='groups'>

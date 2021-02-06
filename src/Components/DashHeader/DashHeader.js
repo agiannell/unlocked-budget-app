@@ -13,7 +13,7 @@ const DashHeader = props => {
                 props.getUser(res.data)
             })
             .catch(err => console.log(err))
-    }, [])
+    }, [props])
 
     const logout = () => {
         axios.get('auth/logout')

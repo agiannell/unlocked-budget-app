@@ -40,6 +40,8 @@ app.post('/api/group', budgetCtrl.createGroup);
 app.post('/api/category', budgetCtrl.createCategory);
 app.get('/api/groups/:userId', budgetCtrl.getUserGroups);
 app.get('/api/categories/:groupId', budgetCtrl.getCategories);
+app.get('/api/category-sum/:userId/:groupName', budgetCtrl.categorySum);
+app.get('/api/expense-sum/:userId', budgetCtrl.expenseSum);
 app.put('/api/group/:groupId', budgetCtrl.updateGroup);
 app.put('/api/category-name/:catId', budgetCtrl.updateCatName);
 app.put('/api/category-amount/:catId', budgetCtrl.updateCatAmount);

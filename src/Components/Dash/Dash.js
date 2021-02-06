@@ -8,20 +8,20 @@ import './Dash.css';
 const Dash = props => {
     const [ groups, setGroups ] = useState([]);
 
-    const getGroups = () => {
-        axios.get(`/api/groups/${ props.user.user_id }`)
-            .then(res => {
-                setGroups(res.data)
-            })
-            .catch(err => console.log(err))
-    };
-
     useEffect(() => {
-        if(!props.user) {
+        const getGroups = () => {
+            axios.get(`/api/groups/${ props.user.user_id }`)
+                .then(res => {
+                    setGroups(res.data)
+                })
+                .catch(err => console.log(err))
+        };
+
+        if(!props.user.user_id) {
             props.history.push('/signin')
         }
         getGroups();
-    }, [])
+    }, [props.user.user_id, props.history])
 
     console.log(props)
     return (
