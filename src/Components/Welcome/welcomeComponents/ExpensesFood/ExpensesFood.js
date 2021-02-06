@@ -11,7 +11,7 @@ const ExpensesFood = props => {
     useEffect(() => {
         const { user_id } = props.user
 
-        axios.post('/api/group', { user_id, groupName: 'transportation' })
+        axios.post('/api/group', { user_id, groupName: 'food' })
             .then(res => {
                 setGroupInfo(res.data[0])
             })
