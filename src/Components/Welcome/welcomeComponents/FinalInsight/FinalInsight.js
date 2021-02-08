@@ -7,12 +7,11 @@ const FinalInsight = props => {
     const [ expenseSum, setExpenseSum ] = useState(0),
           [ incomeSum, setIncomeSum ] = useState(0),
           [ leftToBudget, setLeftToBudget ] = useState(0),
-          [ groupInfo, setGroupInfo ] = useState({}),
+          [ loading, setLoading ] = useState(true),
+          { user_id, first_name } = props.user,
           groupName = 'income';
 
     useEffect(() => {
-        const { user_id } = props.user;
-
         axios.get(`/api/category-sum/${ user_id }/${ groupName }`)
             .then(res => {
                 setIncomeSum(res.data[0].sum)
@@ -21,13 +20,14 @@ const FinalInsight = props => {
 
         axios.get(`/api/expense-sum/${ user_id }`)
             .then(res => {
-                setExpenseSum(res.data[0].sum)
+                setExpenseSum(res.data[0].sum);
+                setLeftToBudget(incomeSum - expenseSum);
+                setLoading(false);
             })
             .catch(err => console.log(err));
 
-        setLeftToBudget(incomeSum - expenseSum);
         
-    }, [props.user, groupName, incomeSum, expenseSum])
+    }, [user_id, groupName, incomeSum, expenseSum])
 
     const handleSubmit = () => {
         const groupsArr = ['health', 'savings'],
@@ -38,15 +38,16 @@ const FinalInsight = props => {
                 { name: 'emergency fund', amount: 0.00, group: 'savings' },
                 { name: 'retirement', amount: 0.00, group: 'savings' }
             ];
+        let group_id
             
         groupsArr.map(e => (
             axios.post('/api/group', { user_id, groupName: e })
             .then(res => {
-                setGroupInfo(res.data[0])
+                group_id = res.data[0].user_id
                 catArr.map(el => {
                     if(el.group === e) {
                         return (
-                            axios.post('/api/category', { group_id: groupInfo.group_id, categoryName: el.name, categoryAmount: el.amount  })
+                            axios.post('/api/category', { group_id, user_id, categoryName: el.name, categoryAmount: el.amount  })
                                 .then()
                                 .catch(err => console.log(err))
                         )
@@ -60,13 +61,23 @@ const FinalInsight = props => {
         props.history.push('/dash')
     }
 
-    const { first_name } = props.user
     return (
         <section>
-            <h1>${ leftToBudget }</h1>
-            <h4>left to budget</h4>
-            <p>Great job, { first_name }! Now give every remaining dollar a purpose. Make a new budget line, pay off more debt, or build some savings</p>
-            <button onClick={ handleSubmit }>Continue</button>
+            { !loading
+                ? (
+                    <>
+                        <h1>${ leftToBudget }</h1>
+                        <h4>left to budget</h4>
+                        <p>Great job, { first_name }! Now give every remaining dollar a purpose. Make a new budget line, pay off more debt, or build some savings</p>
+                        <button onClick={ handleSubmit }>Continue</button>
+                    </>
+                )
+                : (
+                    <section className='welcome-loading'>
+                        <img src={ loadingSpinner } alt='loading' />
+                    </section>
+                )
+            }
         </section>
     )
 }
