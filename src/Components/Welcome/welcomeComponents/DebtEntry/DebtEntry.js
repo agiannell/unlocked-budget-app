@@ -4,9 +4,9 @@ import axios from 'axios';
 import './DebtEntry.css'
 
 const DebtEntry = props => {
-    const [ creditCard, setCreditCard ] = useState({ name: 'credit card', amount: 0.00 }),
-          [ carPayment, setCarPayment ] = useState({ name: 'car payment', amount: 0.00 }),
-          [ studentLoan, setStudentLoan ] = useState({ name: 'student loan', amount: 0.00 }),
+    const [ creditCard, setCreditCard ] = useState({ name: 'credit card', amount: '0.00' }),
+          [ carPayment, setCarPayment ] = useState({ name: 'car payment', amount: '0.00' }),
+          [ studentLoan, setStudentLoan ] = useState({ name: 'student loan', amount: '0.00' }),
           [ groupInfo, setGroupInfo ] = useState({}),
           { user_id } = props.user;
 
@@ -20,16 +20,28 @@ const DebtEntry = props => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const { group_id } = groupInfo,
-                catArr = [creditCard, carPayment, studentLoan];
+        const { group_id } = groupInfo;
+                // catArr = [creditCard, carPayment, studentLoan];
 
-        catArr.map(e => (
-            axios.post('/api/category', { group_id, user_id, categoryName: e.name, categoryAmount: +e.amount })
-                .then()
-                .catch(err => console.log(err))
-        ))
+        axios.post('/api/category', { group_id, user_id, categoryName: creditCard.name, categoryAmount: +creditCard.amount })
+            .then(() => {
+                axios.post('/api/category', { group_id, user_id, categoryName: carPayment.name, categoryAmount: +carPayment.amount })
+                    .then(() => {
+                        axios.post('/api/category', { group_id, user_id, categoryName: studentLoan.name, categoryAmount: +studentLoan.amount })
+                            .then(() => {
+                                props.history.push('/welcome/debt-insight')
+                            })
+                    })
+            })
+            .catch(err => console.log(err));
 
-        props.history.push('/welcome/debt-insight');
+        // catArr.map(e => (
+        //     axios.post('/api/category', { group_id, user_id, categoryName: e.name, categoryAmount: +e.amount })
+        //         .then()
+        //         .catch(err => console.log(err))
+        // ))
+
+        // props.history.push('/welcome/debt-insight');
     }
     return (
         <section className=''>

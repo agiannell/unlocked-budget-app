@@ -4,12 +4,12 @@ import axios from 'axios';
 import './ExpensesHousing.css'
 
 const ExpensesHousing = props => {
-    const [ rent, setRent ] = useState({ name: 'mortgage/rent', amount: 0 }),
-          [ water, setWater ] = useState({ name: 'water', amount: 0 }),
-          [ naturalGas, setNaturalGas ] = useState({ name: 'naturalGas', amount: 0 }),
-          [ electricity, setElectricity ] = useState({ name: 'electricity', amount: 0 }),
-          [ cable, setCable ] = useState({ name: 'cable', amount: 0 }),
-          [ trash, setTrash ] = useState({ name: 'trash', amount: 0 }),
+    const [ rent, setRent ] = useState({ name: 'mortgage/rent', amount: '0.00' }),
+          [ water, setWater ] = useState({ name: 'water', amount: '0.00' }),
+          [ naturalGas, setNaturalGas ] = useState({ name: 'naturalGas', amount: '0.00' }),
+          [ electricity, setElectricity ] = useState({ name: 'electricity', amount: '0.00' }),
+          [ cable, setCable ] = useState({ name: 'cable', amount: '0.00' }),
+          [ trash, setTrash ] = useState({ name: 'trash', amount: '0.00' }),
           [ groupInfo, setGroupInfo ] = useState({}),
           { user_id } = props.user;
 

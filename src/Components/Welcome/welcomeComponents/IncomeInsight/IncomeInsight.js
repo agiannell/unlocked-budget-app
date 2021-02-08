@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import loadingSpinner from '../../../../img/loading.gif';
-import './IncomeInsight.css'
+import './IncomeInsight.css';
 
 const IncomeInsight = props => {
     const groupName = 'income',
@@ -12,13 +12,17 @@ const IncomeInsight = props => {
           { user_id, first_name } = props.user;
 
     useEffect(() => {
+        // console.log(`User ID: ${ user_id }`);
+        // console.log(`Group Name: ${ groupName }`);
+        // console.log(`Sum: ${ sum }`);
         axios.get(`/api/category-sum/${ user_id }/${ groupName }`)
             .then(res => {
+                // console.log(res.data[0])
                 setSum(res.data[0].sum)
                 setLoading(false)
             })
             .catch(err => console.log(err));
-    }, [user_id, groupName])
+    }, [sum, user_id, groupName])
 
     // console.log(props);
     return (

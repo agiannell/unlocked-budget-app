@@ -4,11 +4,11 @@ import axios from 'axios';
 import './ExpensesLifestyle.css'
 
 const ExpensesLifestyle = props => {
-    const [ clothing, setClothing ] = useState({ name: 'clothing', amount: 0 }),
-          [ phone, setPhone ] = useState({ name: 'phone', amount: 0 }),
-          [ funMoney, setFunMoney ] = useState({ name: 'fun money', amount: 0 }),
-          [ subscriptions, setSubscriptions ] = useState({ name: 'subscriptions', amount: 0 }),
-          [ misc, setMisc ] = useState({ name: 'miscellaneous', amount: 0 }),
+    const [ clothing, setClothing ] = useState({ name: 'clothing', amount: '0.00' }),
+          [ phone, setPhone ] = useState({ name: 'phone', amount: '0.00' }),
+          [ funMoney, setFunMoney ] = useState({ name: 'fun money', amount: '0.00' }),
+          [ subscriptions, setSubscriptions ] = useState({ name: 'subscriptions', amount: '0.00' }),
+          [ misc, setMisc ] = useState({ name: 'miscellaneous', amount: '0.00' }),
           [ groupInfo, setGroupInfo ] = useState({}),
           { user_id } = props.user;
 
@@ -22,16 +22,34 @@ const ExpensesLifestyle = props => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const { group_id } = groupInfo,
-              catArr = [clothing, phone, funMoney, subscriptions, misc];
+        const { group_id } = groupInfo;
+            //   catArr = [clothing, phone, funMoney, subscriptions, misc];
 
-        catArr.map(e => (
-            axios.post('/api/category', { group_id, user_id, categoryName: e.name, categoryAmount: +e.amount })
-                .then()
-                .catch(err => console.log(err))
-        ))
+        axios.post('/api/category', { group_id, user_id, categoryName: clothing.name, categoryAmount: +clothing.amount })
+            .then(() =>{
+                axios.post('/api/category', { group_id, user_id, categoryName: phone.name, categoryAmount: +phone.amount })
+                    .then(() => {
+                        axios.post('/api/category', { group_id, user_id, categoryName: funMoney.name, categoryAmount: +funMoney.amount })
+                            .then(() => {
+                                axios.post('/api/category', { group_id, user_id, categoryName: subscriptions.name, categoryAmount: +subscriptions.amount })
+                                    .then(() => {
+                                        axios.post('/api/category', { group_id, user_id, categoryName: misc.name, categoryAmount: +misc.amount })
+                                            .then(() => {
+                                                props.history.push('/welcome/expenses-insight')
+                                            })
+                                    })
+                            })
+                    })
+            })
+            .catch(err => console.log(err));
 
-        props.history.push('/welcome/expenses-insight');
+        // catArr.map(e => (
+        //     axios.post('/api/category', { group_id, user_id, categoryName: e.name, categoryAmount: +e.amount })
+        //         .then()
+        //         .catch(err => console.log(err))
+        // ))
+
+        // props.history.push('/welcome/expenses-insight');
     }
 
     return (

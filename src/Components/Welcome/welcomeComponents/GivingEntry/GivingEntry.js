@@ -4,7 +4,7 @@ import axios from 'axios';
 import './GivingEntry.css'
 
 const GivingEntry = props => {
-    const [ charity, setCharity ] = useState({ name: 'charity', amount: 0.00 }),
+    const [ charity, setCharity ] = useState({ name: 'charity', amount: '0.00' }),
           [ groupInfo, setGroupInfo ] = useState({}),
           { user_id } = props.user;
 
@@ -21,10 +21,10 @@ const GivingEntry = props => {
         const { group_id } = groupInfo;
 
         axios.post('/api/category', { group_id, user_id, categoryName: charity.name, categoryAmount: +charity.amount })
-        .then(() => {
-            props.history.push('/welcome/giving-insight');
-        })
-        .catch(err => console.log(err))
+            .then(() => {
+                props.history.push('/welcome/giving-insight');
+            })
+            .catch(err => console.log(err))
         
     }
 

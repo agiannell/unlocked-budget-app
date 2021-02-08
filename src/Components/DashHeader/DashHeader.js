@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { clearUser, getUser } from '../../ducks/userReducer'
 import logo from '../../img/logo-linear-color.svg'
@@ -24,7 +24,7 @@ const DashHeader = props => {
             .catch(err => console.log(err));
     }
 
-    // console.log(props)
+    console.log(props)
     return (
         <header className='dash-header'>
             <img src={ logo } alt='logo' />
@@ -41,4 +41,4 @@ const DashHeader = props => {
 
 const mapStateToProps = reduxState => ({ user: reduxState.userReducer.user })
 
-export default connect(mapStateToProps, { clearUser, getUser })(DashHeader);
+export default withRouter(connect(mapStateToProps, { clearUser, getUser })(DashHeader));

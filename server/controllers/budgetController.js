@@ -12,7 +12,7 @@ module.exports = {
               db = req.app.get('db');
 
         db.budget.create_category(group_id, user_id, categoryName, categoryAmount)
-            .then(() => res.sendStatus(200))
+            .then(cat => res.status(200).send(cat))
             .catch(err => res.status(500).send(err));
     },
     getUserGroups: (req, res) => {
