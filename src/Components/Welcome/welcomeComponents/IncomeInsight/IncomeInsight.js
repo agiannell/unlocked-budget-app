@@ -19,9 +19,10 @@ const IncomeInsight = props => {
             .then(res => {
                 // console.log(res.data[0])
                 setSum(res.data[0].sum)
-                setLoading(false)
             })
             .catch(err => console.log(err));
+            
+            setTimeout(setLoading(false), 2000);
     }, [sum, user_id, groupName])
 
     // console.log(props);

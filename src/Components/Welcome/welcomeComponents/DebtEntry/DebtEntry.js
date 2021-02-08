@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import loadingSpinner from '../../../../img/loading.gif';
 import './DebtEntry.css'
 
 const DebtEntry = props => {
@@ -8,6 +9,7 @@ const DebtEntry = props => {
           [ carPayment, setCarPayment ] = useState({ name: 'car payment', amount: '0.00' }),
           [ studentLoan, setStudentLoan ] = useState({ name: 'student loan', amount: '0.00' }),
           [ groupInfo, setGroupInfo ] = useState({}),
+          [ loading, setLoading ] = useState(false),
           { user_id } = props.user;
 
     useEffect(() => {
@@ -21,6 +23,7 @@ const DebtEntry = props => {
     const handleSubmit = (e) => {
         e.preventDefault()
         const { group_id } = groupInfo;
+        setLoading(true);
                 // catArr = [creditCard, carPayment, studentLoan];
 
         axios.post('/api/category', { group_id, user_id, categoryName: creditCard.name, categoryAmount: +creditCard.amount })
@@ -45,44 +48,55 @@ const DebtEntry = props => {
     }
     return (
         <section className=''>
-            <h1>Enter your monthly debt payments</h1>
-            <h2>These can be edited later.</h2>
-            <form>
-                <div className='expenses-entry-headers'>
-                    <h1>Debt</h1>
-                    <h3>Planned</h3>
-                    <p>Received</p>
-                </div>
-                <div className='expense-line'>
-                    <input 
-                        value={ creditCard.name }
-                        onChange={ e => setCreditCard((s) => ({ ...s, name: e.target.value })) } />
-                    <input 
-                        value={ creditCard.amount }
-                        onChange={ e => setCreditCard((s) => ({ ...s, amount: e.target.value })) } />
-                    <p>$0.00</p>
-                </div>
-                <div className='expense-line'>
-                    <input 
-                        value={ carPayment.name }
-                        onChange={ e => setCarPayment((s) => ({ ...s, name: e.target.value })) } />
-                    <input 
-                        value={ carPayment.amount }
-                        onChange={ e => setCarPayment((s) => ({ ...s, amount: e.target.value })) } />
-                    <p>$0.00</p>
-                </div>
-                <div className='expense-line'>
-                    <input 
-                        value={ studentLoan.name }
-                        onChange={ e => setStudentLoan((s) => ({ ...s, name: e.target.value })) } />
-                    <input 
-                        value={ studentLoan.amount }
-                        onChange={ e => setStudentLoan((s) => ({ ...s, amount: e.target.value })) } />
-                    <p>$0.00</p>
-                </div>
-            </form>
-            <button onClick={ e => handleSubmit(e) }>Continue</button>
-            <span onClick={ props.history.goBack }>&#60; Back</span>
+            { !loading
+                ? (
+                    <>
+                        <h1>Enter your monthly debt payments</h1>
+                        <h2>These can be edited later.</h2>
+                        <form>
+                            <div className='expenses-entry-headers'>
+                                <h1>Debt</h1>
+                                <h3>Planned</h3>
+                                <p>Received</p>
+                            </div>
+                            <div className='expense-line'>
+                                <input 
+                                    value={ creditCard.name }
+                                    onChange={ e => setCreditCard((s) => ({ ...s, name: e.target.value })) } />
+                                <input 
+                                    value={ creditCard.amount }
+                                    onChange={ e => setCreditCard((s) => ({ ...s, amount: e.target.value })) } />
+                                <p>$0.00</p>
+                            </div>
+                            <div className='expense-line'>
+                                <input 
+                                    value={ carPayment.name }
+                                    onChange={ e => setCarPayment((s) => ({ ...s, name: e.target.value })) } />
+                                <input 
+                                    value={ carPayment.amount }
+                                    onChange={ e => setCarPayment((s) => ({ ...s, amount: e.target.value })) } />
+                                <p>$0.00</p>
+                            </div>
+                            <div className='expense-line'>
+                                <input 
+                                    value={ studentLoan.name }
+                                    onChange={ e => setStudentLoan((s) => ({ ...s, name: e.target.value })) } />
+                                <input 
+                                    value={ studentLoan.amount }
+                                    onChange={ e => setStudentLoan((s) => ({ ...s, amount: e.target.value })) } />
+                                <p>$0.00</p>
+                            </div>
+                        </form>
+                        <button onClick={ e => handleSubmit(e) }>Continue</button>
+                        <span onClick={ props.history.goBack }>&#60; Back</span>
+                    </>
+                )
+                : (
+                    <section className='loading'>
+                        <img src={ loadingSpinner } alt='loading' />
+                    </section>
+                ) 
+            }
         </section>
     )
 }

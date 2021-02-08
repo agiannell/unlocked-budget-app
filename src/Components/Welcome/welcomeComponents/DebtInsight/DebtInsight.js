@@ -15,10 +15,11 @@ const DebtInsight = props => {
         axios.get(`/api/category-sum/${ user_id }/${ groupName }`)
             .then(res => {
                 setSum(res.data[0].sum)
-                setLoading(false)
             })
             .catch(err => console.log(err));
-    }, [user_id, groupName])
+            
+            setLoading(false)
+        }, [user_id, groupName])
 
     return (
         <section>
