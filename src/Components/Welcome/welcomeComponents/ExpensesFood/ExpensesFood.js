@@ -4,8 +4,8 @@ import axios from 'axios';
 import './ExpensesFood.css'
 
 const ExpensesFood = props => {
-    const [ groceries, setGroceries ] = useState({ name: 'groceries', amount: 0 }),
-          [ restaurants, setRestaurants ] = useState({ name: 'restaurants', amount: 0 }),
+    const [ groceries, setGroceries ] = useState({ name: 'groceries', amount: '0.00' }),
+          [ restaurants, setRestaurants ] = useState({ name: 'restaurants', amount: '0.00' }),
           [ groupInfo, setGroupInfo ] = useState({}),
           { user_id } = props.user;
 

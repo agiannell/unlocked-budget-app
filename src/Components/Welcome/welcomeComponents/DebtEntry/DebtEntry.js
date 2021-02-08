@@ -4,9 +4,9 @@ import axios from 'axios';
 import './DebtEntry.css'
 
 const DebtEntry = props => {
-    const [ creditCard, setCreditCard ] = useState({ name: 'credit card', amount: 0.00 }),
-          [ carPayment, setCarPayment ] = useState({ name: 'car payment', amount: 0.00 }),
-          [ studentLoan, setStudentLoan ] = useState({ name: 'student loan', amount: 0.00 }),
+    const [ creditCard, setCreditCard ] = useState({ name: 'credit card', amount: '0.00' }),
+          [ carPayment, setCarPayment ] = useState({ name: 'car payment', amount: '0.00' }),
+          [ studentLoan, setStudentLoan ] = useState({ name: 'student loan', amount: '0.00' }),
           [ groupInfo, setGroupInfo ] = useState({}),
           { user_id } = props.user;
 

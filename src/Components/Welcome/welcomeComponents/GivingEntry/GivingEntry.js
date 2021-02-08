@@ -4,7 +4,7 @@ import axios from 'axios';
 import './GivingEntry.css'
 
 const GivingEntry = props => {
-    const [ charity, setCharity ] = useState({ name: 'charity', amount: 0.00 }),
+    const [ charity, setCharity ] = useState({ name: 'charity', amount: '0.00' }),
           [ groupInfo, setGroupInfo ] = useState({}),
           { user_id } = props.user;
 

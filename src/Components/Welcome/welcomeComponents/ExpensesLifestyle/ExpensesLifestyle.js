@@ -4,11 +4,11 @@ import axios from 'axios';
 import './ExpensesLifestyle.css'
 
 const ExpensesLifestyle = props => {
-    const [ clothing, setClothing ] = useState({ name: 'clothing', amount: 0 }),
-          [ phone, setPhone ] = useState({ name: 'phone', amount: 0 }),
-          [ funMoney, setFunMoney ] = useState({ name: 'fun money', amount: 0 }),
-          [ subscriptions, setSubscriptions ] = useState({ name: 'subscriptions', amount: 0 }),
-          [ misc, setMisc ] = useState({ name: 'miscellaneous', amount: 0 }),
+    const [ clothing, setClothing ] = useState({ name: 'clothing', amount: '0.00' }),
+          [ phone, setPhone ] = useState({ name: 'phone', amount: '0.00' }),
+          [ funMoney, setFunMoney ] = useState({ name: 'fun money', amount: '0.00' }),
+          [ subscriptions, setSubscriptions ] = useState({ name: 'subscriptions', amount: '0.00' }),
+          [ misc, setMisc ] = useState({ name: 'miscellaneous', amount: '0.00' }),
           [ groupInfo, setGroupInfo ] = useState({}),
           { user_id } = props.user;
 

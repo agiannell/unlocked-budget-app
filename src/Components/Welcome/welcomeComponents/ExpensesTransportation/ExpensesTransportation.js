@@ -4,9 +4,9 @@ import axios from 'axios';
 import './ExpensesTransportation.css'
 
 const ExpensesTransportation = props => {
-    const [ gas, setGas ] = useState({ name: 'gas', amount: 0 }),
-          [ maintenance, setMaintenance ] = useState({ name: 'maintenance', amount: 0 }),
-          [ registration, setRegistration ] = useState({ name: 'registration & title', amount: 0 }),
+    const [ gas, setGas ] = useState({ name: 'gas', amount: '0.00' }),
+          [ maintenance, setMaintenance ] = useState({ name: 'maintenance', amount: '0.00' }),
+          [ registration, setRegistration ] = useState({ name: 'registration & title', amount: '0.00' }),
           [ groupInfo, setGroupInfo ] = useState({}),
           { user_id } = props.user;
 

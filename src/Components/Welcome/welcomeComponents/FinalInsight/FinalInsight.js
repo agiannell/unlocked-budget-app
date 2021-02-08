@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import loadingSpinner from '../../../../img/loading.gif';
 import './FinalInsight.css'
 
 const FinalInsight = props => {
