@@ -13,11 +13,11 @@ const FinalInsight = props => {
 
     useEffect(() => {
         axios.get(`/api/category-sum/${ user_id }/${ groupName }`)
-            .then(res => {
-                setIncomeSum(res.data[0].sum)
-            })
-            .catch(err => console.log(err));
-
+        .then(res => {
+            setIncomeSum(res.data[0].sum)
+        })
+        .catch(err => console.log(err));
+        
         axios.get(`/api/expense-sum/${ user_id }`)
             .then(res => {
                 setExpenseSum(res.data[0].sum);
