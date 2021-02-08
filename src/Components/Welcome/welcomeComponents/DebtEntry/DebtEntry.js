@@ -7,25 +7,24 @@ const DebtEntry = props => {
     const [ creditCard, setCreditCard ] = useState({ name: 'credit card', amount: 0.00 }),
           [ carPayment, setCarPayment ] = useState({ name: 'car payment', amount: 0.00 }),
           [ studentLoan, setStudentLoan ] = useState({ name: 'student loan', amount: 0.00 }),
-          [ groupInfo, setGroupInfo ] = useState({});
+          [ groupInfo, setGroupInfo ] = useState({}),
+          { user_id } = props.user;
 
     useEffect(() => {
-        const { user_id } = props.user
-
         axios.post('/api/group', { user_id, groupName: 'debt' })
             .then(res => {
                 setGroupInfo(res.data[0])
             })
             .catch(err => console.log(err))
-    }, [props.user])
+    }, [user_id])
 
     const handleSubmit = (e) => {
         e.preventDefault()
         const { group_id } = groupInfo,
-                paychecksArr = [creditCard, carPayment, studentLoan];
+                catArr = [creditCard, carPayment, studentLoan];
 
-        paychecksArr.map(e => (
-            axios.post('/api/category', { group_id, categoryName: e.name, categoryAmount: e.amount })
+        catArr.map(e => (
+            axios.post('/api/category', { group_id, user_id, categoryName: e.name, categoryAmount: +e.amount })
                 .then()
                 .catch(err => console.log(err))
         ))
@@ -48,7 +47,7 @@ const DebtEntry = props => {
                         onChange={ e => setCreditCard((s) => ({ ...s, name: e.target.value })) } />
                     <input 
                         value={ creditCard.amount }
-                        onChange={ e => setCreditCard((s) => ({ ...s, amount: +e.target.value })) } />
+                        onChange={ e => setCreditCard((s) => ({ ...s, amount: e.target.value })) } />
                     <p>$0.00</p>
                 </div>
                 <div className='expense-line'>
@@ -57,7 +56,7 @@ const DebtEntry = props => {
                         onChange={ e => setCarPayment((s) => ({ ...s, name: e.target.value })) } />
                     <input 
                         value={ carPayment.amount }
-                        onChange={ e => setCarPayment((s) => ({ ...s, amount: +e.target.value })) } />
+                        onChange={ e => setCarPayment((s) => ({ ...s, amount: e.target.value })) } />
                     <p>$0.00</p>
                 </div>
                 <div className='expense-line'>
@@ -66,7 +65,7 @@ const DebtEntry = props => {
                         onChange={ e => setStudentLoan((s) => ({ ...s, name: e.target.value })) } />
                     <input 
                         value={ studentLoan.amount }
-                        onChange={ e => setStudentLoan((s) => ({ ...s, amount: +e.target.value })) } />
+                        onChange={ e => setStudentLoan((s) => ({ ...s, amount: e.target.value })) } />
                     <p>$0.00</p>
                 </div>
             </form>

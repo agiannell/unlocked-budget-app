@@ -7,25 +7,24 @@ const ExpensesTransportation = props => {
     const [ gas, setGas ] = useState({ name: 'gas', amount: 0 }),
           [ maintenance, setMaintenance ] = useState({ name: 'maintenance', amount: 0 }),
           [ registration, setRegistration ] = useState({ name: 'registration & title', amount: 0 }),
-          [ groupInfo, setGroupInfo ] = useState({});
+          [ groupInfo, setGroupInfo ] = useState({}),
+          { user_id } = props.user;
 
     useEffect(() => {
-        const { user_id } = props.user
-
         axios.post('/api/group', { user_id, groupName: 'transportation' })
             .then(res => {
                 setGroupInfo(res.data[0])
             })
             .catch(err => console.log(err))
-    }, [props.user])
+    }, [user_id])
 
     const handleSubmit = (e) => {
         e.preventDefault()
         const { group_id } = groupInfo,
-              paychecksArr = [gas, maintenance, registration];
+              catArr = [gas, maintenance, registration];
 
-        paychecksArr.map(e => (
-            axios.post('/api/category', { group_id, categoryName: e.name, categoryAmount: e.amount })
+        catArr.map(e => (
+            axios.post('/api/category', { group_id, user_id, categoryName: e.name, categoryAmount: +e.amount })
                 .then()
                 .catch(err => console.log(err))
         ))
@@ -49,7 +48,7 @@ const ExpensesTransportation = props => {
                         onChange={ e => setGas((s) => ({ ...s, name: e.target.value })) } />
                     <input 
                         value={ gas.amount }
-                        onChange={ e => setGas((s) => ({ ...s, amount: +e.target.value })) } />
+                        onChange={ e => setGas((s) => ({ ...s, amount: e.target.value })) } />
                     <p>$0.00</p>
                 </div>
                 <div className='expense-line'>
@@ -58,7 +57,7 @@ const ExpensesTransportation = props => {
                         onChange={ e => setMaintenance((s) => ({ ...s, name: e.target.value })) } />
                     <input 
                         value={ maintenance.amount }
-                        onChange={ e => setMaintenance((s) => ({ ...s, amount: +e.target.value })) } />
+                        onChange={ e => setMaintenance((s) => ({ ...s, amount: e.target.value })) } />
                     <p>$0.00</p>
                 </div>
                 <div className='expense-line'>
@@ -67,7 +66,7 @@ const ExpensesTransportation = props => {
                         onChange={ e => setRegistration((s) => ({ ...s, name: e.target.value })) } />
                     <input 
                         value={ registration.amount }
-                        onChange={ e => setRegistration((s) => ({ ...s, amount: +e.target.value })) } />
+                        onChange={ e => setRegistration((s) => ({ ...s, amount: e.target.value })) } />
                     <p>$0.00</p>
                 </div>
             </form>

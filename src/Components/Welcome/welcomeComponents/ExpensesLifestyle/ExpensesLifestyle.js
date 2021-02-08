@@ -9,25 +9,24 @@ const ExpensesLifestyle = props => {
           [ funMoney, setFunMoney ] = useState({ name: 'fun money', amount: 0 }),
           [ subscriptions, setSubscriptions ] = useState({ name: 'subscriptions', amount: 0 }),
           [ misc, setMisc ] = useState({ name: 'miscellaneous', amount: 0 }),
-          [ groupInfo, setGroupInfo ] = useState({});
+          [ groupInfo, setGroupInfo ] = useState({}),
+          { user_id } = props.user;
 
     useEffect(() => {
-        const { user_id } = props.user
-
         axios.post('/api/group', { user_id, groupName: 'lifestyle' })
             .then(res => {
                 setGroupInfo(res.data[0])
             })
             .catch(err => console.log(err))
-    }, [props.user])
+    }, [user_id])
 
     const handleSubmit = (e) => {
         e.preventDefault()
         const { group_id } = groupInfo,
-              paychecksArr = [clothing, phone, funMoney, subscriptions, misc];
+              catArr = [clothing, phone, funMoney, subscriptions, misc];
 
-        paychecksArr.map(e => (
-            axios.post('/api/category', { group_id, categoryName: e.name, categoryAmount: e.amount })
+        catArr.map(e => (
+            axios.post('/api/category', { group_id, user_id, categoryName: e.name, categoryAmount: +e.amount })
                 .then()
                 .catch(err => console.log(err))
         ))
@@ -51,7 +50,7 @@ const ExpensesLifestyle = props => {
                         onChange={ e => setClothing((s) => ({ ...s, name: e.target.value })) } />
                     <input 
                         value={ clothing.amount }
-                        onChange={ e => setClothing((s) => ({ ...s, amount: +e.target.value })) } />
+                        onChange={ e => setClothing((s) => ({ ...s, amount: e.target.value })) } />
                     <p>$0.00</p>
                 </div>
                 <div className='expense-line'>
@@ -60,7 +59,7 @@ const ExpensesLifestyle = props => {
                         onChange={ e => setPhone((s) => ({ ...s, name: e.target.value })) } />
                     <input 
                         value={ phone.amount }
-                        onChange={ e => setPhone((s) => ({ ...s, amount: +e.target.value })) } />
+                        onChange={ e => setPhone((s) => ({ ...s, amount: e.target.value })) } />
                     <p>$0.00</p>
                 </div>
                 <div className='expense-line'>
@@ -69,7 +68,7 @@ const ExpensesLifestyle = props => {
                         onChange={ e => setFunMoney((s) => ({ ...s, name: e.target.value })) } />
                     <input 
                         value={ funMoney.amount }
-                        onChange={ e => setFunMoney((s) => ({ ...s, amount: +e.target.value })) } />
+                        onChange={ e => setFunMoney((s) => ({ ...s, amount: e.target.value })) } />
                     <p>$0.00</p>
                 </div>
                 <div className='expense-line'>
@@ -78,7 +77,7 @@ const ExpensesLifestyle = props => {
                         onChange={ e => setSubscriptions((s) => ({ ...s, name: e.target.value })) } />
                     <input 
                         value={ subscriptions.amount }
-                        onChange={ e => setSubscriptions((s) => ({ ...s, amount: +e.target.value })) } />
+                        onChange={ e => setSubscriptions((s) => ({ ...s, amount: e.target.value })) } />
                     <p>$0.00</p>
                 </div>
                 <div className='expense-line'>
@@ -87,7 +86,7 @@ const ExpensesLifestyle = props => {
                         onChange={ e => setMisc((s) => ({ ...s, name: e.target.value })) } />
                     <input 
                         value={ misc.amount }
-                        onChange={ e => setMisc((s) => ({ ...s, amount: +e.target.value })) } />
+                        onChange={ e => setMisc((s) => ({ ...s, amount: e.target.value })) } />
                     <p>$0.00</p>
                 </div>
             </form>

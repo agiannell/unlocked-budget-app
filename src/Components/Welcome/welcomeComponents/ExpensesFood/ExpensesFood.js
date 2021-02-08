@@ -6,25 +6,24 @@ import './ExpensesFood.css'
 const ExpensesFood = props => {
     const [ groceries, setGroceries ] = useState({ name: 'groceries', amount: 0 }),
           [ restaurants, setRestaurants ] = useState({ name: 'restaurants', amount: 0 }),
-          [ groupInfo, setGroupInfo ] = useState({});
+          [ groupInfo, setGroupInfo ] = useState({}),
+          { user_id } = props.user;
 
     useEffect(() => {
-        const { user_id } = props.user
-
         axios.post('/api/group', { user_id, groupName: 'food' })
             .then(res => {
                 setGroupInfo(res.data[0])
             })
             .catch(err => console.log(err))
-    }, [props.user])
+    }, [user_id])
 
     const handleSubmit = (e) => {
         e.preventDefault()
         const { group_id } = groupInfo,
-              paychecksArr = [groceries, restaurants];
+              catArr = [groceries, restaurants];
 
-        paychecksArr.map(e => (
-            axios.post('/api/category', { group_id, categoryName: e.name, categoryAmount: e.amount })
+        catArr.map(e => (
+            axios.post('/api/category', { group_id, user_id, categoryName: e.name, categoryAmount: +e.amount })
                 .then()
                 .catch(err => console.log(err))
         ))
@@ -48,7 +47,7 @@ const ExpensesFood = props => {
                         onChange={ e => setGroceries((s) => ({ ...s, name: e.target.value })) } />
                     <input 
                         value={ groceries.amount }
-                        onChange={ e => setGroceries((s) => ({ ...s, amount: +e.target.value })) } />
+                        onChange={ e => setGroceries((s) => ({ ...s, amount: e.target.value })) } />
                     <p>$0.00</p>
                 </div>
                 <div className='expense-line'>
@@ -57,7 +56,7 @@ const ExpensesFood = props => {
                         onChange={ e => setRestaurants((s) => ({ ...s, name: e.target.value })) } />
                     <input 
                         value={ restaurants.amount }
-                        onChange={ e => setRestaurants((s) => ({ ...s, amount: +e.target.value })) } />
+                        onChange={ e => setRestaurants((s) => ({ ...s, amount: e.target.value })) } />
                     <p>$0.00</p>
                 </div>
             </form>

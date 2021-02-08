@@ -8,10 +8,10 @@ module.exports = {
             .catch(err => res.status(500).send(err));
     },
     createCategory: (req, res) => {
-        const { group_id, categoryName, categoryAmount } = req.body,
+        const { group_id, user_id, categoryName, categoryAmount } = req.body,
               db = req.app.get('db');
 
-        db.budget.create_category(group_id, categoryName, categoryAmount)
+        db.budget.create_category(group_id, user_id, categoryName, categoryAmount)
             .then(() => res.sendStatus(200))
             .catch(err => res.status(500).send(err));
     },

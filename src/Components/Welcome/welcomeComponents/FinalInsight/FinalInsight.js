@@ -7,10 +7,6 @@ const FinalInsight = props => {
     const [ expenseSum, setExpenseSum ] = useState(0),
           [ incomeSum, setIncomeSum ] = useState(0),
           [ leftToBudget, setLeftToBudget ] = useState(0),
-          [ medicine, setMedicine ] = useState({ name: 'medicine', amount: 0.00, group: 'health' }),
-          [ doctorVisits, setDoctorVisits ] = useState({ name: 'doctor visits', amount: 0.00, group: 'health' }),
-          [ emergencyFund, setEmergencyFund ] = useState({ name: 'emergency fund', amount: 0.00, group: 'savings' }),
-          [ retirement, setRetirement ] = useState({ name: 'retirement', amount: 0.00, group: 'savings' }),
           [ groupInfo, setGroupInfo ] = useState({}),
           groupName = 'income';
 
@@ -35,8 +31,13 @@ const FinalInsight = props => {
 
     const handleSubmit = () => {
         const groupsArr = ['health', 'savings'],
-              catArr = [medicine, doctorVisits, emergencyFund, retirement],
-              { user_id } = props.user;
+              { user_id } = props.user,
+              catArr = [
+                { name: 'medicine', amount: 0.00, group: 'health' },
+                { name: 'doctor visits', amount: 0.00, group: 'health' },
+                { name: 'emergency fund', amount: 0.00, group: 'savings' },
+                { name: 'retirement', amount: 0.00, group: 'savings' }
+            ];
             
         groupsArr.map(e => (
             axios.post('/api/group', { user_id, groupName: e })

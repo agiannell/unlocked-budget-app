@@ -4,20 +4,19 @@ import axios from 'axios';
 import './IncomeEntry.css';
 
 const IncomeEntry = props => {
-    const [ paycheck1, setPaycheck1 ] = useState({ name: 'Paycheck 1', amount: 0.00 }),
-          [ paycheck2, setPaycheck2 ] = useState({ name: 'Paycheck 2', amount: 0.00 }),
-          [ paycheck3, setPaycheck3 ] = useState({ name: 'Paycheck 3', amount: 0.00 }),
-          [ groupInfo, setGroupInfo ] = useState({});
+    const [ paycheck1, setPaycheck1 ] = useState({ name: 'paycheck 1', amount: '0.00' }),
+          [ paycheck2, setPaycheck2 ] = useState({ name: 'paycheck 2', amount: '0.00' }),
+          [ paycheck3, setPaycheck3 ] = useState({ name: 'paycheck 3', amount: '0.00' }),
+          [ groupInfo, setGroupInfo ] = useState({}),
+          { user_id } = props.user;
 
     useEffect(() => {
-        const { user_id } = props.userReducer.user
-
         axios.post('/api/group', { user_id, groupName: 'income' })
             .then(res => {
                 setGroupInfo(res.data)
             })
             .catch(err => console.log(err))
-    }, [props.userReducer.user])
+    }, [user_id])
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -25,7 +24,7 @@ const IncomeEntry = props => {
               paychecksArr = [paycheck1, paycheck2, paycheck3];
 
         paychecksArr.map(e => (
-            axios.post('/api/category', { group_id, categoryName: e.name, categoryAmount: e.amount })
+            axios.post('/api/category', { group_id, user_id, categoryName: e.name, categoryAmount: +e.amount })
                 .then(() => { 
                 })
                 .catch(err => console.log(err))
@@ -34,7 +33,7 @@ const IncomeEntry = props => {
         props.history.push('/welcome/income-insight');
     }
 
-    console.log(props);
+    // console.log(props);
     return (
         <section className='income-entry'>
             <h1>Enter your paychecks</h1>
@@ -51,7 +50,7 @@ const IncomeEntry = props => {
                         onChange={ e => setPaycheck1((s) => ({ ...s, name: e.target.value })) } />
                     <input 
                         value={ paycheck1.amount }
-                        onChange={ e => setPaycheck1((s) => ({ ...s, amount: +e.target.value })) } />
+                        onChange={ e => setPaycheck1((s) => ({ ...s, amount: e.target.value })) } />
                     <p>$0.00</p>
                 </div>
                 <div className='paycheck-line'>
@@ -60,7 +59,7 @@ const IncomeEntry = props => {
                         onChange={ e => setPaycheck2((s) => ({ ...s, name: e.target.value })) } />
                     <input 
                         value={ paycheck2.amount }
-                        onChange={ e => setPaycheck2((s) => ({ ...s, amount: +e.target.value })) } />
+                        onChange={ e => setPaycheck2((s) => ({ ...s, amount: e.target.value })) } />
                     <p>$0.00</p>
                 </div>
                 <div className='paycheck-line'>
@@ -69,7 +68,7 @@ const IncomeEntry = props => {
                         onChange={ e => setPaycheck3((s) => ({ ...s, name: e.target.value })) } />
                     <input 
                         value={ paycheck3.amount }
-                        onChange={ e => setPaycheck3((s) => ({ ...s, amount: +e.target.value })) } />
+                        onChange={ e => setPaycheck3((s) => ({ ...s, amount: e.target.value })) } />
                     <p>$0.00</p>
                 </div>
             </form>
@@ -79,6 +78,6 @@ const IncomeEntry = props => {
     )
 }
 
-const mapStateToProps = reduxState => reduxState
+const mapStateToProps = reduxState => ({ user: reduxState.userReducer.user });
 
 export default connect(mapStateToProps)(IncomeEntry);

@@ -10,25 +10,24 @@ const ExpensesHousing = props => {
           [ electricity, setElectricity ] = useState({ name: 'electricity', amount: 0 }),
           [ cable, setCable ] = useState({ name: 'cable', amount: 0 }),
           [ trash, setTrash ] = useState({ name: 'trash', amount: 0 }),
-          [ groupInfo, setGroupInfo ] = useState({});
+          [ groupInfo, setGroupInfo ] = useState({}),
+          { user_id } = props.user;
 
     useEffect(() => {
-        const { user_id } = props.user
-
         axios.post('/api/group', { user_id, groupName: 'housing' })
             .then(res => {
                 setGroupInfo(res.data[0])
             })
             .catch(err => console.log(err))
-    }, [props.user])
+    }, [user_id])
 
     const handleSubmit = (e) => {
         e.preventDefault()
         const { group_id } = groupInfo,
-              paychecksArr = [rent, water, naturalGas, electricity, cable, trash];
+              catArr = [rent, water, naturalGas, electricity, cable, trash];
 
-        paychecksArr.map(e => (
-            axios.post('/api/category', { group_id, categoryName: e.name, categoryAmount: e.amount })
+        catArr.map(e => (
+            axios.post('/api/category', { group_id, user_id, categoryName: e.name, categoryAmount: +e.amount })
                 .then()
                 .catch(err => console.log(err))
         ))
@@ -52,7 +51,7 @@ const ExpensesHousing = props => {
                         onChange={ e => setRent((s) => ({ ...s, name: e.target.value })) } />
                     <input 
                         value={ rent.amount }
-                        onChange={ e => setRent((s) => ({ ...s, amount: +e.target.value })) } />
+                        onChange={ e => setRent((s) => ({ ...s, amount: e.target.value })) } />
                     <p>$0.00</p>
                 </div>
                 <div className='expense-line'>
@@ -61,7 +60,7 @@ const ExpensesHousing = props => {
                         onChange={ e => setWater((s) => ({ ...s, name: e.target.value })) } />
                     <input 
                         value={ water.amount }
-                        onChange={ e => setWater((s) => ({ ...s, amount: +e.target.value })) } />
+                        onChange={ e => setWater((s) => ({ ...s, amount: e.target.value })) } />
                     <p>$0.00</p>
                 </div>
                 <div className='expense-line'>
@@ -70,7 +69,7 @@ const ExpensesHousing = props => {
                         onChange={ e => setNaturalGas((s) => ({ ...s, name: e.target.value })) } />
                     <input 
                         value={ naturalGas.amount }
-                        onChange={ e => setNaturalGas((s) => ({ ...s, amount: +e.target.value })) } />
+                        onChange={ e => setNaturalGas((s) => ({ ...s, amount: e.target.value })) } />
                     <p>$0.00</p>
                 </div>
                 <div className='expense-line'>
@@ -79,7 +78,7 @@ const ExpensesHousing = props => {
                         onChange={ e => setElectricity((s) => ({ ...s, name: e.target.value })) } />
                     <input 
                         value={ electricity.amount }
-                        onChange={ e => setElectricity((s) => ({ ...s, amount: +e.target.value })) } />
+                        onChange={ e => setElectricity((s) => ({ ...s, amount: e.target.value })) } />
                     <p>$0.00</p>
                 </div>
                 <div className='expense-line'>
@@ -88,7 +87,7 @@ const ExpensesHousing = props => {
                         onChange={ e => setCable((s) => ({ ...s, name: e.target.value })) } />
                     <input 
                         value={ cable.amount }
-                        onChange={ e => setCable((s) => ({ ...s, amount: +e.target.value })) } />
+                        onChange={ e => setCable((s) => ({ ...s, amount: e.target.value })) } />
                     <p>$0.00</p>
                 </div>
                 <div className='expense-line'>
@@ -97,7 +96,7 @@ const ExpensesHousing = props => {
                         onChange={ e => setTrash((s) => ({ ...s, name: e.target.value })) } />
                     <input 
                         value={ trash.amount }
-                        onChange={ e => setTrash((s) => ({ ...s, amount: +e.target.value })) } />
+                        onChange={ e => setTrash((s) => ({ ...s, amount: e.target.value })) } />
                     <p>$0.00</p>
                 </div>
             </form>
