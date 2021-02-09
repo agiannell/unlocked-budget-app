@@ -49,3 +49,5 @@ app.delete('/api/group/:groupId', budgetCtrl.deleteGroup);
 app.delete('/api/category/:catId', budgetCtrl.deleteCategory);
 
 // transaction endpoints
+app.get('/api/transaction/:userId', transCtrl.getUserTransactions);
+app.post('/api/transaction', transCtrl.createTransaction);

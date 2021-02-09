@@ -10,7 +10,7 @@ import './Dash.css';
 const Dash = props => {
     const [ groups, setGroups ] = useState([]),
           [ loading, setLoading ] = useState(true),
-          [ transactions, setTransactions ] = useState(true),
+          [ transactions, setTransactions ] = useState([]),
           [ editTrans, setEditTrans ] = useState(false),
           { user_id } = props.user;
 
@@ -20,11 +20,21 @@ const Dash = props => {
                 setGroups(res.data)
             })
             .catch(err => console.log(err))
+
+        axios.get(`/api/transaction/${ user_id }`)
+            .then(res => {
+                setTransactions(res.data)
+            })
+            .catch(err => console.log(err))
             
             setTimeout(() => {
                 setLoading(false);
             }, 3000);
         }, [user_id])
+
+    const addTransaction = () => {
+        
+    }
         
     if(!user_id) {
         props.history.push('/signin')
@@ -59,7 +69,9 @@ const Dash = props => {
                                     <p>Untracked</p>
                                     <p>Tracked</p>
                                 </div>
-                                <Transactions />
+                                { transactions.map(e => (
+                                    <Transactions />
+                                )) }
                             </section>
                         </section>
                     </>
