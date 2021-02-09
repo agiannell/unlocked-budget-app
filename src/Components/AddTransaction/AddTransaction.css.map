@@ -1,0 +1,11 @@
+{
+    "version": 3,
+    "mappings": "AAGA,AAAA,gBAAgB,CAAC;ECKb,MAAM,EAAE,GAAG,CAAC,MAAM,CDJF,GAAG;EACnB,MAAM,EAAE,KAAK;EACb,KAAK,EAAE,KAAK;EACZ,gBAAgB,EAAE,kBAAe;CACpC;;AAED,AAAA,eAAe,CAAC;EACZ,gBAAgB,EAAE,IAAI;CACzB",
+    "sources": [
+        "AddTransaction.scss",
+        "../../scss/_mixins.scss",
+        "../../scss/_variables.scss"
+    ],
+    "names": [],
+    "file": "AddTransaction.css"
+}
