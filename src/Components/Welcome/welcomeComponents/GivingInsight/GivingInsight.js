@@ -19,7 +19,9 @@ const GivingInsight = props => {
             })
             .catch(err => console.log(err));
             
+        setTimeout(() => {
             setLoading(false)
+        }, 500)
     }, [user_id, groupName])
 
     return (

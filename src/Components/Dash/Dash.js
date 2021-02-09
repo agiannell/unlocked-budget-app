@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import DashHeader from '../DashHeader/DashHeader'
 import Groups from '../Groups/Groups';
+import Transactions from '../Transactions/Transactions';
 import loadingSpinner from '../../img/loading.gif'
 import './Dash.css';
 
@@ -14,22 +15,21 @@ const Dash = props => {
           { user_id } = props.user;
 
     useEffect(() => {
-        const getGroups = () => {
-            axios.get(`/api/groups/${ user_id }`)
-                .then(res => {
-                    setGroups(res.data)
-                    setLoading(false);
-                })
-                .catch(err => console.log(err))
-        };
-
-        if(!user_id) {
-            props.history.push('/signin')
-        }
-        getGroups();
-    }, [user_id, props.history])
-
-    // console.log(props)
+        axios.get(`/api/groups/${ user_id }`)
+            .then(res => {
+                setGroups(res.data)
+            })
+            .catch(err => console.log(err))
+            
+            setTimeout(() => {
+                setLoading(false);
+            }, 3000);
+        }, [user_id])
+        
+    if(!user_id) {
+        props.history.push('/signin')
+    }
+    console.log(props)
     return (
         <section>
             { !loading
@@ -48,7 +48,18 @@ const Dash = props => {
                                 <div className='empty'></div>
                             </section>
                             <section className='chart'>
-                                Chart stuff
+                                <div className='trans-head'>
+                                    <h2>Transactions</h2>
+                                    <div className='add-new'>
+                                        <p>+</p>
+                                        <p>Add New</p>
+                                    </div>
+                                </div>
+                                <div className='trans-type'>
+                                    <p>Untracked</p>
+                                    <p>Tracked</p>
+                                </div>
+                                <Transactions />
                             </section>
                         </section>
                     </>

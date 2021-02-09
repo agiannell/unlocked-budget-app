@@ -24,7 +24,10 @@ const FinalInsight = props => {
         .catch(err => console.log(err));
         
         setLeftToBudget(incomeSum - expenseSum);
-        setLoading(false);
+        setTimeout(() => {
+            setLoading(false);
+        }, 1000)
+
         // axios.get(`/api/expense-sum/${ user_id }`)
         //     .then(res => {
         //         setExpenseSum(res.data[0].sum);

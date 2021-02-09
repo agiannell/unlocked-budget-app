@@ -18,8 +18,10 @@ const DebtInsight = props => {
             })
             .catch(err => console.log(err));
             
+        setTimeout(() => {
             setLoading(false)
-        }, [user_id, groupName])
+        }, 500)
+    }, [user_id, groupName])
 
     return (
         <section>

@@ -24,8 +24,10 @@ const ExpensesInsight = props => {
                 })
                 .catch(err => console.log(err));
                 
-                setLeftToBudget(incomeSum - expenseSum);
-                setLoading(false);
+            setLeftToBudget(incomeSum - expenseSum);
+            setTimeout(() => {
+                setLoading(false)
+            }, 1000)
         // axios.get(`/api/expense-sum/${ user_id }`)
         //     .then(res => {
         //         setExpenseSum(res.data[0].sum);
@@ -34,6 +36,10 @@ const ExpensesInsight = props => {
         //     })
         //     .catch(err => console.log(err));
     }, [user_id, groupName, incomeSum, expenseSum])
+
+    // useEffect(() => {
+    //     setLoading(false)
+    // }, [leftToBudget])
 
     return (
         <section>
