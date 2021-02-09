@@ -24,7 +24,7 @@ button {
     letter-spacing: .12em;
     outline: none;
     transition: .2s;
-
+    
     &:hover {
         background-color: $light-purple;
     }
@@ -41,4 +41,14 @@ h2 {
     color: $purple;
     font-size: 1.5em;
     font-weight: 700;
+}
+
+p {
+    text-transform: initial;
+}
+
+input {
+    text-transform: capitalize;
+    color: $gray;
+    letter-spacing: .1em;
 }

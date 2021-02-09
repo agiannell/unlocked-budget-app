@@ -7,25 +7,33 @@ const AddTransaction = props => {
           [ date, setDate ] = useState(''),
           [ type, setType ] = useState('expense'),
           [ amount, setAmount ] = useState(''),
-          [ category, setCategory ] = useState(''),
           [ notes, setNotes ] = useState(''),
           [ catId, setCatId ] = useState(''),
-          { user_id } = props;
+          { user_id, categories, toggleFn } = props;
 
-    const createTransaction = () => {
+    const createTransaction = (e) => {
+        e.preventDefault()
+
         axios.post('/api/transaction', { user_id, catId, type, name, date, amount, notes })
         .then(() => {
-            props.toggleFn()
+            toggleFn()
         })
         .catch(err => console.log(err))
     }
 
-    console.log(props)
+    console.log(`User ID: ${user_id}`)
+    console.log(`Cat ID: ${catId}`)
+    console.log(`Type: ${type}`)
+    console.log(`Amount: ${amount}`)
+    console.log(`Date: ${date}`)
+    console.log(`Description: ${name}`)
+    console.log(`Notes: ${notes}`)
     return (
         <section className='add-transaction'>
             <form className='new-trans-info'>
                 <header>
                     <h2>Add New Expense</h2>
+                    <h3 onClick={ toggleFn }>X</h3>
                 </header>
                 <section className='set-type' onChange={ e => setType(e.target.value) }>
                     <input 
@@ -62,11 +70,11 @@ const AddTransaction = props => {
                             placeholder='Description'
                             onChange={ e => setName(e.target.value) } />
                     </div>
-                    <input 
-                        value={ category }
-                        id='category' 
-                        placeholder='Category'
-                        onChange={ e => setCategory(e.target.value) } />
+                    <select value={ catId } id='category' placeholder='Category' onChange={ e => setCatId(e.target.value) }>
+                        { categories.map(e => (
+                            <option value={ e.cat_id }>{ e.name }</option>
+                        )) }
+                    </select>
                     <textarea 
                         value={ notes }
                         type='text' 
@@ -74,7 +82,7 @@ const AddTransaction = props => {
                         placeholder='Notes(optional)'
                         onChange={ e => setNotes(e.target.value) } />
                 </section>
-                <button>Add Expense</button>
+                <button onClick ={ e => createTransaction(e) }>Add Expense</button>
             </form>
         </section>
     )

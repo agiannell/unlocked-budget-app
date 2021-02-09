@@ -48,6 +48,14 @@
   color: #ebe6ec;
 }
 
+.new-trans-info header h3 {
+  position: relative;
+  left: 170px;
+  font-weight: 700;
+  color: white;
+  cursor: pointer;
+}
+
 .new-trans-info button {
   width: 90%;
   border-radius: 5px;
@@ -101,6 +109,16 @@
 }
 
 .trans-inputs input {
+  height: 40px;
+  margin: 5px;
+  border: 1px solid #EE6352;
+  border-radius: 5px;
+  padding: 5px 10px;
+  width: 90%;
+  outline: none;
+}
+
+.trans-inputs select {
   height: 40px;
   margin: 5px;
   border: 1px solid #EE6352;

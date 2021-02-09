@@ -19,16 +19,10 @@ module.exports = {
             })
             .catch(err => res.status(500).send(err))
     },
-    getUserTransactions: (req, res) => {
+    updateTransaction: (req, res) => {
 
     },
-    getUserTransactions: (req, res) => {
-
-    },
-    getUserTransactions: (req, res) => {
-
-    },
-    getUserTransactions: (req, res) => {
+    deleteTransaction: (req, res) => {
 
     }
 }

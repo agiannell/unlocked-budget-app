@@ -1,0 +1,40 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.continue {
+    width: 200px;
+}
+
+p {
+    color: $gray;
+    line-height: 1.5em;
+}
+
+.intro {
+    height: 100vh;
+    width: 100vw;
+    @include flex(center, column);
+    animation: flyInDown 1s ease;
+}
+
+.intro-content {
+    // @include border(red);
+    width: 500px;
+    height: 300px;
+    @include flex(space-evenly, column);
+
+    h1 {
+        font-size: 2.5em;
+    }
+}
+
+@keyframes flyInDown {
+    0% {
+       opacity: 0; 
+       transform: translateY(-200px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -49,4 +49,14 @@ h2 {
   font-size: 1.5em;
   font-weight: 700;
 }
+
+p {
+  text-transform: initial;
+}
+
+input {
+  text-transform: capitalize;
+  color: #666;
+  letter-spacing: .1em;
+}
 /*# sourceMappingURL=App.css.map */

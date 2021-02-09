@@ -1,0 +1,65 @@
+@import '../../../../scss/mixins';
+@import '../../../../scss/variables';
+
+.entry {
+    width: 550px;
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+}
+
+.entry-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 1px rgba(0,0,0,0.3);
+    margin: 20px 0;
+}
+
+.entry-headers {
+    // @include border(orange);
+    @include flex(space-between, row);
+    align-items: flex-end;
+    margin-bottom: 20px;
+
+    h1 {
+        font-size: 2em;
+    }
+}
+
+.entry-money {
+    // @include border(red);
+    @include flex(space-between, row);
+    
+    p {
+        // @include border(yellowgreen);
+        width: 150px;
+        text-align: right;
+    }
+}
+
+.entry-line {
+    // @include border(red);
+    @include flex(space-between, row);
+    border-bottom: 1px solid $purple;
+    margin-bottom: 15px;
+}
+
+.entry-money {
+    // @include border(red);
+    @include flex(space-between, row);
+
+    input {
+        text-align: right;
+    }
+
+    p {
+        width: 150px;
+        text-align: right;
+    }
+}

@@ -5,9 +5,9 @@ import loadingSpinner from '../../../../img/loading.gif'
 import './IncomeEntry.css';
 
 const IncomeEntry = props => {
-    const [ paycheck1, setPaycheck1 ] = useState({ name: 'paycheck 1', amount: '0.00' }),
-          [ paycheck2, setPaycheck2 ] = useState({ name: 'paycheck 2', amount: '0.00' }),
-          [ paycheck3, setPaycheck3 ] = useState({ name: 'paycheck 3', amount: '0.00' }),
+    const [ paycheck1, setPaycheck1 ] = useState({ name: '', amount: '' }),
+          [ paycheck2, setPaycheck2 ] = useState({ name: '', amount: '' }),
+          [ paycheck3, setPaycheck3 ] = useState({ name: '', amount: '' }),
           [ groupInfo, setGroupInfo ] = useState({}),
           [ loading, setLoading ] = useState(false),
           { user_id } = props.user;
@@ -51,49 +51,63 @@ const IncomeEntry = props => {
 
     // console.log(props);
     return (
-        <section className='income-entry'>
+        <section className='intro'>
             { !loading
                 ? (
-                    <>
+                    <section className='entry'>
                         <h1>Enter your paychecks</h1>
-                        <h2>If your paychecks fluctuate, enter the lowest amount you expect.</h2>
-                        <form>
-                            <div className='income-entry-headers'>
+                        <p>If your paychecks fluctuate, enter the lowest amount you expect.</p>
+                        <form className='entry-form'>
+                            <div className='entry-headers'>
                                 <h1>Income</h1>
-                                <h3>Planned</h3>
-                                <p>Received</p>
+                                <div className='entry-money'>
+                                    <p>Planned</p>
+                                    <p>Received</p>
+                                </div>
                             </div>
-                            <div className='paycheck-line'>
+                            <div className='entry-line'>
                                 <input 
                                     value={ paycheck1.name }
-                                    onChange={ e => setPaycheck1((s) => ({ ...s, name: e.target.value })) } />
-                                <input 
-                                    value={ paycheck1.amount }
-                                    onChange={ e => setPaycheck1((s) => ({ ...s, amount: e.target.value })) } />
-                                <p>$0.00</p>
+                                    onChange={ e => setPaycheck1((s) => ({ ...s, name: e.target.value })) }
+                                    placeholder='Paycheck 1' />
+                                <div className='entry-money'>
+                                    <input 
+                                        placeholder='$0.00'
+                                        value={ paycheck1.amount }
+                                        onChange={ e => setPaycheck1((s) => ({ ...s, amount: e.target.value })) } />
+                                    <p>$0.00</p>
+                                </div>
                             </div>
-                            <div className='paycheck-line'>
+                            <div className='entry-line'>
                                 <input 
                                     value={ paycheck2.name }
-                                    onChange={ e => setPaycheck2((s) => ({ ...s, name: e.target.value })) } />
-                                <input 
-                                    value={ paycheck2.amount }
-                                    onChange={ e => setPaycheck2((s) => ({ ...s, amount: e.target.value })) } />
-                                <p>$0.00</p>
+                                    onChange={ e => setPaycheck2((s) => ({ ...s, name: e.target.value })) }
+                                    placeholder='Paycheck 2' />
+                                <div className='entry-money'>
+                                    <input 
+                                        placeholder='$0.00'
+                                        value={ paycheck2.amount }
+                                        onChange={ e => setPaycheck2((s) => ({ ...s, amount: e.target.value })) } />
+                                    <p>$0.00</p>
+                                </div>
                             </div>
-                            <div className='paycheck-line'>
+                            <div className='entry-line'>
                                 <input 
                                     value={ paycheck3.name }
-                                    onChange={ e => setPaycheck3((s) => ({ ...s, name: e.target.value })) } />
-                                <input 
-                                    value={ paycheck3.amount }
-                                    onChange={ e => setPaycheck3((s) => ({ ...s, amount: e.target.value })) } />
-                                <p>$0.00</p>
+                                    onChange={ e => setPaycheck3((s) => ({ ...s, name: e.target.value })) }
+                                    placeholder='Paycheck 3' />
+                                <div className='entry-money'>
+                                    <input 
+                                        placeholder='$0.00'
+                                        value={ paycheck3.amount }
+                                        onChange={ e => setPaycheck3((s) => ({ ...s, amount: e.target.value })) } />
+                                    <p>$0.00</p>
+                                </div>
                             </div>
                         </form>
-                        <button onClick={ e => handleSubmit(e) }>Continue</button>
+                        <button className='continue' onClick={ e => handleSubmit(e) }>Continue</button>
                         <span onClick={ props.history.goBack }>&#60; Back</span>
-                    </>
+                    </section>
                 )
                 : (
                     <section className='loading'>

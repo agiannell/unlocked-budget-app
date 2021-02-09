@@ -1,0 +1,77 @@
+.continue {
+  width: 200px;
+}
+
+p {
+  color: #666;
+  line-height: 1.5em;
+}
+
+.intro {
+  height: 100vh;
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-animation: flyInDown 1s ease;
+          animation: flyInDown 1s ease;
+}
+
+.intro-content {
+  width: 500px;
+  height: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.intro-content h1 {
+  font-size: 2.5em;
+}
+
+@-webkit-keyframes flyInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-200px);
+            transform: translateY(-200px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes flyInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-200px);
+            transform: translateY(-200px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+/*# sourceMappingURL=Welcome.css.map */

@@ -25,6 +25,14 @@
         h2 {
             color: $white;
         }
+
+        h3 {
+            position: relative;
+            left: 170px;
+            font-weight: 700;
+            color: white;
+            cursor: pointer;
+        }
     }
 
     button {
@@ -56,6 +64,16 @@
     padding: 20px 0;
 
     input {
+        height: 40px;
+        margin: 5px;
+        border: 1px solid $red;
+        border-radius: 5px;
+        padding: 5px 10px;
+        width: 90%;
+        outline: none;
+    }
+
+    select {
         height: 40px;
         margin: 5px;
         border: 1px solid $red;

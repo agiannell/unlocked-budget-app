@@ -10,6 +10,7 @@ import AddTransaction from '../AddTransaction/AddTransaction';
 
 const Dash = props => {
     const [ groups, setGroups ] = useState([]),
+          [ categories, setCategories ] = useState([]),
           [ loading, setLoading ] = useState(true),
           [ transactions, setTransactions ] = useState([]),
           [ editTrans, setEditTrans ] = useState(false),
@@ -30,10 +31,16 @@ const Dash = props => {
                 setTransactions(res.data)
             })
             .catch(err => console.log(err))
+
+        axios.get(`/api/user-categories/${ user_id }`)
+            .then(res => {
+                setCategories(res.data)
+            })
+            .catch(err => console.log(err));
             
-            setTimeout(() => {
-                setLoading(false);
-            }, 3000);
+        setTimeout(() => {
+            setLoading(false);
+        }, 3000);
         }, [user_id])
 
     const transactionToggle = () => {
@@ -52,6 +59,7 @@ const Dash = props => {
                     <>
                         <AddTransaction
                             user_id={ user_id }
+                            categories = { categories }
                             toggleFn={ transactionToggle } />
                     </>
                 )

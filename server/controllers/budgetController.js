@@ -93,5 +93,15 @@ module.exports = {
                 res.status(200).send(sum)
             })
             .catch(err => res.status(500).send(err));
+    },
+    getUserCategories: (req, res) => {
+        const { userId } = req.params,
+              db = req.app.get('db');
+
+        db.budget.get_user_categories(userId)
+            .then(cat => {
+                res.status(200).send(cat);
+            })
+            .catch(err => res.status(500).send(err));
     }
 }
