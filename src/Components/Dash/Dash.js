@@ -49,7 +49,11 @@ const Dash = props => {
             { !editTrans
                 ? (null)
                 : (
-                    <AddTransaction />
+                    <>
+                        <AddTransaction
+                            user_id={ user_id }
+                            toggleFn={ transactionToggle } />
+                    </>
                 )
             }
             { !loading
