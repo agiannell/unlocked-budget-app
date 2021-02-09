@@ -1,1 +1,6 @@
-/* No CSS *//*# sourceMappingURL=IncomeInsight.css.map */
+.first-name {
+  font-weight: 900;
+  color: #484D6D;
+  text-transform: capitalize;
+}
+/*# sourceMappingURL=IncomeInsight.css.map */

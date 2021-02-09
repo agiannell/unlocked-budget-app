@@ -154,6 +154,10 @@ p {
   margin-bottom: 15px;
 }
 
+.entry-line input {
+  width: 250px;
+}
+
 .entry-money {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -172,6 +176,7 @@ p {
 
 .entry-money input {
   text-align: right;
+  width: 80px;
 }
 
 .entry-money p {

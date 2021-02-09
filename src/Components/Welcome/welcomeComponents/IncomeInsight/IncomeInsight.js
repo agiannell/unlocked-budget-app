@@ -30,14 +30,17 @@ const IncomeInsight = props => {
         <section>
             { !loading
                 ? (
-                    <>
-                        <h1>${ sum }!</h1>
-                        <p>Nice job, { first_name }! Now let's make a plan to tell this money what to do.</p>
-                        <Link to='/welcome/expenses-intro'><button>Continue</button></Link>
-                    </>
+                    <section className='intro'>
+                        <section className='intro-content'>
+                            <h1>${ sum }!</h1>
+                            <p>Nice job, <span className='first-name'>{ first_name }!</span> Now let's make a plan to tell this money what to do.</p>
+                            <Link to='/welcome/expenses-intro'><button className='continue'>Continue</button></Link>
+                            <div className='go-back' onClick={ props.history.goBack }>&#60; Back</div>
+                        </section>
+                    </section>
                 )
                 : (
-                    <section className='welcome-loading'>
+                    <section className='loading'>
                         <img src={ loadingSpinner } alt='loading' />
                     </section>
                 ) 

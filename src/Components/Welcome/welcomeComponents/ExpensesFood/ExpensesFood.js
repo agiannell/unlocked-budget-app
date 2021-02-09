@@ -4,8 +4,8 @@ import axios from 'axios';
 import './ExpensesFood.css'
 
 const ExpensesFood = props => {
-    const [ groceries, setGroceries ] = useState({ name: 'groceries', amount: '0.00' }),
-          [ restaurants, setRestaurants ] = useState({ name: 'restaurants', amount: '0.00' }),
+    const [ groceries, setGroceries ] = useState({ name: 'groceries', amount: '' }),
+          [ restaurants, setRestaurants ] = useState({ name: 'restaurants', amount: '' }),
           [ groupInfo, setGroupInfo ] = useState({}),
           { user_id } = props.user;
 
@@ -32,36 +32,50 @@ const ExpensesFood = props => {
     }
 
     return (
-        <section>
-            <h1>Enter your food expenses</h1>
-            <h2>These can be edited later.</h2>
-            <form>
-                <div className='expenses-entry-headers'>
-                    <h1>Food</h1>
-                    <h3>Planned</h3>
-                    <p>Received</p>
-                </div>
-                <div className='expense-line'>
-                    <input 
-                        value={ groceries.name }
-                        onChange={ e => setGroceries((s) => ({ ...s, name: e.target.value })) } />
-                    <input 
-                        value={ groceries.amount }
-                        onChange={ e => setGroceries((s) => ({ ...s, amount: e.target.value })) } />
-                    <p>$0.00</p>
-                </div>
-                <div className='expense-line'>
-                    <input 
-                        value={ restaurants.name }
-                        onChange={ e => setRestaurants((s) => ({ ...s, name: e.target.value })) } />
-                    <input 
-                        value={ restaurants.amount }
-                        onChange={ e => setRestaurants((s) => ({ ...s, amount: e.target.value })) } />
-                    <p>$0.00</p>
-                </div>
-            </form>
-            <button onClick={ e => handleSubmit(e) }>Continue</button>
-            <span onClick={ props.history.goBack }>&#60; Back</span>
+        <section className='intro'>
+            <section className='entry'>
+                <h1>Enter your<br /> food expenses</h1>
+                <p>These can be edited later.</p>
+                <form>
+                    <section className='entry-form'>
+                        <div className='entry-headers'>
+                            <h1>Food</h1>
+                            <div className='entry-money'>
+                                <p>Planned</p>
+                                <p>Received</p>
+                            </div>
+                        </div>
+                        <div className='entry-line'>
+                            <input 
+                                placeholder='Groceries'
+                                value={ groceries.name }
+                                onChange={ e => setGroceries((s) => ({ ...s, name: e.target.value })) } />
+                            <div className='entry-money'>
+                                <input 
+                                    placeholder='$0.00'
+                                    value={ groceries.amount }
+                                    onChange={ e => setGroceries((s) => ({ ...s, amount: e.target.value })) } />
+                                <p>$0.00</p>
+                            </div>
+                        </div>
+                        <div className='entry-line'>
+                            <input 
+                                placeholder='Restaurants'
+                                value={ restaurants.name }
+                                onChange={ e => setRestaurants((s) => ({ ...s, name: e.target.value })) } />
+                            <div className='entry-money'>
+                                <input 
+                                    placeholder='$0.00'
+                                    value={ restaurants.amount }
+                                    onChange={ e => setRestaurants((s) => ({ ...s, amount: e.target.value })) } />
+                                <p>$0.00</p>
+                            </div>
+                        </div>
+                    </section>
+                    <button className='continue' onClick={ e => handleSubmit(e) }>Continue</button>
+                </form>
+                <div className='go-back' onClick={ props.history.goBack }>&#60; Back</div>
+            </section>
         </section>
     )
 }

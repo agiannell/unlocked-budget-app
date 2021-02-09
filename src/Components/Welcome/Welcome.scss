@@ -84,14 +84,21 @@ p {
     @include flex(space-between, row);
     border-bottom: 1px solid $purple;
     margin-bottom: 15px;
+
+    input {
+        // @include border(blue);
+        width: 250px;
+    }
 }
 
 .entry-money {
     // @include border(red);
     @include flex(space-between, row);
-
+    
     input {
+        // @include border(green);
         text-align: right;
+        width: 80px;
     }
 
     p {

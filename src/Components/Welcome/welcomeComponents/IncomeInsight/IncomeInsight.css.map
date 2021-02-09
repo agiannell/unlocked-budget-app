@@ -1,8 +1,10 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AAGA,AAAA,WAAW,CAAC;EACR,WAAW,EAAE,GAAG;EAChB,KAAK,ECAA,OAAO;EDCZ,cAAc,EAAE,UAAU;CAC7B",
     "sources": [
-        "IncomeInsight.scss"
+        "IncomeInsight.scss",
+        "../../../../scss/_variables.scss",
+        "../../../../scss/_mixins.scss"
     ],
     "names": [],
     "file": "IncomeInsight.css"
