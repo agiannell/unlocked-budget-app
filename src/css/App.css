@@ -58,5 +58,6 @@ input {
   text-transform: capitalize;
   color: #666;
   letter-spacing: .1em;
+  outline: none;
 }
 /*# sourceMappingURL=App.css.map */
