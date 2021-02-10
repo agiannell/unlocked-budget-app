@@ -31,6 +31,6 @@ create table transactions (
   name varchar,
   date date,
   amount numeric default 0,
-  notes text
+  notes text,
   type varchar(10) not null
 );

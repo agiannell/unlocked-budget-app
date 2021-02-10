@@ -106,15 +106,20 @@ const FinalInsight = props => {
         <section>
             { !loading
                 ? (
-                    <>
-                        <h1>${ leftToBudget }</h1>
-                        <h4>left to budget</h4>
-                        <p>Great job, { first_name }! Now give every remaining dollar a purpose. Make a new budget line, pay off more debt, or build some savings</p>
-                        <button onClick={ handleSubmit }>Continue</button>
-                    </>
+                    <section className='intro'>
+                        <section className='intro-content'>
+                            <div>
+                                <h1>${ leftToBudget }</h1>
+                                <p>left to budget</p>
+                            </div>
+                            <p>Great job, <span className='first-name'>{ first_name }!</span> Now give every remaining dollar a purpose. Make a new budget line, pay off more debt, or build some savings</p>
+                            <button className='continue' onClick={ handleSubmit }>Continue</button>
+                            <div className='go-back' onClick={ props.history.goBack }>&#60; Back</div>
+                        </section>
+                    </section>
                 )
                 : (
-                    <section className='welcome-loading'>
+                    <section className='loading'>
                         <img src={ loadingSpinner } alt='loading' />
                     </section>
                 )

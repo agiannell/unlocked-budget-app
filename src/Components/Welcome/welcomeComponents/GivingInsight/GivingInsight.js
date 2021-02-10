@@ -28,13 +28,16 @@ const GivingInsight = props => {
         <section>
             { !loading
                 ? (
-                    <>
-                        <p>Awesome! You're giving ${ sum } this month!</p>
-                        <Link to='/welcome/debt-intro'><button>Continue</button></Link>
-                    </>
+                    <section className='intro'>
+                        <section className='intro-content'>
+                            <h1>Awesome! You're giving <span>${ sum }</span> this month!</h1>
+                            <Link to='/welcome/debt-intro'><button className='continue'>Continue</button></Link>
+                            <div className='go-back' onClick={ props.history.goBack }>&#60; Back</div>
+                        </section>
+                    </section>
                 )
                 : (
-                    <section className='welcome-loading'>
+                    <section className='loading'>
                         <img src={ loadingSpinner } alt='loading' />
                     </section>
                 ) 

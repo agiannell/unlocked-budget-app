@@ -27,13 +27,16 @@ const DebtInsight = props => {
         <section>
             { !loading
                 ? (
-                    <>
-                        <p>Debt is stealing ${ sum } of you hard-earned money!</p>
-                        <Link to='/welcome/final-insight'><button>Continue</button></Link>
-                    </>
+                    <section className='intro'>
+                        <section className='intro-content'>
+                            <h1 id='debt'>Debt is stealing <span>${ sum }</span> of you hard-earned money!</h1>
+                            <Link to='/welcome/final-insight'><button className='continue'>Continue</button></Link>
+                            <div className='go-back' onClick={ props.history.goBack }>&#60; Back</div>
+                        </section>
+                    </section>
                 )
                 : (
-                    <section className='welcome-loading'>
+                    <section className='loading'>
                         <img src={ loadingSpinner } alt='loading' />
                     </section>
                 ) 

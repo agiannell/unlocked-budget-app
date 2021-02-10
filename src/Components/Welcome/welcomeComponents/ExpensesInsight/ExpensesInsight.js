@@ -45,15 +45,20 @@ const ExpensesInsight = props => {
         <section>
             { !loading
                 ? (
-                    <>
-                        <h1>${ leftToBudget }</h1>
-                        <h4>left to budget</h4>
-                        <p>Great job, { first_name }! You've got the basics covered.</p>
-                        <Link to='/welcome/giving-intro'><button>Continue</button></Link>
-                    </>
+                    <section className='intro'>
+                        <section className='intro-content'>
+                            <div>
+                                <h1>${ leftToBudget }</h1>
+                                <p>left to budget</p>
+                            </div>
+                            <p>Great job, <span className='first-name'>{ first_name }!</span> You've got the basics covered.</p>
+                            <Link to='/welcome/giving-intro'><button className='continue'>Continue</button></Link>
+                            <div className='go-back' onClick={ props.history.goBack }>&#60; Back</div>
+                        </section>
+                    </section>
                 )
                 : (
-                    <section className='welcome-loading'>
+                    <section className='loading'>
                         <img src={ loadingSpinner } alt='loading' />
                     </section>
                 ) 

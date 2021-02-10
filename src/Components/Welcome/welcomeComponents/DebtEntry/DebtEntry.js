@@ -5,9 +5,9 @@ import loadingSpinner from '../../../../img/loading.gif';
 import './DebtEntry.css'
 
 const DebtEntry = props => {
-    const [ creditCard, setCreditCard ] = useState({ name: 'credit card', amount: '0.00' }),
-          [ carPayment, setCarPayment ] = useState({ name: 'car payment', amount: '0.00' }),
-          [ studentLoan, setStudentLoan ] = useState({ name: 'student loan', amount: '0.00' }),
+    const [ creditCard, setCreditCard ] = useState({ name: 'credit card', amount: '' }),
+          [ carPayment, setCarPayment ] = useState({ name: 'car payment', amount: '' }),
+          [ studentLoan, setStudentLoan ] = useState({ name: 'student loan', amount: '' }),
           [ groupInfo, setGroupInfo ] = useState({}),
           [ loading, setLoading ] = useState(false),
           { user_id } = props.user;
@@ -47,49 +47,65 @@ const DebtEntry = props => {
         // props.history.push('/welcome/debt-insight');
     }
     return (
-        <section className=''>
+        <section className='intro'>
             { !loading
                 ? (
-                    <>
-                        <h1>Enter your monthly debt payments</h1>
-                        <h2>These can be edited later.</h2>
+                    <section className='entry'>
+                        <h1>Enter your <br />monthly debt payments</h1>
+                        <p>These can be edited later.</p>
                         <form>
-                            <div className='expenses-entry-headers'>
-                                <h1>Debt</h1>
-                                <h3>Planned</h3>
-                                <p>Received</p>
-                            </div>
-                            <div className='expense-line'>
-                                <input 
-                                    value={ creditCard.name }
-                                    onChange={ e => setCreditCard((s) => ({ ...s, name: e.target.value })) } />
-                                <input 
-                                    value={ creditCard.amount }
-                                    onChange={ e => setCreditCard((s) => ({ ...s, amount: e.target.value })) } />
-                                <p>$0.00</p>
-                            </div>
-                            <div className='expense-line'>
-                                <input 
-                                    value={ carPayment.name }
-                                    onChange={ e => setCarPayment((s) => ({ ...s, name: e.target.value })) } />
-                                <input 
-                                    value={ carPayment.amount }
-                                    onChange={ e => setCarPayment((s) => ({ ...s, amount: e.target.value })) } />
-                                <p>$0.00</p>
-                            </div>
-                            <div className='expense-line'>
-                                <input 
-                                    value={ studentLoan.name }
-                                    onChange={ e => setStudentLoan((s) => ({ ...s, name: e.target.value })) } />
-                                <input 
-                                    value={ studentLoan.amount }
-                                    onChange={ e => setStudentLoan((s) => ({ ...s, amount: e.target.value })) } />
-                                <p>$0.00</p>
-                            </div>
+                            <section className='entry-form'>
+                                <div className='entry-headers'>
+                                    <h1>Debt</h1>
+                                    <div className='entry-money'>
+                                        <p>Planned</p>
+                                        <p>Received</p>
+                                    </div>
+                                </div>
+                                <div className='entry-line'>
+                                    <input 
+                                        placeholder='Credit Card'
+                                        value={ creditCard.name }
+                                        onChange={ e => setCreditCard((s) => ({ ...s, name: e.target.value })) } />
+                                    <div className='entry-money'>
+                                        <input 
+                                            placeholder='$0.00'
+                                            value={ creditCard.amount }
+                                            onChange={ e => setCreditCard((s) => ({ ...s, amount: e.target.value })) } />
+                                        <p>$0.00</p>
+                                    </div>
+                                </div>
+                                <div className='entry-line'>
+                                    <input 
+                                        placeholder='Car Payment'
+                                        value={ carPayment.name }
+                                        onChange={ e => setCarPayment((s) => ({ ...s, name: e.target.value })) } />
+                                    <div className='entry-money'>
+                                        <input 
+                                            placeholder='$0.00'
+                                            value={ carPayment.amount }
+                                            onChange={ e => setCarPayment((s) => ({ ...s, amount: e.target.value })) } />
+                                        <p>$0.00</p>
+                                    </div>
+                                </div>
+                                <div className='entry-line'>
+                                    <input 
+                                        placeholder='Student Loan'
+                                        value={ studentLoan.name }
+                                        onChange={ e => setStudentLoan((s) => ({ ...s, name: e.target.value })) } />
+                                    <div className='entry-money'>
+                                        <input 
+                                            placeholder='$0.00'
+                                            value={ studentLoan.amount }
+                                            onChange={ e => setStudentLoan((s) => ({ ...s, amount: e.target.value })) } />
+                                        <p>$0.00</p>
+                                    </div>
+                                </div>
+                            </section>
+                            <button className='continue' onClick={ e => handleSubmit(e) }>Continue</button>
                         </form>
-                        <button onClick={ e => handleSubmit(e) }>Continue</button>
-                        <span onClick={ props.history.goBack }>&#60; Back</span>
-                    </>
+                        <div className='go-back' onClick={ props.history.goBack }>&#60; Back</div>
+                    </section>
                 )
                 : (
                     <section className='loading'>

@@ -5,7 +5,7 @@ import loadingSpinner from '../../../../img/loading.gif';
 import './GivingEntry.css'
 
 const GivingEntry = props => {
-    const [ charity, setCharity ] = useState({ name: 'charity', amount: '0.00' }),
+    const [ charity, setCharity ] = useState({ name: 'charity', amount: '' }),
           [ groupInfo, setGroupInfo ] = useState({}),
           [ loading, setLoading ] = useState(false),
           { user_id } = props.user;
@@ -32,31 +32,39 @@ const GivingEntry = props => {
     }
 
     return (
-        <section className=''>
+        <section className='intro'>
             { !loading
                 ? (
-                    <>
-                        <h1>Enter your giving expenses</h1>
-                        <h2>These can be edited later.</h2>
+                    <section className='entry'>
+                        <h1>Enter your<br /> giving expenses</h1>
+                        <p>These can be edited later.</p>
                         <form>
-                            <div className='expenses-entry-headers'>
-                                <h1>Giving</h1>
-                                <h3>Planned</h3>
-                                <p>Received</p>
-                            </div>
-                            <div className='expense-line'>
-                                <input 
-                                    value={ charity.name }
-                                    onChange={ e => setCharity((s) => ({ ...s, name: e.target.value })) } />
-                                <input 
-                                    value={ charity.amount }
-                                    onChange={ e => setCharity((s) => ({ ...s, amount: e.target.value })) } />
-                                <p>$0.00</p>
-                            </div>
+                            <section className='entry-form'>
+                                <div className='entry-headers'>
+                                    <h1>Giving</h1>
+                                    <div className='entry-money'>
+                                        <p>Planned</p>
+                                        <p>Received</p>
+                                    </div>
+                                </div>
+                                <div className='entry-line'>
+                                    <input 
+                                        placeholder='Charity'
+                                        value={ charity.name }
+                                        onChange={ e => setCharity((s) => ({ ...s, name: e.target.value })) } />
+                                    <div className='entry-money'>
+                                        <input 
+                                            placeholder='$0.00'
+                                            value={ charity.amount }
+                                            onChange={ e => setCharity((s) => ({ ...s, amount: e.target.value })) } />
+                                        <p>$0.00</p>
+                                    </div>
+                                </div>
+                            </section>
+                            <button className='continue' onClick={ e => handleSubmit(e) }>Continue</button>
                         </form>
-                        <button onClick={ e => handleSubmit(e) }>Continue</button>
-                        <span onClick={ props.history.goBack }>&#60; Back</span>
-                    </>
+                        <div className='go-back' onClick={ props.history.goBack }>&#60; Back</div>
+                    </section>
                 )
                 : (
                     <section className='loading'>
