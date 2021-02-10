@@ -17,14 +17,13 @@ const Profile = props => {
 
         axios.put(`/api/update-user/${ user_id }`, { firstName, lastName, userEmail })
             .then(res => {
-                console.log(res.data);
                 props.getUser(res.data);
                 setIsEditing(!isEditing);
             })
             .catch(err => console.log(err));
     }
 
-    console.log(isEditing);
+    // console.log(isEditing);
     return (
         <section>
             { isEditing

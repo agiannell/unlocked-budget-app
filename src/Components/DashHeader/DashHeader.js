@@ -32,7 +32,7 @@ const DashHeader = props => {
             <img src={ logo } alt='logo' />
             <section className='dash-nav'>
                 <div className='user'>
-                    <Link to={ `/profile/${ user_id }` }><img src={ profile_pic } alt={ first_name } /></Link>
+                    <Link to='/profile'><img src={ profile_pic } alt={ first_name } /></Link>
                     <p>{ first_name }</p>
                 </div>
                 <button className='sign-out' onClick={ logout }>Sign Out</button>

@@ -15,12 +15,32 @@
           flex-direction: row;
   border-bottom: 1px solid #666;
   padding: 5px 0;
+  -webkit-transition: .1s;
+  transition: .1s;
+  background-color: inherit;
 }
 
 .categories h1 {
   font-family: oscine, sans-serif;
   font-weight: 500;
   font-size: 1.2em;
+}
+
+.categories input {
+  width: 300px;
+}
+
+.focused {
+  -webkit-transform: scale(1.06);
+          transform: scale(1.06);
+  -webkit-box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.2);
+  padding: 0;
+}
+
+.focused input {
+  background-color: #f3f3f3;
+  padding: 12px 12px;
 }
 
 .cat-money {
@@ -43,5 +63,15 @@
 .cat-money p {
   color: #666;
   width: 110px;
+  text-align: right;
+}
+
+.cat-money input {
+  width: 110px;
+  text-align: right;
+}
+
+.hidden {
+  display: none;
 }
 /*# sourceMappingURL=Categories.css.map */

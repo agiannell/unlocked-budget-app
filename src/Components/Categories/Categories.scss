@@ -1,22 +1,41 @@
 @import '../../scss/variables';
 @import '../../scss/mixins';
 
+
 .categories {
     // @include border(yellowgreen);
     margin-bottom: 10px;
     @include flex(space-between, row);
     border-bottom: 1px solid $gray;
     padding: 5px 0;
+    transition: .1s;
+    background-color: inherit;
 
     h1 {
         font-family: oscine, sans-serif;
         font-weight: 500;
         font-size: 1.2em;
     }
+
+    input {
+        // @include border(red);
+        width: 300px;
+    }
+}
+
+.focused {
+    transform: scale(1.06);
+    box-shadow: 0 0 3px 1px rgba(0,0,0,0.2);
+    padding: 0;
+
+    input {
+        background-color: rgb(243, 243, 243);
+        padding: 12px 12px;
+    }
 }
 
 .cat-money {
-    // @include border(red);
+    // @include border(orange);
     @include flex(space-between, row);
     width: 250px;
 
@@ -25,5 +44,20 @@
         color: $gray;
         // margin-right: 20px;
         width: 110px;
+        text-align: right;
     }
+
+    input {
+        // @include border(blue);
+        width: 110px;
+        text-align: right;
+    }
+}
+
+.delete-category {
+    
+}
+
+.hidden {
+    display: none;
 }

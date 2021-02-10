@@ -40,22 +40,13 @@ module.exports = {
             .then(group => res.status(200).send(group))
             .catch(err => res.status(500).send(err));
     },
-    updateCatName: (req, res) => {
-        const { catName } = req.body,
+    updateCategory: (req, res) => {
+        const { catName, catAmount } = req.body,
               { catId } = req.params,
               db = req.app.get('db');
 
-        db.budget.update_category_name(catId, catName)
-            .then(cat => res.status(200).send(cat))
-            .catch(err => res.status(500).send(err));
-    },
-    updateCatAmount: (req, res) => {
-        const { catAmount } = req.body,
-              { catId } = req.params,
-              db = req.app.get('db');
-
-        db.budget.update_category_amount(catId, catAmount)
-            .then(cat => res.status(200).send(cat))
+        db.budget.update_category(catId, catName, catAmount)
+            .then(() => res.sendStatus(200))
             .catch(err => res.status(500).send(err));
     },
     deleteGroup: (req, res) => {

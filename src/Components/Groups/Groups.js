@@ -5,7 +5,7 @@ import './Groups.css'
 
 const Groups = props => {
     const [ categories, setCategories ] = useState([]),
-          { id, name } = props;
+          { id, name, user_id } = props;
 
     useEffect(() => {
         const getCategories = () => {
@@ -18,6 +18,15 @@ const Groups = props => {
 
         getCategories()
     }, [id])
+
+    const addCategory = () => {
+        axios.post('/api/category', { group_id: id, user_id, categoryName: '', categoryAmount: 0.00 })
+            .then(res => {
+                setCategories(res.data);
+                console.log(categories)
+            })
+            .catch(err => console.log(err))
+    }
 
     return (
         <section className='groups'>
@@ -40,8 +49,13 @@ const Groups = props => {
                     key={ e.cat_id }
                     name={ e.name }
                     amount={ e.amount }
-                    catId={ e.cat_id } />
+                    catId={ e.cat_id }
+                    groupName={ name } />
             )) }
+            <section className='add-category' onClick={ addCategory }>
+                <div className='add-btn'>+</div>
+                Add New
+            </section>
         </section>
     )
 }

@@ -53,6 +53,10 @@ const Dash = props => {
     const transactionToggle = () => {
         setEditTrans(!editTrans)
     }
+
+    const addGroup = () => {
+        axios.post('/api/group', { user_id, name: '' })
+    }
         
     if(!user_id) {
         props.history.push('/signin')
@@ -82,6 +86,7 @@ const Dash = props => {
                                     key={ e.group_id }
                                     id={ e.group_id }
                                     name={ e.name }
+                                    user_id={ user_id }
                                     loadedGroups={ loadedGroups }
                                     setLoadedGroups={ setLoadedGroups } />
                                 )) }

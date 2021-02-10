@@ -8,7 +8,7 @@
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 5px 2px rgba(0,0,0,0.2);
-    padding: 10px;
+    padding: 20px;
 
 }
 
@@ -23,6 +23,7 @@
 }
 
 .group-money {
+    // @include border(orange);
     @include flex(space-between, row);
     width: 250px;
     
@@ -30,5 +31,26 @@
         // @include border(blue);
         font-size: 1em;
         width: 110px;
+        text-align: right;
     }
+}
+
+.add-category {
+    margin-top: 30px;
+    @include flex(flex-start, row);
+    color: $blue;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.add-btn {
+    border-radius: 50%;
+    background-color: $blue;
+    color: white;
+    height: 20px;
+    width: 20px;
+    @include flex(center, column);
+    margin-right: 10px;
+    font-weight: 900;
+    font-size: 1.3em;
 }

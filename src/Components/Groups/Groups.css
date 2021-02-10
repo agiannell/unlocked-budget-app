@@ -5,7 +5,7 @@
   border-radius: 5px;
   -webkit-box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
           box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
-  padding: 10px;
+  padding: 20px;
 }
 
 .group-titles {
@@ -49,5 +49,50 @@
 .group-money h2 {
   font-size: 1em;
   width: 110px;
+  text-align: right;
+}
+
+.add-category {
+  margin-top: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  color: #08B2E3;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.add-btn {
+  border-radius: 50%;
+  background-color: #08B2E3;
+  color: white;
+  height: 20px;
+  width: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-right: 10px;
+  font-weight: 900;
+  font-size: 1.3em;
 }
 /*# sourceMappingURL=Groups.css.map */

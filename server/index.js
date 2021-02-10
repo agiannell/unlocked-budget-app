@@ -35,18 +35,19 @@ app.get('/auth/get', authCtrl.getUser);
 // user endpoints
 app.put('/api/update-user/:user_id', userCtrl.updateUserInfo)
 
-// budget endpoints
+// group endpoints
 app.post('/api/group', budgetCtrl.createGroup);
-app.post('/api/category', budgetCtrl.createCategory);
 app.get('/api/groups/:userId', budgetCtrl.getUserGroups);
+app.put('/api/group/:groupId', budgetCtrl.updateGroup);
+app.delete('/api/group/:groupId', budgetCtrl.deleteGroup);
+
+//category endpoints
+app.post('/api/category', budgetCtrl.createCategory);
 app.get('/api/categories/:groupId', budgetCtrl.getCategories);
 app.get('/api/category-sum/:userId/:groupName', budgetCtrl.categorySum);
-app.get('/api/expense-sum/:userId', budgetCtrl.expenseSum);
 app.get('/api/user-categories/:userId', budgetCtrl.getUserCategories);
-app.put('/api/group/:groupId', budgetCtrl.updateGroup);
-app.put('/api/category-name/:catId', budgetCtrl.updateCatName);
-app.put('/api/category-amount/:catId', budgetCtrl.updateCatAmount);
-app.delete('/api/group/:groupId', budgetCtrl.deleteGroup);
+app.get('/api/expense-sum/:userId', budgetCtrl.expenseSum);
+app.put('/api/category/:catId', budgetCtrl.updateCategory);
 app.delete('/api/category/:catId', budgetCtrl.deleteCategory);
 
 // transaction endpoints
