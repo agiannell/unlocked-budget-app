@@ -1,0 +1,16 @@
+@import '../../scss/mixins';
+@import '../../scss/variables';
+
+.to-budget {
+    width: 200px;
+
+    &:hover {
+        background-color: $green;
+    }
+}
+
+.profile-nav {
+    // @include border(green);
+    @include flex(space-between, row);
+    width: 400px;
+}

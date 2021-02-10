@@ -7,6 +7,8 @@ import logo from '../../img/logo-linear-color.svg'
 import './DashHeader.css';
 
 const DashHeader = props => {
+    const { first_name, profile_pic, user_id } = props.user;
+
     useEffect(() => {
         axios.get('auth/get')
             .then(res => {
@@ -30,8 +32,8 @@ const DashHeader = props => {
             <img src={ logo } alt='logo' />
             <section className='dash-nav'>
                 <div className='user'>
-                    <Link to='profile'><img src={ props.user.profile_pic } alt={ props.user.first_name } /></Link>
-                    <p>{ props.user.first_name }</p>
+                    <Link to={ `/profile/${ user_id }` }><img src={ profile_pic } alt={ first_name } /></Link>
+                    <p>{ first_name }</p>
                 </div>
                 <button className='sign-out' onClick={ logout }>Sign Out</button>
             </section>

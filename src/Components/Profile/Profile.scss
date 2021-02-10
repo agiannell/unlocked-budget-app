@@ -1,0 +1,111 @@
+@import '../../scss/mixins';
+@import '../../scss/variables';
+
+.profile {
+    height: 100vh;
+    width: 100%;
+    @include flex(center, column);
+
+    button {
+        margin-top: 20px;
+    }
+}
+
+.user-info {
+    // @include border(red);
+    // width: 550px;
+    background-color: white;
+    padding: 70px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 1px rgba(0,0,0,0.2);
+
+
+
+    img {
+        height: 250px;
+        border-radius: 50%;
+        margin-bottom: 50px;
+    }
+
+    h2 {
+        margin-top: 20px;
+    }
+}
+
+.email {
+    text-transform: initial;
+}
+
+#edit {
+    width: 170px;
+    background-color: $blue;
+}
+
+.profile-edit {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.75);
+    position: fixed;
+    z-index: 1;
+    @include flex(center, column);
+
+    
+    form {
+        background-color: white;
+        opacity: 1;
+        border-radius: 5px;
+        padding: 20px 40px;
+        width: 500px;
+    }
+
+    button {
+        margin-top: 20px;
+    }
+}
+
+.profile-form-header {
+    // @include border(blue);
+    @include flex(center, row);
+    padding: 0;
+    margin-bottom: 30px;
+    
+    h2 {
+        // @include border(blue);
+    }
+    
+    h3 {
+        // @include border(blue);
+        cursor: pointer;
+        position: relative;
+        left: 150px;
+        font-weight: 900;
+        color: $gray;
+        font-family: sans-serif;
+    }
+}
+
+.input-container {
+    // @include border(green);
+    @include flex(space-evenly, column);
+    align-items: flex-start;
+    height: 100px;
+
+    input {
+        // @include border(red);
+        border-bottom: 1px solid $gray;
+        width: 96%;
+        margin: 10px;
+        text-transform: initial;
+    }
+}
+
+.name-input {
+    // @include border(blue);
+    @include flex(space-between, row);
+    width: 100%;
+    
+    input {
+        // @include border(blue);
+        width: 50%;
+    }
+}

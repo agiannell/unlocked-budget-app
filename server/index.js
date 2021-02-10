@@ -33,7 +33,7 @@ app.get('/auth/logout', authCtrl.logout);
 app.get('/auth/get', authCtrl.getUser);
 
 // user endpoints
-
+app.put('/api/update-user/:user_id', userCtrl.updateUserInfo)
 
 // budget endpoints
 app.post('/api/group', budgetCtrl.createGroup);

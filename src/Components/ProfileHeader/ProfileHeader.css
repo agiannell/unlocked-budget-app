@@ -1,0 +1,25 @@
+.to-budget {
+  width: 200px;
+}
+
+.to-budget:hover {
+  background-color: #57A773;
+}
+
+.profile-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 400px;
+}
+/*# sourceMappingURL=ProfileHeader.css.map */
