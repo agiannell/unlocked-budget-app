@@ -44,6 +44,10 @@
   padding: 20px;
 }
 
+.trans-container {
+  padding: 20px;
+}
+
 .transactions {
   height: calc(100vh - 150px);
   width: 400px;

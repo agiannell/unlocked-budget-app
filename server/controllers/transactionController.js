@@ -19,7 +19,15 @@ module.exports = {
             })
             .catch(err => res.status(500).send(err))
     },
-    updateTransaction: (req, res) => {
+    getSumByCategory: (req, res) => {
+        const { catId } = req.params,
+              db = req.app.get('db');
+
+        db.transactions.get_sum_by_cat(catId)
+            .then(sum => {
+                res.status(200).send(sum[0])
+            })
+            .catch(err => res.status(500).send(err))
 
     },
     deleteTransaction: (req, res) => {

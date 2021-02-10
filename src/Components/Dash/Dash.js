@@ -14,7 +14,7 @@ const Dash = props => {
           [ loading, setLoading ] = useState(true),
           [ transactions, setTransactions ] = useState([]),
           [ editTrans, setEditTrans ] = useState(false),
-          [ groupNumber, setGroupNumber ] = useState(0),
+        //   [ groupNumber, setGroupNumber ] = useState(0),
           [ loadedGroups, setLoadedGroups ] = useState(0),
           { user_id } = props.user;
 
@@ -48,7 +48,7 @@ const Dash = props => {
             setTransactions(res.data)
         })
         .catch(err => console.log(err))
-    }, [editTrans])
+    }, [editTrans, user_id])
 
     const transactionToggle = () => {
         setEditTrans(!editTrans)
@@ -88,23 +88,31 @@ const Dash = props => {
                                 <button className='add-group'>Add Group</button>
                                 <div className='empty'></div>
                             </section>
-                            <section className='transactions'>
-                                <div className='trans-head'>
-                                    <h2>Transactions</h2>
-                                    <div className='add-new' onClick={ transactionToggle }>
-                                        <p>+</p>
-                                        <p>Add New</p>
+                            <section className='trans-container'>
+                                <section className='transactions'>
+                                    <div className='trans-head'>
+                                        <h2>Transactions</h2>
+                                        <div className='add-new' onClick={ transactionToggle }>
+                                            <p>+</p>
+                                            <p>Add New</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className='trans-type'>
-                                    <p>Untracked</p>
-                                    <p>Tracked</p>
-                                </div>
-                                <div className='trans-list'>
-                                    { transactions.map(e => (
-                                        <Transactions />
-                                    )) }
-                                </div>
+                                    <div className='trans-type'>
+                                        <p>Untracked</p>
+                                        <p>Tracked</p>
+                                    </div>
+                                    <div className='trans-list'>
+                                        { transactions.map(e => (
+                                            <Transactions
+                                                key={ e.trans_id }
+                                                date={ e.date }
+                                                name={ e.name }
+                                                amount={ e.amount }
+                                                type={ e.type }
+                                                transId={ e.trans_id } />
+                                            )) }
+                                    </div>
+                                </section>
                             </section>
                         </section>
                     </>

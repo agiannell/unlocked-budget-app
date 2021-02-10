@@ -51,4 +51,5 @@ app.delete('/api/category/:catId', budgetCtrl.deleteCategory);
 
 // transaction endpoints
 app.get('/api/transaction/:userId', transCtrl.getUserTransactions);
+app.get('/api/transaction-sum/:catId', transCtrl.getSumByCategory);
 app.post('/api/transaction', transCtrl.createTransaction);
