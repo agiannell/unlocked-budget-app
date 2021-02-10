@@ -22,7 +22,6 @@ const Dash = props => {
         axios.get(`/api/groups/${ user_id }`)
             .then(res => {
                 setGroups(res.data)
-
             })
             .catch(err => console.log(err))
 
@@ -41,7 +40,15 @@ const Dash = props => {
         setTimeout(() => {
             setLoading(false);
         }, 3000);
-        }, [user_id])
+    }, [user_id])
+
+    useEffect(() => {
+        axios.get(`/api/transaction/${ user_id }`)
+        .then(res => {
+            setTransactions(res.data)
+        })
+        .catch(err => console.log(err))
+    }, [editTrans])
 
     const transactionToggle = () => {
         setEditTrans(!editTrans)
@@ -81,7 +88,7 @@ const Dash = props => {
                                 <button className='add-group'>Add Group</button>
                                 <div className='empty'></div>
                             </section>
-                            <section className='chart'>
+                            <section className='transactions'>
                                 <div className='trans-head'>
                                     <h2>Transactions</h2>
                                     <div className='add-new' onClick={ transactionToggle }>
@@ -93,9 +100,11 @@ const Dash = props => {
                                     <p>Untracked</p>
                                     <p>Tracked</p>
                                 </div>
-                                { transactions.map(e => (
-                                    <Transactions />
-                                )) }
+                                <div className='trans-list'>
+                                    { transactions.map(e => (
+                                        <Transactions />
+                                    )) }
+                                </div>
                             </section>
                         </section>
                     </>

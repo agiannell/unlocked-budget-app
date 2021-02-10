@@ -13,7 +13,7 @@ module.exports = {
         const { user_id, catId, type, name, date, amount, notes } = req.body,
               db = req.app.get('db');
 
-        db.create_transaction(userId, catId, type, name, date, amount, notes)
+        db.transactions.create_transaction(user_id, catId, type, name, date, amount, notes)
             .then(trans => {
                 res.status(200).send(trans)
             })

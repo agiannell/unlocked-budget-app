@@ -21,11 +21,29 @@
     padding: 20px;
 }
 
-.chart {
-    @include border(orange);
+.transactions {
+    // @include border(orange);
     height: calc(100vh - 150px);
-    width: 500px;
+    width: 400px;
     overflow: scroll;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 2px rgba(0,0,0,0.2);
+    padding: 20px;
+}
+
+.trans-head{
+    @include border(green);
+    @include flex(space-between, row);
+}
+
+.add-new {
+    @include flex(space-between, row);
+    cursor: pointer;
+}
+
+.trans-type {
+    @include flex(space-around, row);
 }
 
 .add-group {
@@ -37,4 +55,8 @@
     // @include border(green);
     margin-top: 20px;
     width: 100%;
+}
+
+.trans-list {
+    @include flex(flex-start, column);
 }
