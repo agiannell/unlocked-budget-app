@@ -8,6 +8,7 @@ const Transactions = props => {
 
     const toggle = () => !isEditing
 
+    console.log(date)
     return (
         <section>
             { !isEditing ? null

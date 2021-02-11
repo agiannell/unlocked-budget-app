@@ -29,9 +29,9 @@ massive({
     app.listen(SERVER_PORT, () => console.log(`Budgeting on port ${ SERVER_PORT }`));
 });
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../build/index.html'))
-});
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, '../build/index.html'))
+// });
 
 // auth endpoints
 app.post('/auth/register', authCtrl.register);
