@@ -37,6 +37,34 @@
   margin-bottom: 20px;
 }
 
+.update-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.update-group input {
+  -webkit-transition: .1s;
+  transition: .1s;
+}
+
+.update-group input:focus {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  background-color: #f3f3f3;
+  padding: 5px;
+}
+
 .group-money {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -102,5 +130,12 @@
   margin-right: 10px;
   font-weight: 900;
   font-size: 1.3em;
+}
+
+.delete-group {
+  height: 20px;
+  margin: 0 30px 20px 0;
+  -webkit-transition: .1s;
+  transition: .1s;
 }
 /*# sourceMappingURL=Groups.css.map */

@@ -30,6 +30,21 @@
     }
 }
 
+.update-group {
+    // @include border(red);
+    @include flex(flex-start, row);
+
+    input {
+        transition: .1s;
+
+        &:focus {
+            transform: scale(1.1);
+            background-color: rgb(243, 243, 243);
+            padding: 5px
+        }
+    }
+}
+
 .group-money {
     // @include border(orange);
     @include flex(space-between, row);
@@ -61,4 +76,10 @@
     margin-right: 10px;
     font-weight: 900;
     font-size: 1.3em;
+}
+
+.delete-group {
+    height: 20px;
+    margin: 0 30px 20px 0;
+    transition: .1s;
 }

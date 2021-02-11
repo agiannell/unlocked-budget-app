@@ -5,8 +5,8 @@ import DashHeader from '../DashHeader/DashHeader'
 import Groups from '../Groups/Groups';
 import Transactions from '../Transactions/Transactions';
 import loadingSpinner from '../../img/loading.gif'
-import './Dash.css';
 import AddTransaction from '../AddTransaction/AddTransaction';
+import './Dash.css';
 
 const Dash = props => {
     const [ groups, setGroups ] = useState([]),
@@ -18,12 +18,16 @@ const Dash = props => {
           [ loadedGroups, setLoadedGroups ] = useState(0),
           { user_id } = props.user;
 
-    useEffect(() => {
+    const getGroups = () => {
         axios.get(`/api/groups/${ user_id }`)
-            .then(res => {
-                setGroups(res.data)
-            })
-            .catch(err => console.log(err))
+        .then(res => {
+            setGroups(res.data)
+        })
+        .catch(err => console.log(err))
+    }
+
+    useEffect(() => {
+        getGroups()
 
         axios.get(`/api/transaction/${ user_id }`)
             .then(res => {
@@ -55,7 +59,11 @@ const Dash = props => {
     }
 
     const addGroup = () => {
-        axios.post('/api/group', { user_id, name: '' })
+        axios.post('/api/group', { user_id, groupName: 'New Group' })
+        .then(res => {
+            setGroups(res.data)
+        })
+        .catch(err => console.log(err))
     }
         
     if(!user_id) {
@@ -87,10 +95,11 @@ const Dash = props => {
                                     id={ e.group_id }
                                     name={ e.name }
                                     user_id={ user_id }
+                                    getGroupsFn={ getGroups }
                                     loadedGroups={ loadedGroups }
                                     setLoadedGroups={ setLoadedGroups } />
                                 )) }
-                                <button className='add-group'>Add Group</button>
+                                <button className='add-group' onClick={ addGroup }>Add Group</button>
                                 <div className='empty'></div>
                             </section>
                             <section className='trans-container'>
