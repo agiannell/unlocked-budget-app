@@ -17,20 +17,28 @@
         font-size: 1.2em;
     }
 
-    input {
-        // @include border(red);
-        width: 300px;
-    }
 }
 
 .focused {
-    transform: scale(1.06);
+    transform: scale(1.1);
     box-shadow: 0 0 3px 1px rgba(0,0,0,0.2);
-    padding: 0;
-
+    padding: 0 10px;
+    background-color: white;
+    
     input {
         background-color: rgb(243, 243, 243);
         padding: 12px 12px;
+    }
+}
+
+.cat-form {
+    // @include border(blue);
+    @include flex(space-between, row);
+    width: 100%;
+
+    input {
+        // @include border(red);
+        width: 300px;
     }
 }
 
@@ -48,14 +56,15 @@
     }
 
     input {
-        // @include border(blue);
+        // @include border(green);
         width: 110px;
         text-align: right;
     }
 }
 
 .delete-category {
-    
+    height: 30px;
+    margin-right: 10px;
 }
 
 .hidden {

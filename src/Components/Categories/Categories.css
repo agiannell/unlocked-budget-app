@@ -26,21 +26,39 @@
   font-size: 1.2em;
 }
 
-.categories input {
-  width: 300px;
-}
-
 .focused {
-  -webkit-transform: scale(1.06);
-          transform: scale(1.06);
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
   -webkit-box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.2);
           box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.2);
-  padding: 0;
+  padding: 0 10px;
+  background-color: white;
 }
 
 .focused input {
   background-color: #f3f3f3;
   padding: 12px 12px;
+}
+
+.cat-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+}
+
+.cat-form input {
+  width: 300px;
 }
 
 .cat-money {
@@ -69,6 +87,11 @@
 .cat-money input {
   width: 110px;
   text-align: right;
+}
+
+.delete-category {
+  height: 30px;
+  margin-right: 10px;
 }
 
 .hidden {

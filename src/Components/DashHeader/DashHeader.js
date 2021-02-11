@@ -9,19 +9,19 @@ import './DashHeader.css';
 const DashHeader = props => {
     const { first_name, profile_pic, user_id } = props.user;
 
-    useEffect(() => {
-        axios.get('auth/get')
-            .then(res => {
-                props.getUser(res.data)
-            })
-            .catch(err => console.log(err))
-    }, [props])
+    // useEffect(() => {
+    //     axios.get('auth/get')
+    //         .then(res => {
+    //             props.getUser(res.data)
+    //         })
+    //         .catch(err => console.log(err))
+    // }, [props])
 
     const logout = () => {
         axios.get('auth/logout')
             .then(() => {
                 props.clearUser()
-                props.push('/signin')
+                props.history.push('/signin')
             })
             .catch(err => console.log(err));
     }

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import trash from '../../img/trash-can.svg';
 import './Categories.css';
 
 const Categories = props => {
@@ -8,7 +9,7 @@ const Categories = props => {
           [ catAmount, setCatAmount ] = useState(amount),
           [ remaining, setRemaining ] = useState(amount),
           [ received, setReceived ] = useState(0),
-          [ isFocused, setIsFocused ] = useState(0),
+          [ isFocused, setIsFocused ] = useState(false),
           [ spent, setSpent ] = useState(0);
 
     useEffect(() => {
@@ -28,37 +29,58 @@ const Categories = props => {
         e.preventDefault();
 
         axios.put(`/api/category/${ catId }`, { catName, catAmount })
-            .then()
+            .then(() => {
+                setIsFocused(false);
+            })
             .catch(err => console.log(err));
+        }
+        
+        const deleteCategory = (e) => {
+            e.preventDefault()
+            
+            axios.delete(`/api/category/${ catId }`)
+            .then(() => {
+                console.log('hey there');
+                setIsFocused(false);
+            })
+            .catch(err => console.log(err))
     }
 
     return (
-        <form 
-            className={ !isFocused ? 'categories' : 'categories focused' } 
-            onSubmit={ e => updateCategory(e) }>
-            <button className={ !isFocused ? 'delete-category hidden' : 'delete-category' }>Delete</button>
-            <input
-                onFocus={ () => setIsFocused(true) }
-                onBlur={ () => setIsFocused(false) }
-                value={ catName }
-                onChange={ e => setCatName(e.target.value) } />
-            <div className='cat-money'>
-                <input
-                    onFocus={ () => setIsFocused(true) }
-                    onBlur={ () => setIsFocused(false) }
-                    value={ catAmount }
-                    onChange={ e => setCatAmount(e.target.value) } />
-                { groupName === 'income'
-                    ? (
-                        <p>${ received }</p>
-                        )
-                        : (
-                            <p>${ remaining }</p>
-                            )
-                        }
-            </div>
-            <button className='hidden'></button>
-        </form>
+        <section>
+            <section className={ !isFocused ? 'categories' : 'categories focused' }>
+                <img
+                    src={ trash } 
+                    alt='trash'
+                    onMouseDown={ e => deleteCategory(e) }
+                    className={ !isFocused ? 'delete-category hidden' : 'delete-category' } />
+                <form 
+                    className='cat-form'
+                    onSubmit={ e => updateCategory(e) }>
+                    <input
+                        onFocus={ () => setIsFocused(true) }
+                        onBlur={ () => setIsFocused(false) }
+                        value={ catName }
+                        onChange={ e => setCatName(e.target.value) } />
+                    <div className='cat-money'>
+                        <input
+                            onFocus={ () => setIsFocused(true) }
+                            onBlur={ () => setIsFocused(false) }
+                            value={ catAmount }
+                            onChange={ e => setCatAmount(e.target.value) } />
+                        { groupName === 'income'
+                            ? (
+                                <p>${ received }</p>
+                                )
+                                : (
+                                    <p>${ remaining }</p>
+                                    )
+                                }
+                    </div>
+                    <button className='hidden'></button>
+                </form>
+            </section>
+        </section>
     )
 }
 
