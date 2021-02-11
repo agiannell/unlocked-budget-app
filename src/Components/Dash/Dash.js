@@ -12,10 +12,12 @@ const Dash = props => {
     const [ groups, setGroups ] = useState([]),
           [ categories, setCategories ] = useState([]),
           [ loading, setLoading ] = useState(true),
-          [ transactions, setTransactions ] = useState([]),
+          [ trackedTransactions, setTrackedTransactions ] = useState([]),
+          [ untrackedTransactions, setUntrackedTransactions ] = useState([]),
           [ editTrans, setEditTrans ] = useState(false),
         //   [ groupNumber, setGroupNumber ] = useState(0),
           [ loadedGroups, setLoadedGroups ] = useState(0),
+          [ showTracked, setShowTracked ] = useState(false),
           { user_id } = props.user;
 
     const getGroups = () => {
@@ -26,14 +28,26 @@ const Dash = props => {
         .catch(err => console.log(err))
     }
 
+    const getTrackedTrans = () => {
+        axios.get(`/api/transactions-tracked/${ user_id }`)
+        .then(res => {
+            setTrackedTransactions(res.data)
+        })
+        .catch(err => console.log(err))
+    }
+
+    const getUntrackedTrans = () => {
+        axios.get(`/api/transactions-untracked/${ user_id }`)
+        .then(res => {
+            setUntrackedTransactions(res.data)
+        })
+        .catch(err => console.log(err))
+    }
+
     useEffect(() => {
         getGroups()
-
-        axios.get(`/api/transaction/${ user_id }`)
-            .then(res => {
-                setTransactions(res.data)
-            })
-            .catch(err => console.log(err))
+        getTrackedTrans()
+        getUntrackedTrans()
 
         axios.get(`/api/user-categories/${ user_id }`)
             .then(res => {
@@ -46,13 +60,13 @@ const Dash = props => {
         }, 3000);
     }, [user_id])
 
-    useEffect(() => {
-        axios.get(`/api/transaction/${ user_id }`)
-        .then(res => {
-            setTransactions(res.data)
-        })
-        .catch(err => console.log(err))
-    }, [editTrans, user_id])
+    // useEffect(() => {
+    //     axios.get(`/api/transactions/${ user_id }`)
+    //     .then(res => {
+    //         setTransactions(res.data)
+    //     })
+    //     .catch(err => console.log(err))
+    // }, [editTrans, user_id])
 
     const transactionToggle = () => {
         setEditTrans(!editTrans)
@@ -69,7 +83,9 @@ const Dash = props => {
     if(!user_id) {
         props.history.push('/signin')
     }
-    // console.log(props)
+    // console.log(showTracked)
+    // console.log(trackedTransactions)
+    // console.log(untrackedTransactions)
     return (
         <section>
             { !editTrans
@@ -112,19 +128,46 @@ const Dash = props => {
                                         </div>
                                     </div>
                                     <div className='trans-type'>
-                                        <p>Untracked</p>
-                                        <p>Tracked</p>
+                                        <p 
+                                        onClick={ () => setShowTracked(false) }
+                                        className={ showTracked ? null : 'highlight-red' }>Untracked</p>
+                                        <p 
+                                        onClick={ () => setShowTracked(true) }
+                                        className={ !showTracked ? null : 'highlight-blue' }>Tracked</p>
                                     </div>
                                     <div className='trans-list'>
-                                        { transactions.map(e => (
-                                            <Transactions
-                                                key={ e.trans_id }
-                                                date={ e.date }
-                                                name={ e.name }
-                                                amount={ e.amount }
-                                                type={ e.type }
-                                                transId={ e.trans_id } />
-                                            )) }
+                                        { !showTracked
+                                            ? (
+                                                <section>
+                                                    { untrackedTransactions.map(e => (
+                                                        <Transactions
+                                                        key={ e.trans_id }
+                                                        date={ e.date }
+                                                        name={ e.name }
+                                                        amount={ e.amount }
+                                                        type={ e.type }
+                                                        transId={ e.trans_id }
+                                                        notes={ e.notes }
+                                                        categories={ categories } />
+                                                        )) }
+                                                </section>
+                                            ) 
+                                            : (
+                                                <section>
+                                                    { trackedTransactions.map(e => (
+                                                        <Transactions
+                                                        key={ e.trans_id }
+                                                        date={ e.date }
+                                                        name={ e.name }
+                                                        amount={ e.amount }
+                                                        type={ e.type }
+                                                        transId={ e.trans_id }
+                                                        notes={ e.notes }
+                                                        categories={ categories } />
+                                                        )) }
+                                                </section>
+                                            ) 
+                                        }
                                     </div>
                                 </section>
                             </section>

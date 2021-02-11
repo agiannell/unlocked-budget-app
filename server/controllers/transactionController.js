@@ -9,6 +9,26 @@ module.exports = {
             })
             .catch(err => res.status(500).send(err))
     },
+    getTrackedTransactions: (req, res) => {
+        const { userId } = req.params,
+              db = req.app.get('db');
+
+        db.transactions.get_tracked_transactions(userId)
+            .then(trans => {
+                res.status(200).send(trans)
+            })
+            .catch(err => res.status(500).send(err))
+    },
+    getUntrackedTransactions: (req, res) => {
+        const { userId } = req.params,
+              db = req.app.get('db');
+
+        db.transactions.get_untracked_transactions(userId)
+            .then(trans => {
+                res.status(200).send(trans)
+            })
+            .catch(err => res.status(500).send(err))
+    },
     createTransaction: (req, res) => {
         const { user_id, catId, type, name, date, amount, notes } = req.body,
               db = req.app.get('db');
@@ -31,6 +51,9 @@ module.exports = {
 
     },
     deleteTransaction: (req, res) => {
+        const { transId } = req.params,
+              db = req.app.get;
 
+        db.transactions.delete_transaction(transId)
     }
 }

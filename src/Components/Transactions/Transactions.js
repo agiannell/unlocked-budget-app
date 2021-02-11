@@ -1,22 +1,33 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import EditTransaction from '../EditTransaction/EditTransaction';
 import './Transactions.css';
 
 const Transactions = props => {
-    let transDate = new Date(props.date),
-        transMonth = transDate.getMonth(),
-        transDay = transDate.getDay();
+    const { name, date, amount, type, transId, categories } = props,
+          [ isEditing, setIsEditing ] = useState(false);
 
-    const { name, date, amount, type, transId } = props
+    const toggle = () => !isEditing
 
-    // console.log(transDate);
-    // console.log(`Month: ${transMonth}`);
-    // console.log(`Day: ${transDay}`);
     return (
         <section>
+            { !isEditing ? null
+                : (
+                    <section>
+                        <EditTransaction
+                            transId={ transId }
+                            type={ type }
+                            name={ name }
+                            amount={ amount }
+                            date={ date }
+                            toggleFn={ toggle }
+                            categories={ categories } />
+                    </section>
+                ) 
+            }
             { type === 'income'
                 ? (
                     <section className='income'>
-                        <span>JAN<br />1</span>
+                        <span>FEB<br />12</span>
                         <section className='income-content'>
                             <span>{ name }</span>
                             <span>{ `+$${ amount }` }</span>
@@ -25,7 +36,7 @@ const Transactions = props => {
                 )
                 : (
                     <section className='expense'>
-                        <span>JAN<br />1</span>
+                        <span>FEB<br />12</span>
                         <section className='expense-content'>
                             <span>{ name }</span>
                             <span>{ `-$${ amount }` }</span>

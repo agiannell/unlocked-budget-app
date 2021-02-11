@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { clearUser, getUser } from '../../ducks/userReducer'
@@ -7,7 +7,7 @@ import logo from '../../img/logo-linear-color.svg'
 import './DashHeader.css';
 
 const DashHeader = props => {
-    const { first_name, profile_pic, user_id } = props.user;
+    const { first_name, profile_pic } = props.user;
 
     // useEffect(() => {
     //     axios.get('auth/get')

@@ -51,6 +51,8 @@ app.put('/api/category/:catId', budgetCtrl.updateCategory);
 app.delete('/api/category/:catId', budgetCtrl.deleteCategory);
 
 // transaction endpoints
-app.get('/api/transaction/:userId', transCtrl.getUserTransactions);
+app.get('/api/transactions/:userId', transCtrl.getUserTransactions);
+app.get('/api/transactions-tracked/:userId', transCtrl.getTrackedTransactions);
+app.get('/api/transactions-untracked/:userId', transCtrl.getUntrackedTransactions);
 app.get('/api/transaction-sum/:catId', transCtrl.getSumByCategory);
 app.post('/api/transaction', transCtrl.createTransaction);

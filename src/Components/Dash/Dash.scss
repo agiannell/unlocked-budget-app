@@ -3,7 +3,7 @@
 
 .dash-main {
     // @include border(blue);
-    @include flex(space-between, row);
+    @include flex(center, row);
     align-items: flex-start;
     height: 100vh;
     padding: 0 7%;
@@ -16,18 +16,21 @@
     align-items: flex-start;
     height: calc(100vh - 150px);
     width: 750px;
+    margin: 0 25px;
     overflow: scroll;
     text-align: left;
     padding: 20px;
 }
 
 .trans-container {
+    // @include border(cyan);
+    margin: 0 25px;
     padding: 20px;
 }
 
 .transactions {
     // @include border(orange);
-    height: calc(100vh - 150px);
+    height: calc(100vh - 190px);
     width: 400px;
     overflow: scroll;
     background-color: white;
@@ -37,8 +40,9 @@
 }
 
 .trans-head{
-    @include border(green);
+    // @include border(green);
     @include flex(space-between, row);
+    margin-bottom: 30px;
 }
 
 .add-new {
@@ -48,6 +52,14 @@
 
 .trans-type {
     @include flex(space-around, row);
+
+    p {
+        // @include border(blue);
+        width: 50%;
+        // border-bottom: 1px solid $gray;
+        margin-bottom: 20px;
+        cursor: pointer;
+    }
 }
 
 .add-group {
@@ -63,4 +75,16 @@
 
 .trans-list {
     @include flex(flex-start, column);
+}
+
+.highlight-red {
+    font-weight: 700;
+    color: $red;
+    border-bottom: 2px solid $red;
+}
+
+.highlight-blue {
+    font-weight: 700;
+    color: $blue;
+    border-bottom: 2px solid $blue;
 }

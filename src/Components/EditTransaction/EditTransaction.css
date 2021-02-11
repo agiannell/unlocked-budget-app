@@ -1,0 +1,176 @@
+.add-transaction {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.85);
+  position: fixed;
+  z-index: 1;
+}
+
+.new-trans-info {
+  background-color: #ebe6ec;
+  width: 600px;
+  border-radius: 5px;
+}
+
+.new-trans-info header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: 40px;
+  background-color: #EE6352;
+  border-radius: 5px 5px 0 0;
+}
+
+.new-trans-info header h2 {
+  color: #ebe6ec;
+}
+
+.new-trans-info header h3 {
+  position: relative;
+  left: 170px;
+  font-weight: 700;
+  color: white;
+  cursor: pointer;
+}
+
+.new-trans-info button {
+  width: 90%;
+  border-radius: 5px;
+  background-color: #EE6352;
+  margin: 20px 0 30px 0;
+}
+
+.new-trans-info button:hover {
+  background-color: #ee9488;
+}
+
+.set-type {
+  height: 30px;
+  background-color: white;
+  background-color: #ee9488;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.set-type input {
+  margin: 0 7px 0 25px;
+}
+
+.trans-inputs {
+  height: 350px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 20px 0;
+}
+
+.trans-inputs input {
+  height: 40px;
+  margin: 5px;
+  border: 1px solid #EE6352;
+  border-radius: 5px;
+  padding: 5px 10px;
+  width: 90%;
+  outline: none;
+}
+
+.trans-inputs select {
+  height: 40px;
+  margin: 5px;
+  border: 1px solid #EE6352;
+  border-radius: 5px;
+  padding: 5px 10px;
+  width: 90%;
+  outline: none;
+}
+
+.trans-inputs textarea {
+  width: 90%;
+  border: 1px solid #EE6352;
+  border-radius: 5px;
+  padding: 5px 10px;
+  height: 150px;
+  margin: 5px;
+  outline: none;
+}
+
+.trans-inputs #amount {
+  text-align: center;
+  margin-bottom: 30px;
+  height: 50px;
+  font-size: 1.3em;
+}
+
+.trans-inputs div {
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.trans-inputs #date {
+  width: 35%;
+  margin-left: 0;
+}
+
+.trans-inputs #desc {
+  width: 65%;
+  margin-right: 0;
+}
+/*# sourceMappingURL=AddTransaction.css.map */
