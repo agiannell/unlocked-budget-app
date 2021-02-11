@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express'),
       massive = require('massive'),
       session = require('express-session'),
+      path = require('path'),
       authCtrl = require('./controllers/authController'),
       userCtrl = require('./controllers/userController'),
       budgetCtrl = require('./controllers/budgetController'),
@@ -17,6 +18,8 @@ app.use(session({
     cookie: { maxAge: 1000 * 60 * 60 * 24 * 30 }
 }));
 
+app.use(express.static(__dirname + '/../build'));
+
 massive({
     connectionString: CONNECTION_STRING,
     ssl: { rejectUnauthorized: false }
@@ -24,6 +27,10 @@ massive({
     app.set('db', db)
     console.log('db connected')
     app.listen(SERVER_PORT, () => console.log(`Budgeting on port ${ SERVER_PORT }`));
+});
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build/index.html'))
 });
 
 // auth endpoints
