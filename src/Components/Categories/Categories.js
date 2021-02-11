@@ -4,7 +4,7 @@ import trash from '../../img/trash-can.svg';
 import './Categories.css';
 
 const Categories = props => {
-    const { name, amount, catId, groupName } = props,
+    const { name, amount, catId, groupId, groupName, getCategoriesFn } = props,
           [ catName, setCatName ] = useState(name),
           [ catAmount, setCatAmount ] = useState(amount),
           [ remaining, setRemaining ] = useState(amount),
@@ -40,8 +40,8 @@ const Categories = props => {
             
             axios.delete(`/api/category/${ catId }`)
             .then(() => {
-                console.log('hey there');
                 setIsFocused(false);
+                getCategoriesFn();
             })
             .catch(err => console.log(err))
     }

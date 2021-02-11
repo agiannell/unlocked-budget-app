@@ -53,3 +53,19 @@ input {
     letter-spacing: .1em;
     outline: none;
 }
+
+.focused {
+    transform: scale(1.1);
+    box-shadow: 0 0 3px 1px rgba(0,0,0,0.2);
+    padding: 0 10px;
+    background-color: white;
+    
+    input {
+        background-color: rgb(243, 243, 243);
+        padding: 12px 12px;
+    }
+}
+
+.hidden {
+    display: none;
+}

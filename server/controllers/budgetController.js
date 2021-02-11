@@ -62,7 +62,7 @@ module.exports = {
               db = req.app.get('db');
 
         db.budget.delete_category(catId)
-            .then(() => res.sendStatus(200))
+            .then(cat => res.status(200).send(cat))
             .catch(err => res.status(500).send(err));
     },
     categorySum: (req, res) => {

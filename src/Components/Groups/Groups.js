@@ -4,26 +4,27 @@ import Categories from '../Categories/Categories';
 import './Groups.css'
 
 const Groups = props => {
-    const [ categories, setCategories ] = useState([]),
-          { id, name, user_id } = props;
+    const { id, name, user_id } = props,
+          [ categories, setCategories ] = useState([]),
+          [ groupName, setGroupName ] = useState(name);
+
+    const getCategories = () => {
+        axios.get(`/api/categories/${ id }`)
+            .then(res => {
+                setCategories(res.data)
+            })
+            .catch(err => console.log(err))
+    }
 
     useEffect(() => {
-        const getCategories = () => {
-            axios.get(`/api/categories/${ id }`)
-                .then(res => {
-                    setCategories(res.data)
-                })
-                .catch(err => console.log(err))
-        }
-
         getCategories()
-    }, [id])
+    }, [])
+
 
     const addCategory = () => {
         axios.post('/api/category', { group_id: id, user_id, categoryName: '', categoryAmount: 0.00 })
             .then(res => {
                 setCategories(res.data);
-                console.log(categories)
             })
             .catch(err => console.log(err))
     }
@@ -31,17 +32,15 @@ const Groups = props => {
     return (
         <section className='groups'>
             <div className='group-titles'>
-                <h1>{ name }</h1>
+                { name === 'income' ? <h1>{ name }</h1> : 
+                    (
+                        <input
+                            value={ groupName }
+                            onChange={ e => setGroupName(e.target.value) } />
+                    ) }
                 <div className='group-money'>
                     <h2>Planned</h2>
-                    { name === 'income'
-                        ? (
-                            <h2>Received</h2>
-                        )
-                        : (
-                            <h2>Remaining</h2>
-                        ) 
-                    }
+                    { name === 'income' ? <h2>Received</h2> : <h2>Remaining</h2> }
                 </div>
             </div>
             { categories.map(e => (
@@ -50,7 +49,9 @@ const Groups = props => {
                     name={ e.name }
                     amount={ e.amount }
                     catId={ e.cat_id }
-                    groupName={ name } />
+                    groupId={ id }
+                    groupName={ name }
+                    getCategoriesFn={getCategories} />
             )) }
             <section className='add-category' onClick={ addCategory }>
                 <div className='add-btn'>+</div>

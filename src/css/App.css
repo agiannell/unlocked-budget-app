@@ -60,4 +60,22 @@ input {
   letter-spacing: .1em;
   outline: none;
 }
+
+.focused {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.2);
+  padding: 0 10px;
+  background-color: white;
+}
+
+.focused input {
+  background-color: #f3f3f3;
+  padding: 12px 12px;
+}
+
+.hidden {
+  display: none;
+}
 /*# sourceMappingURL=App.css.map */
