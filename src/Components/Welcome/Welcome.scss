@@ -38,7 +38,7 @@ p {
 }
 
 .entry {
-    @include border(green);
+    // @include border(green);
     width: 550px;
 
     h1 {
@@ -59,7 +59,7 @@ p {
 }
 
 .entry-headers {
-    @include border(orange);
+    // @include border(orange);
     @include flex(space-between, row);
     align-items: flex-end;
     margin-bottom: 20px;
@@ -70,7 +70,7 @@ p {
 }
 
 .entry-money {
-    @include border(red);
+    // @include border(red);
     @include flex(space-between, row);
     
     p {
@@ -88,7 +88,7 @@ p {
     transition: .1s;
 
     input {
-        @include border(blue);
+        // @include border(blue);
         width: 250px;
 
         &:hover {

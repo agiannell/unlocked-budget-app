@@ -71,7 +71,6 @@ p {
 }
 
 .entry {
-  border: 2px dotted green;
   width: 550px;
 }
 
@@ -93,7 +92,6 @@ p {
 }
 
 .entry-headers {
-  border: 2px dotted orange;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -118,7 +116,6 @@ p {
 }
 
 .entry-money {
-  border: 2px dotted red;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -160,7 +157,6 @@ p {
 }
 
 .entry-line input {
-  border: 2px dotted blue;
   width: 250px;
 }
 
