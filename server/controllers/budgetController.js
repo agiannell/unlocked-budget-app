@@ -21,7 +21,10 @@ module.exports = {
 
         db.budget.get_user_groups(userId)
             .then(groups => res.status(200).send(groups))
-            .catch(err => res.status(500).send(err));
+            .catch(err => {
+                console.log(err)
+                res.status(500).send(err)
+            })
     },
     getCategories: (req, res) => {
         const { groupId } = req.params,

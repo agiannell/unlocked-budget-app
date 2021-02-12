@@ -1,16 +1,21 @@
 import { connect } from 'react-redux';
 import { useState } from 'react';
 import { getUser } from '../../ducks/userReducer'
+import { v4 as randomString } from 'uuid';
+import { GridLoader } from 'react-spinners';
 import axios from 'axios';
+import Dropzone from 'react-dropzone';
 import ProfileHeader from '../ProfileHeader/ProfileHeader';
 import './Profile.css';
 
 const Profile = props => {
     const { user_id, first_name, last_name, profile_pic, email } = props.user,
           [ isEditing, setIsEditing ] = useState(false),
+          [ isUploading, setIsUploading ] = useState(false),
           [ firstName, setFirstName ] = useState(first_name),
           [ lastName, setLastName ] = useState(last_name),
-          [ userEmail, setUserEmail ] = useState(email);
+          [ userEmail, setUserEmail ] = useState(email),
+          [ url, setUrl ] = useState('http://via.placeholder.com/450x450');
 
     const updateUserInfo = (e) => {
         e.preventDefault()
@@ -22,6 +27,47 @@ const Profile = props => {
             })
             .catch(err => console.log(err));
     }
+
+    const getSignedRequest = ([ file ]) => {
+        setIsUploading(true);
+        const fileName = `${ randomString() }-${ file.name.replace(/\s/g, '-') }`;
+
+        axios.get('/sign-s3', {
+            params: {
+                'file-name': fileName,
+                'file-type': file.type
+            }
+        })
+        .then(res => {
+            const { signedRequest, url } = res.data
+            uploadFile(file, signedRequest, url)
+        })
+        .catch(err => console.log(err));
+    };
+
+    const uploadFile = (file, signedRequest, url) => {
+        const options = {
+            headers: {
+                'Content-Type': file.type
+            },
+        };
+
+        axios.put(signedRequest, file, options)
+            .then(res => {
+                setIsUploading(false)
+                setUrl(url)
+            })
+            .catch(err => {
+                setIsUploading(false);
+                if(err.res.status === 403) {
+                    alert(
+                        `Your request for a signed URL failed with a status 403. Double check the CORS configuration and bucket policy in the README. You also will want to double check your AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY in your .env and ensure that they are the same as the ones that you created in the IAM dashboard. You may need to generate new keys\n${ err.stack }`
+                    );
+                } else {
+                    alert(`ERROR: ${ err.status }\n ${ err.stack }`);
+                }
+            });
+    };
 
     // console.log(isEditing);
     return (
@@ -69,6 +115,30 @@ const Profile = props => {
                     <h2 className='email'>Email: { email }</h2>
                 </section>
                 <button id='edit' onClick={ () => setIsEditing(!isEditing) }>Edit Profile</button>
+                <Dropzone
+                    onDropAccepted={ getSignedRequest }
+                    accept='image/*'
+                    multiple={ false }>
+                    {({ getRootProps, getInputProps }) => (
+                        <div
+                            style={{
+                                position: 'relative',
+                                width: 160,
+                                height: 80,
+                                borderWidth: 5,
+                                marginTop: 25,
+                                borderColor: 'gray',
+                                borderStyle: 'dashed',
+                                borderRadius: 5,
+                                display: 'inline-block',
+                                fontSize: 17,
+                            }}
+                            { ...getRootProps() }>
+                            <input { ...getInputProps() } />
+                            { isUploading ? <GridLoader /> : <p>Drop fies here, or click to select files</p> }
+                        </div>
+                    )}
+                </Dropzone>
             </section>
         </section>
     )

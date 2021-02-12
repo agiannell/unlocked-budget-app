@@ -19,6 +19,7 @@ const Dash = props => {
           [ loadedGroups, setLoadedGroups ] = useState(0),
           [ showTracked, setShowTracked ] = useState(false),
           { user_id } = props.user;
+          console.log(user_id)
 
     const getGroups = () => {
         axios.get(`/api/groups/${ user_id }`)
@@ -83,6 +84,7 @@ const Dash = props => {
     if(!user_id) {
         props.history.push('/signin')
     }
+    console.log(groups);
     // console.log(showTracked)
     // console.log(trackedTransactions)
     // console.log(untrackedTransactions)
@@ -105,7 +107,7 @@ const Dash = props => {
                         <DashHeader />
                         <section className='dash-main'>
                             <section className='budget'>
-                                { groups.map(e => (
+                                { groups?.map(e => (
                                     <Groups 
                                     key={ e.group_id }
                                     id={ e.group_id }
