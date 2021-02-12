@@ -1,10 +1,11 @@
 import axios from 'axios';
 import { useState, useEffect, useCallback } from 'react';
 import { connect } from 'react-redux';
+import { SyncLoader } from 'react-spinners';
+import { Doughnut } from 'react-chartjs-2';
 import DashHeader from '../DashHeader/DashHeader'
 import Groups from '../Groups/Groups';
 import Transactions from '../Transactions/Transactions';
-import { SyncLoader } from 'react-spinners'
 import AddTransaction from '../AddTransaction/AddTransaction';
 import './Dash.css';
 
@@ -18,7 +19,17 @@ const Dash = props => {
         //   [ groupNumber, setGroupNumber ] = useState(0),
           [ loadedGroups, setLoadedGroups ] = useState(0),
           [ showTracked, setShowTracked ] = useState(false),
-          { user_id } = props.user;
+          [ showingTransactions, setShowingTransactions ] = useState(false),
+          { user_id } = props.user,
+          data = {
+              labels: groups.map(e => e.name),
+              datasets: [
+                  {
+                      data: groups.map(e => e.group_id),
+                      backgroundColor: ['red', 'green', 'blue', 'yellow', 'pink', 'orange', 'cyan', 'yellowgreen', 'rebeccapurple', 'black', 'white', 'magenta' ]
+                  }
+              ]
+          };
 
     const getGroups = useCallback(() => {
         axios.get(`/api/groups/${ user_id }`)
@@ -121,61 +132,74 @@ const Dash = props => {
                                 <button className='add-group' onClick={ addGroup }>Add Group</button>
                                 <div className='empty'></div>
                             </section>
-                            <section className='trans-container'>
-                                <section className='transactions'>
-                                    <div className='trans-head'>
-                                        <h2>Transactions</h2>
-                                        <div className='add-new' onClick={ transactionToggle }>
-                                            <p>+</p>
-                                            <p>Add New</p>
-                                        </div>
-                                    </div>
-                                    <div className='trans-type'>
-                                        <p 
-                                        onClick={ () => setShowTracked(false) }
-                                        className={ showTracked ? null : 'highlight-red' }>Untracked</p>
-                                        <p 
-                                        onClick={ () => setShowTracked(true) }
-                                        className={ !showTracked ? null : 'highlight-blue' }>Tracked</p>
-                                    </div>
-                                    <div className='trans-list'>
-                                        { !showTracked
-                                            ? (
-                                                <section>
-                                                    { untrackedTransactions.map(e => (
-                                                        <Transactions
-                                                        key={ e.trans_id }
-                                                        date={ e.date }
-                                                        name={ e.name }
-                                                        amount={ e.amount }
-                                                        type={ e.type }
-                                                        transId={ e.trans_id }
-                                                        notes={ e.notes }
-                                                        categories={ categories }
-                                                        getTransFn={ getUntrackedTrans } />
-                                                        )) }
-                                                </section>
-                                            ) 
-                                            : (
-                                                <section>
-                                                    { trackedTransactions.map(e => (
-                                                        <Transactions
-                                                        key={ e.trans_id }
-                                                        date={ e.date }
-                                                        name={ e.name }
-                                                        amount={ e.amount }
-                                                        type={ e.type }
-                                                        transId={ e.trans_id }
-                                                        notes={ e.notes }
-                                                        categories={ categories }
-                                                        getTransFn={ getTrackedTrans } />
-                                                        )) }
-                                                </section>
-                                            ) 
-                                        }
-                                    </div>
-                                </section>
-                            </section>
+                            { !showingTransactions
+                                ? (
+                                    <section>
+                                        <Doughnut
+                                            data={ data }
+                                            options={ 
+                                                { legend: false }
+                                             } />
+                                    </section>
+                                )
+                                : (
+                                    <section className='trans-container'>
+                                        <section className='transactions'>
+                                            <div className='trans-head'>
+                                                <h2>Transactions</h2>
+                                                <div className='add-new' onClick={ transactionToggle }>
+                                                    <p>+</p>
+                                                    <p>Add New</p>
+                                                </div>
+                                            </div>
+                                            <div className='trans-type'>
+                                                <p 
+                                                onClick={ () => setShowTracked(false) }
+                                                className={ showTracked ? null : 'highlight-red' }>Untracked</p>
+                                                <p 
+                                                onClick={ () => setShowTracked(true) }
+                                                className={ !showTracked ? null : 'highlight-blue' }>Tracked</p>
+                                            </div>
+                                            <div className='trans-list'>
+                                                { !showTracked
+                                                    ? (
+                                                        <section>
+                                                            { untrackedTransactions.map(e => (
+                                                                <Transactions
+                                                                key={ e.trans_id }
+                                                                date={ e.date }
+                                                                name={ e.name }
+                                                                amount={ e.amount }
+                                                                type={ e.type }
+                                                                transId={ e.trans_id }
+                                                                notes={ e.notes }
+                                                                categories={ categories }
+                                                                getTransFn={ getUntrackedTrans } />
+                                                                )) }
+                                                        </section>
+                                                    ) 
+                                                    : (
+                                                        <section>
+                                                            { trackedTransactions.map(e => (
+                                                                <Transactions
+                                                                key={ e.trans_id }
+                                                                date={ e.date }
+                                                                name={ e.name }
+                                                                amount={ e.amount }
+                                                                type={ e.type }
+                                                                transId={ e.trans_id }
+                                                                notes={ e.notes }
+                                                                categories={ categories }
+                                                                getTransFn={ getTrackedTrans } />
+                                                                )) }
+                                                        </section>
+                                                    ) 
+                                                }
+                                            </div>
+                                        </section>
+                                    </section>
+                                ) 
+                            }
                         </section>
                     </>
                 )
