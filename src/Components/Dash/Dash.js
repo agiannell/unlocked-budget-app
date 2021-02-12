@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import DashHeader from '../DashHeader/DashHeader'
 import Groups from '../Groups/Groups';
 import Transactions from '../Transactions/Transactions';
-import loadingSpinner from '../../img/loading.gif'
+import { SyncLoader } from 'react-spinners'
 import AddTransaction from '../AddTransaction/AddTransaction';
 import './Dash.css';
 
@@ -19,7 +19,6 @@ const Dash = props => {
           [ loadedGroups, setLoadedGroups ] = useState(0),
           [ showTracked, setShowTracked ] = useState(false),
           { user_id } = props.user;
-          console.log(user_id)
 
     const getGroups = () => {
         axios.get(`/api/groups/${ user_id }`)
@@ -84,10 +83,12 @@ const Dash = props => {
     if(!user_id) {
         props.history.push('/signin')
     }
-    console.log(groups);
-    // console.log(showTracked)
-    // console.log(trackedTransactions)
-    // console.log(untrackedTransactions)
+
+    // console.log(user_id);
+    // console.log(groups);
+    // console.log(showTracked);
+    // console.log(trackedTransactions);
+    // console.log(untrackedTransactions);
     return (
         <section>
             { !editTrans
@@ -178,7 +179,9 @@ const Dash = props => {
                 )
                 : (
                     <section className='loading'>
-                        <img src={ loadingSpinner } alt='loading' />
+                        <SyncLoader
+                            color='#fff'
+                            size='30' />
                     </section>
                 )
             }

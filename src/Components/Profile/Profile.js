@@ -11,11 +11,12 @@ import './Profile.css';
 const Profile = props => {
     const { user_id, first_name, last_name, profile_pic, email } = props.user,
           [ isEditing, setIsEditing ] = useState(false),
+          [ updatingPic, setUpdatingPic ] = useState(false),
           [ isUploading, setIsUploading ] = useState(false),
           [ firstName, setFirstName ] = useState(first_name),
           [ lastName, setLastName ] = useState(last_name),
           [ userEmail, setUserEmail ] = useState(email),
-          [ url, setUrl ] = useState('http://via.placeholder.com/450x450');
+          [ url, setUrl ] = useState('https://unlocked-default-pic.s3-us-west-1.amazonaws.com/default-profile-pic.svg');
 
     const updateUserInfo = (e) => {
         e.preventDefault()
@@ -69,7 +70,7 @@ const Profile = props => {
             });
     };
 
-    // console.log(isEditing);
+    // console.log(url);
     return (
         <section>
             { isEditing

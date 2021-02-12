@@ -36,7 +36,8 @@ app.get('/auth/logout', authCtrl.logout);
 app.get('/auth/get', authCtrl.getUser);
 
 // user endpoints
-app.put('/api/update-user/:user_id', userCtrl.updateUserInfo)
+app.put('/api/update-user/:user_id', userCtrl.updateUserInfo);
+app.get('/sign-s3', userCtrl.getSignedUrl);
 
 // group endpoints
 app.post('/api/group', budgetCtrl.createGroup);
