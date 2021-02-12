@@ -14,7 +14,8 @@ const IncomeInsight = props => {
     useEffect(() => {
         axios.get(`/api/category-sum/${ user_id }/${ groupName }`)
             .then(res => {
-                setSum(res.data[0].sum)
+                // console.log(res.data)
+                setSum(res.data.sum)
                 setTimeout(setLoading(false), 10000);
             })
             .catch(err => console.log(err));

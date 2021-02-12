@@ -79,6 +79,12 @@ input {
   display: none;
 }
 
+.blank {
+  visibility: hidden;
+  margin: 0;
+  padding: 0;
+}
+
 @-webkit-keyframes flyInDown {
   0% {
     opacity: 0;

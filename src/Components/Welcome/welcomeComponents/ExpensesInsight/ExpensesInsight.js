@@ -16,10 +16,12 @@ const ExpensesInsight = props => {
     useEffect(() => {
         axios.get(`/api/category-sum/${ user_id }/${ groupName }`)
             .then(res => {
-                setIncomeSum(res.data[0].sum);
+                // console.log(res.data)
+                setIncomeSum(res.data.sum);
                 axios.get(`/api/expense-sum/${ user_id }`)
                     .then(results => {
-                        setExpenseSum(results.data[0].sum);
+                        // console.log(results.data)
+                        setExpenseSum(results.data.sum);
                     })
                 })
                 .catch(err => console.log(err));

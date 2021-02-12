@@ -8,7 +8,17 @@ const Groups = props => {
     const { id, name, user_id, getGroupsFn } = props,
           [ categories, setCategories ] = useState([]),
           [ isFocused, setIsFocused ] = useState(false),
+          [ groupSum, setGroupSum ] = useState(0),
           [ groupName, setGroupName ] = useState(name);
+
+    const getGroupSums = useCallback(() => {
+            axios.get(`/api/category-sum/${ user_id }/${ name }`)
+                .then(res => {
+                    // console.log(res.data)
+                    setGroupSum(res.data.sum)
+                })
+                .catch(err => console.log(err))
+    }, [user_id, name])
 
     const getCategories = useCallback(() => {
         axios.get(`/api/categories/${ id }`)
@@ -20,7 +30,8 @@ const Groups = props => {
 
     useEffect(() => {
         getCategories()
-    }, [getCategories])
+        getGroupSums()
+    }, [getCategories, getGroupSums])
 
 
     const addCategory = () => {
@@ -53,6 +64,7 @@ const Groups = props => {
         .catch(err => console.log(err))
     }
 
+    // console.log(groupSum);
     return (
         <section className='groups'>
             <div className='group-titles'>
@@ -85,6 +97,17 @@ const Groups = props => {
                     groupName={ name }
                     getCategoriesFn={getCategories} />
             )) }
+            { groupName === 'income'
+                ? (
+                    <section className='group-titles'>
+                        <span className='blank'>blank</span>
+                        <section className='group-money'>
+                            <h2>${ groupSum }</h2>
+                            <h2 className='blank'>blank</h2>
+                        </section>
+                    </section>
+                )
+                : null }
             <section className='add-category' onClick={ addCategory }>
                 <div className='add-btn'>+</div>
                 Add New

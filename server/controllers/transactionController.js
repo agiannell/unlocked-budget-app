@@ -37,7 +37,10 @@ module.exports = {
             .then(trans => {
                 res.status(200).send(trans)
             })
-            .catch(err => res.status(500).send(err))
+            .catch(err => {
+                console.log(err)
+                res.status(500).send(err)
+            })
     },
     getSumByCategory: (req, res) => {
         const { catId } = req.params,

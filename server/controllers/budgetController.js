@@ -7,6 +7,14 @@ module.exports = {
             .then(group => res.status(200).send(group))
             .catch(err => res.status(500).send(err));
     },
+    newUserGroup: (req, res) => {
+        const { user_id, groupName } = req.body,
+              db = req.app.get('db');
+
+        db.budget.new_user_groups(user_id, groupName)
+            .then(group => res.status(200).send(group))
+            .catch(err => res.status(500).send(err));
+    },
     createCategory: (req, res) => {
         const { group_id, user_id, categoryName, categoryAmount } = req.body,
               db = req.app.get('db');
@@ -71,7 +79,7 @@ module.exports = {
 
         db.budget.get_category_sum(userId, groupName)
             .then(sum => {
-                res.status(200).send(sum)
+                res.status(200).send(sum[0])
             })
             .catch(err => res.status(500).send(err));
     },
@@ -81,7 +89,7 @@ module.exports = {
 
         db.budget.get_expense_sum(userId)
             .then(sum => {
-                res.status(200).send(sum)
+                res.status(200).send(sum[0])
             })
             .catch(err => res.status(500).send(err));
     },

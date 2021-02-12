@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState, useEffect, useCallback } from 'react';
 import { connect } from 'react-redux';
 import { SyncLoader } from 'react-spinners';
-import { Doughnut } from 'react-chartjs-2';
+// import { Doughnut } from 'react-chartjs-2';
 import DashHeader from '../DashHeader/DashHeader'
 import Groups from '../Groups/Groups';
 import Transactions from '../Transactions/Transactions';
@@ -11,38 +11,37 @@ import './Dash.css';
 
 const Dash = props => {
     const [ groups, setGroups ] = useState([]),
-          [ groupSums, setGroupSums ] = useState([]),
+        //   [ groupSums, setGroupSums ] = useState([]),
           [ categories, setCategories ] = useState([]),
           [ loading, setLoading ] = useState(true),
           [ trackedTransactions, setTrackedTransactions ] = useState([]),
           [ untrackedTransactions, setUntrackedTransactions ] = useState([]),
           [ editTrans, setEditTrans ] = useState(false),
-        //   [ groupNumber, setGroupNumber ] = useState(0),
-          [ loadedGroups, setLoadedGroups ] = useState(0),
           [ showTracked, setShowTracked ] = useState(false),
-          [ showingTransactions, setShowingTransactions ] = useState(false),
-          { user_id } = props.user,
-          data = {
-              labels: groups.map(e => e.name),
-              datasets: [
-                  {
-                      data: groups.map(e => e.group_id),
-                      backgroundColor: ['red', 'green', 'blue', 'yellow', 'pink', 'orange', 'cyan', 'yellowgreen', 'rebeccapurple', 'black', 'white', 'magenta' ]
-                  }
-              ]
-          };
+        //   [ showingTransactions, setShowingTransactions ] = useState(true),
+          showingTransactions = true,
+          { user_id } = props.user;
+        //   data = {
+        //       labels: groups.map(e => e.name),
+        //       datasets: [
+        //           {
+        //               data: groups.map(e => e.group_id),
+        //               backgroundColor: ['red', 'green', 'blue', 'yellow', 'pink', 'orange', 'cyan', 'yellowgreen', 'rebeccapurple', 'black', 'white', 'magenta' ]
+        //           }
+        //       ]
+        //   };
 
-    const getGroupSums = useCallback(() => {
-        groups.map(e => (
-            axios.get(`/api/category-sum/${ user_id }/${ e.name }`)
-                .then(res => {
-                    console.log(e.name)
-                    console.log(res.data)
-                    setGroupSums([...groupSums, res.data.sum])
-                })
-                .catch(err => console.log(err))
-        ))
-    }, [user_id, groups, groupSums])
+    // const getGroupSums = useCallback(() => {
+    //     groups.map(e => (
+    //         axios.get(`/api/category-sum/${ user_id }/${ e.name }`)
+    //             .then(res => {
+    //                 console.log(e.name)
+    //                 console.log(res.data)
+    //                 setGroupSums([...groupSums, res.data.sum])
+    //             })
+    //             .catch(err => console.log(err))
+    //     ))
+    // }, [user_id, groups, groupSums])
 
     const getGroups = useCallback(() => {
         axios.get(`/api/groups/${ user_id }`)
@@ -70,7 +69,7 @@ const Dash = props => {
 
     useEffect(() => {
         getGroups()
-        getGroupSums()
+        // getGroupSums()
         getTrackedTrans()
         getUntrackedTrans()
 
@@ -83,7 +82,7 @@ const Dash = props => {
         setTimeout(() => {
             setLoading(false);
         }, 3000);
-    }, [user_id, getGroups, getTrackedTrans, getUntrackedTrans, getGroupSums])
+    }, [user_id, getGroups, getTrackedTrans, getUntrackedTrans])
 
     // useEffect(() => {
     //     axios.get(`/api/transactions/${ user_id }`)
@@ -109,7 +108,7 @@ const Dash = props => {
         props.history.push('/signin')
     }
 
-    console.log(groupSums);
+    // console.log(groupSums);
     return (
         <section>
             { !editTrans
@@ -119,7 +118,9 @@ const Dash = props => {
                         <AddTransaction
                             user_id={ user_id }
                             categories = { categories }
-                            toggleFn={ transactionToggle } />
+                            toggleFn={ transactionToggle }
+                            getTrackedTrans={ getTrackedTrans }
+                            getUntrackedTrans={ getUntrackedTrans } />
                     </>
                 )
             }
@@ -135,22 +136,20 @@ const Dash = props => {
                                     id={ e.group_id }
                                     name={ e.name }
                                     user_id={ user_id }
-                                    getGroupsFn={ getGroups }
-                                    loadedGroups={ loadedGroups }
-                                    setLoadedGroups={ setLoadedGroups } />
+                                    getGroupsFn={ getGroups } />
                                 )) }
                                 <button className='add-group' onClick={ addGroup }>Add Group</button>
                                 <div className='empty'></div>
                             </section>
                             { !showingTransactions
-                                ? (
-                                    <section>
-                                        <Doughnut
-                                            data={ data }
-                                            options={ 
-                                                { legend: false }
-                                             } />
-                                    </section>
+                                ? ( null
+                                    // <section>
+                                    //     <Doughnut
+                                    //         data={ data }
+                                    //         options={ 
+                                    //             { legend: false }
+                                    //          } />
+                                    // </section>
                                 )
                                 : (
                                     <section className='trans-container'>

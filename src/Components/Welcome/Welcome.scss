@@ -84,10 +84,19 @@ p {
     @include flex(space-between, row);
     border-bottom: 1px solid $purple;
     margin-bottom: 15px;
+    transition: .1s;
 
     input {
         // @include border(blue);
         width: 250px;
+
+        &:hover {
+            background-color: rgb(243, 243, 243)
+        }
+
+        &:focus {
+            background-color: rgb(243, 243, 243)
+        }
     }
 }
 

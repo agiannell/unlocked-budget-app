@@ -42,6 +42,7 @@ app.put('/api/user-pic/:user_id', userCtrl.updateProfilePic);
 
 // group endpoints
 app.post('/api/group', budgetCtrl.createGroup);
+app.post('/api/group-init', budgetCtrl.newUserGroup);
 app.get('/api/groups/:userId', budgetCtrl.getUserGroups);
 app.put('/api/group/:groupId', budgetCtrl.updateGroup);
 app.delete('/api/group/:groupId', budgetCtrl.deleteGroup);

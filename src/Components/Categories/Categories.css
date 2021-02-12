@@ -61,6 +61,10 @@
   width: 300px;
 }
 
+.cat-form input:hover {
+  background-color: #f3f3f3;
+}
+
 .cat-money {
   display: -webkit-box;
   display: -ms-flexbox;

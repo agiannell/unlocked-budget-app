@@ -38,6 +38,10 @@
     input {
         // @include border(red);
         width: 300px;
+        
+        &:hover {
+            background-color: rgb(243, 243, 243);
+        }
     }
 }
 
@@ -58,6 +62,7 @@
         // @include border(green);
         width: 110px;
         text-align: right;
+
     }
 }
 
