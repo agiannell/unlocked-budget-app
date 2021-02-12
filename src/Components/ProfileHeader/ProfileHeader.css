@@ -73,7 +73,54 @@
   width: 400px;
 }
 
+.profile-sign-out {
+  width: 150px;
+}
+
+.profile-sign-out:hover {
+  background-color: #EE6352;
+}
+
 .profile-logout {
   display: none;
+}
+
+@media (max-width: 900px) {
+  .to-budget {
+    display: none;
+  }
+  .profile-sign-out {
+    display: none;
+  }
+  .profile-nav {
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    width: auto;
+  }
+  .to-budget-mobile {
+    display: initial;
+    height: 40px;
+    cursor: pointer;
+  }
+  .profile-logout {
+    display: initial;
+    height: 40px;
+    margin-left: 50px;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 600px) {
+  .profile-header {
+    height: 140px;
+  }
+  .profile-head-logo {
+    display: none;
+  }
+  .profile-head-icon {
+    display: initial;
+    height: 70px;
+  }
 }
 /*# sourceMappingURL=ProfileHeader.css.map */

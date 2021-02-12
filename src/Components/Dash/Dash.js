@@ -87,7 +87,7 @@ const Dash = props => {
     // console.log(user_id);
     // console.log(groups);
     // console.log(showTracked);
-    console.log(trackedTransactions);
+    // console.log(trackedTransactions);
     // console.log(untrackedTransactions);
     return (
         <section>
@@ -151,7 +151,8 @@ const Dash = props => {
                                                         type={ e.type }
                                                         transId={ e.trans_id }
                                                         notes={ e.notes }
-                                                        categories={ categories } />
+                                                        categories={ categories }
+                                                        getTransFn={ getUntrackedTrans } />
                                                         )) }
                                                 </section>
                                             ) 
@@ -166,7 +167,8 @@ const Dash = props => {
                                                         type={ e.type }
                                                         transId={ e.trans_id }
                                                         notes={ e.notes }
-                                                        categories={ categories } />
+                                                        categories={ categories }
+                                                        getTransFn={ getTrackedTrans } />
                                                         )) }
                                                 </section>
                                             ) 

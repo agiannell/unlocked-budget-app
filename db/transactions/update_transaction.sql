@@ -5,4 +5,4 @@ set name = $2,
     notes = $5,
     type = $6
 where trans_id = $1
-returning trans_id, group_id, user_id, name, date, amount, notes, type;
+returning trans_id, cat_id, user_id, name, date, amount, notes, type;

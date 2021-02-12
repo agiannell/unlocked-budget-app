@@ -3,14 +3,14 @@ import EditTransaction from '../EditTransaction/EditTransaction';
 import './Transactions.css';
 
 const Transactions = props => {
-    const { name, date, amount, type, transId, categories } = props,
+    const { name, date, amount, type, transId, categories, getTransFn } = props,
           [ isEditing, setIsEditing ] = useState(false);
 
     const toggleFn = () => {
         setIsEditing(!isEditing)
     }
 
-    console.log(date)
+    // console.log(date)
     return (
         <section>
             { !isEditing ? null
@@ -23,7 +23,8 @@ const Transactions = props => {
                             amount={ amount }
                             date={ date }
                             toggleFn={ toggleFn }
-                            categories={ categories } />
+                            categories={ categories }
+                            getTransFn={ getTransFn } />
                     </section>
                 ) 
             }

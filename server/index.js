@@ -61,3 +61,5 @@ app.get('/api/transactions-tracked/:userId', transCtrl.getTrackedTransactions);
 app.get('/api/transactions-untracked/:userId', transCtrl.getUntrackedTransactions);
 app.get('/api/transaction-sum/:catId', transCtrl.getSumByCategory);
 app.post('/api/transaction', transCtrl.createTransaction);
+app.put('/api/transaction/:transId', transCtrl.updateTransaction);
+app.delete('/api/transaction/:transId', transCtrl.deleteTransaction);

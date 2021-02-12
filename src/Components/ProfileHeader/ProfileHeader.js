@@ -2,9 +2,10 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { clearUser } from '../../ducks/userReducer';
 import axios from 'axios';
-import logo from '../../img/logo-linear-color.svg'
-import icon from '../../img/icon-color.svg'
+import logo from '../../img/logo-linear-color.svg';
+import icon from '../../img/icon-color.svg';
 import signOut from '../../img/logout-icon.svg';
+import moneyIcon from '../../img/money-icon.svg';
 import './ProfileHeader.css'
 
 const ProfileHeader = props => {
@@ -26,8 +27,12 @@ const ProfileHeader = props => {
                 <img src={ icon } alt='icon' className='profile-head-icon' />
                 <section className='profile-nav'>
                     <Link to='/dash'><button className='to-budget'>Back to Budget</button></Link>
-                    <Link to='/dash'><button className='to-budget-mobile'>Back to Budget</button></Link>
-                    <button className='sign-out' onClick={ logout }>Sign Out</button>
+                    <img 
+                        src={ moneyIcon } 
+                        alt='money' 
+                        className='to-budget-mobile'
+                        onClick={ () => props.history.push('/dash') } />
+                    <button className='profile-sign-out' onClick={ logout }>Sign Out</button>
                     <img src={ signOut } alt='sign-out' onClick={ logout } className='profile-logout' />
                 </section>
             </section>

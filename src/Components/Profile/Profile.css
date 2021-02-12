@@ -273,4 +273,18 @@
 .dropzone p {
   color: #484D6D;
 }
+
+@media (max-width: 600px) {
+  .user-info {
+    width: 90%;
+  }
+  .user-info h2 {
+    font-size: 1.2em;
+  }
+  #edit {
+    width: 90%;
+    height: 70px;
+    border-radius: 5px;
+  }
+}
 /*# sourceMappingURL=Profile.css.map */

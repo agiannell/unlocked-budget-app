@@ -42,13 +42,13 @@ const AddTransaction = props => {
                         id='expense' 
                         name='type' 
                         defaultChecked />
-                    <label for='expense'>Expense</label>
+                    <label htmlFor='expense'>Expense</label>
                     <input 
                         value='income'
                         type='radio' 
                         id='income' 
                         name='type' />
-                    <label for='income'>Income</label>
+                    <label htmlFor='income'>Income</label>
                 </section>
                 <section className='trans-inputs'>
                     <input 
@@ -73,7 +73,7 @@ const AddTransaction = props => {
                     <select value={ catId } id='category' placeholder='Category' onChange={ e => setCatId(e.target.value) }>
                         <option value='' selected disabled hidden>Choose One</option>
                         { categories.map(e => (
-                            <option value={ e.cat_id }>{ e.name }</option>
+                            <option key={ e.cat_id } value={ e.cat_id }>{ e.name }</option>
                         )) }
                     </select>
                     <textarea 

@@ -48,12 +48,29 @@ module.exports = {
                 res.status(200).send(sum[0])
             })
             .catch(err => res.status(500).send(err))
+    },
+    updateTransaction: (req, res) => {
+        const { name, date, amount, notes, type } = req.body,
+              { transId } = req.params,
+              db = req.app.get('db');
 
+        db.transactions.update_transaction(transId, name, date, amount, notes, type)
+            .then(trans => {
+                res.status(200).send(trans)
+            })
+            .catch(err => res.status(500).send(err))
     },
     deleteTransaction: (req, res) => {
         const { transId } = req.params,
-              db = req.app.get;
+              db = req.app.get('db');
 
         db.transactions.delete_transaction(transId)
+            .then(() => {
+                res.sendStatus(200)
+            })
+            .catch(err => {
+                console.log(err)
+                res.status(500).send(err)
+            })
     }
 }

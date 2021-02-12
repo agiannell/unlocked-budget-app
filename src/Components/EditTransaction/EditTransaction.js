@@ -3,15 +3,15 @@ import { useState } from 'react';
 import './EditTransaction.css';
 
 const EditTransaction = props => {
-    const { transId, type, name, amount, date, notes, categories, toggleFn  } = props,
+    const { transId, type, name, amount, date, notes, categories, toggleFn, getTransFn  } = props,
           [ transName, setTransName ] = useState(name),
           [ transDate, setTransDate ] = useState(date),
           [ transType, setTransType ] = useState(type),
           [ transAmount, setTransAmount ] = useState(amount),
-          [ catId, setCatId ] = useState(null),
+          [ catId, setCatId ] = useState(''),
           [ transNotes, setTransNotes ] = useState(notes);
 
-    const updateTransaction  = (e) => {
+    const updateTransaction  = e => {
         e.preventDefault()
 
         axios.put(`/api/transaction/${ transId }`, {
@@ -22,9 +22,21 @@ const EditTransaction = props => {
             type: transType
         })
         .then(() => {
+            getTransFn()
             toggleFn()
         })
         .catch(err => console.log(err))
+    }
+
+    const deleteTransaction = e => {
+        e.preventDefault()
+
+        axios.delete(`/api/transaction/${ transId }`)
+            .then(() => {
+                getTransFn()
+                toggleFn()
+            })
+            .catch(err => console.log(err));
     }
 
     // console.log(`User ID: ${user_id}`)
@@ -48,48 +60,49 @@ const EditTransaction = props => {
                         id='expense' 
                         name='type' 
                         defaultChecked />
-                    <label for='expense'>Expense</label>
+                    <label htmlFor='expense'>Expense</label>
                     <input 
                         value='income'
                         type='radio' 
                         id='income' 
                         name='type' />
-                    <label for='income'>Income</label>
+                    <label htmlFor='income'>Income</label>
                 </section>
                 <section className='trans-inputs'>
                     <input 
-                        value={ amount }
+                        value={ transAmount }
                         type='text' 
                         id='amount' 
                         placeholder='$0.00'
                         onChange={ e => setTransAmount(e.target.value) } />
                     <div>
                         <input 
-                            value={ date }
+                            value={ transDate }
                             type='date' 
                             id='date'
                             onChange={ e => setTransDate(e.target.value) } />
                         <input 
-                            value={ name }
+                            value={ transName }
                             type='text' 
                             id='desc' 
                             placeholder='Description'
                             onChange={ e => setTransName(e.target.value) } />
                     </div>
                     <select value={ catId } id='category' placeholder='Category' onChange={ e => setCatId(e.target.value) }>
-                        <option value='' selected disabled hidden>Choose One</option>
+                        <option value='' defaultValue disabled hidden>Choose One</option>
                         { categories.map(e => (
-                            <option value={ e.cat_id }>{ e.name }</option>
+                            <option kay={ e.cat_id } value={ e.cat_id }>{ e.name }</option>
                         )) }
                     </select>
                     <textarea 
-                        value={ notes }
+                        value={ transNotes }
                         type='text' 
                         id='notes' 
                         placeholder='Notes (optional)'
                         onChange={ e => setTransNotes(e.target.value) } />
                 </section>
-                <button onClick ={ e => updateTransaction(e) }>Update</button>
+                <button onClick ={ e => updateTransaction(e) }>Save Changes</button>
+                <h3 className='remove-trans' onClick={ e => deleteTransaction(e) }>Delete Transaction</h3>
             </form>
         </section>
     )

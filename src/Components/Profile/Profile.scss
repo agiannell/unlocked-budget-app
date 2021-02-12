@@ -166,3 +166,19 @@
         color: $purple;
     }
 }
+
+@media(max-width: 600px) {
+    .user-info {
+        width: 90%;
+
+        h2 {
+            font-size: 1.2em;
+        }
+    }
+
+    #edit {
+        width: 90%;
+        height: 70px;
+        border-radius: 5px;
+    }
+}

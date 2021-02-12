@@ -43,6 +43,57 @@
     width: 400px;
 }
 
+.profile-sign-out {
+    width: 150px;
+
+    &:hover {
+        background-color: $red;
+    }
+}
+
 .profile-logout {
     display: none;
+}
+
+@media(max-width: 900px) {
+    .to-budget {
+        display: none;
+    }
+
+    .profile-sign-out {
+        display: none;
+    }
+
+    .profile-nav {
+        justify-content: flex-end;
+        width: auto;
+    }
+
+    .to-budget-mobile {
+        display: initial;
+        height: 40px;
+        cursor: pointer;
+    }
+
+    .profile-logout {
+        display: initial;
+        height: 40px;
+        margin-left: 50px;
+        cursor: pointer;
+    }
+}
+
+@media(max-width: 600px) {
+    .profile-header {
+        height: 140px;
+    }
+    
+    .profile-head-logo {
+        display: none;
+    }
+
+    .profile-head-icon {
+        display: initial;
+        height: 70px;
+    }
 }
