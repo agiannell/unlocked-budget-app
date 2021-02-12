@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { connect } from 'react-redux';
 import DashHeader from '../DashHeader/DashHeader'
 import Groups from '../Groups/Groups';
@@ -20,29 +20,29 @@ const Dash = props => {
           [ showTracked, setShowTracked ] = useState(false),
           { user_id } = props.user;
 
-    const getGroups = () => {
+    const getGroups = useCallback(() => {
         axios.get(`/api/groups/${ user_id }`)
         .then(res => {
             setGroups(res.data)
         })
         .catch(err => console.log(err))
-    }
+    }, [user_id])
 
-    const getTrackedTrans = () => {
+    const getTrackedTrans = useCallback(() => {
         axios.get(`/api/transactions-tracked/${ user_id }`)
         .then(res => {
             setTrackedTransactions(res.data)
         })
         .catch(err => console.log(err))
-    }
+    }, [user_id])
 
-    const getUntrackedTrans = () => {
+    const getUntrackedTrans = useCallback(() => {
         axios.get(`/api/transactions-untracked/${ user_id }`)
         .then(res => {
             setUntrackedTransactions(res.data)
         })
         .catch(err => console.log(err))
-    }
+    }, [user_id])
 
     useEffect(() => {
         getGroups()
@@ -58,7 +58,7 @@ const Dash = props => {
         setTimeout(() => {
             setLoading(false);
         }, 3000);
-    }, [user_id])
+    }, [user_id, getGroups, getTrackedTrans, getUntrackedTrans])
 
     // useEffect(() => {
     //     axios.get(`/api/transactions/${ user_id }`)
@@ -87,7 +87,7 @@ const Dash = props => {
     // console.log(user_id);
     // console.log(groups);
     // console.log(showTracked);
-    // console.log(trackedTransactions);
+    console.log(trackedTransactions);
     // console.log(untrackedTransactions);
     return (
         <section>
@@ -181,7 +181,7 @@ const Dash = props => {
                     <section className='loading'>
                         <SyncLoader
                             color='#fff'
-                            size='30' />
+                            size='30px' />
                     </section>
                 )
             }

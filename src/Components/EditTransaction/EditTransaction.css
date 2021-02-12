@@ -1,4 +1,4 @@
-.add-transaction {
+.edit-transaction {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -16,6 +16,8 @@
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.85);
   position: fixed;
+  left: 0;
+  top: 0;
   z-index: 1;
 }
 
@@ -46,9 +48,11 @@
 
 .new-trans-info header h2 {
   color: #ebe6ec;
+  width: 230px;
 }
 
 .new-trans-info header h3 {
+  width: 30px;
   position: relative;
   left: 170px;
   font-weight: 700;
@@ -167,6 +171,7 @@
 .trans-inputs #date {
   width: 35%;
   margin-left: 0;
+  text-transform: lowercase;
 }
 
 .trans-inputs #desc {

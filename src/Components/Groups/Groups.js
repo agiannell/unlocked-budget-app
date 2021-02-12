@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import Categories from '../Categories/Categories';
 import trash from '../../img/trash-can.svg';
@@ -10,17 +10,17 @@ const Groups = props => {
           [ isFocused, setIsFocused ] = useState(false),
           [ groupName, setGroupName ] = useState(name);
 
-    const getCategories = () => {
+    const getCategories = useCallback(() => {
         axios.get(`/api/categories/${ id }`)
             .then(res => {
                 setCategories(res.data)
             })
             .catch(err => console.log(err))
-    }
+    }, [id])
 
     useEffect(() => {
         getCategories()
-    }, [])
+    }, [getCategories])
 
 
     const addCategory = () => {

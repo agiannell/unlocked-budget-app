@@ -32,7 +32,7 @@ const AddTransaction = props => {
         <section className='add-transaction'>
             <form className='new-trans-info'>
                 <header>
-                    <h2>Add New Expense</h2>
+                    <h2>Add New { type === 'expense' ? 'Expense' : 'Income' }</h2>
                     <h3 onClick={ toggleFn }>X</h3>
                 </header>
                 <section className='set-type' onChange={ e => setType(e.target.value) }>
@@ -71,6 +71,7 @@ const AddTransaction = props => {
                             onChange={ e => setName(e.target.value) } />
                     </div>
                     <select value={ catId } id='category' placeholder='Category' onChange={ e => setCatId(e.target.value) }>
+                        <option value='' selected disabled hidden>Choose One</option>
                         { categories.map(e => (
                             <option value={ e.cat_id }>{ e.name }</option>
                         )) }
@@ -79,10 +80,10 @@ const AddTransaction = props => {
                         value={ notes }
                         type='text' 
                         id='notes' 
-                        placeholder='Notes(optional)'
+                        placeholder='Notes (optional)'
                         onChange={ e => setNotes(e.target.value) } />
                 </section>
-                <button onClick ={ e => createTransaction(e) }>Add Expense</button>
+                <button onClick ={ e => createTransaction(e) }>Add</button>
             </form>
         </section>
     )

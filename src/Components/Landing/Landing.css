@@ -53,6 +53,8 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  -webkit-animation: flyInRight 1s ease-in-out;
+          animation: flyInRight 1s ease-in-out;
 }
 
 .landing-info p {
@@ -80,6 +82,8 @@
   border-radius: 5px;
   -webkit-box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.2);
           box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.2);
+  -webkit-animation: flyInLeft 1s ease-in-out;
+          animation: flyInLeft 1s ease-in-out;
 }
 
 .budget-preview h2 {

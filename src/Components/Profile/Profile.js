@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { useState } from 'react';
 import { getUser } from '../../ducks/userReducer'
 import { v4 as randomString } from 'uuid';
-import { GridLoader } from 'react-spinners';
+import { BarLoader } from 'react-spinners';
 import axios from 'axios';
 import Dropzone from 'react-dropzone';
 import ProfileHeader from '../ProfileHeader/ProfileHeader';
@@ -18,13 +18,22 @@ const Profile = props => {
           [ userEmail, setUserEmail ] = useState(email),
           [ url, setUrl ] = useState('https://unlocked-default-pic.s3-us-west-1.amazonaws.com/default-profile-pic.svg');
 
-    const updateUserInfo = (e) => {
+    const updateUserInfo = e => {
         e.preventDefault()
 
-        axios.put(`/api/update-user/${ user_id }`, { firstName, lastName, userEmail })
+        axios.put(`/api/user-info/${ user_id }`, { firstName, lastName, userEmail })
             .then(res => {
                 props.getUser(res.data);
                 setIsEditing(!isEditing);
+            })
+            .catch(err => console.log(err));
+    };
+
+    const updateProfilePic = () => {
+        axios.put(`/api/user-pic/${ user_id }`, { profile_pic: url })
+            .then(res => {
+                props.getUser(res.data);
+                setUpdatingPic(!updatingPic);
             })
             .catch(err => console.log(err));
     }
@@ -107,39 +116,48 @@ const Profile = props => {
                 )
                 : null
             }
+            { updatingPic
+                ? (
+                    <section className='pic-edit'>
+                        <section className='pic-window'>
+                            <section className='pic-form-header'>
+                                <h2>Update Profile Pic</h2>
+                                <h3 onClick={ () => setUpdatingPic(!updatingPic) }>X</h3>
+                            </section>
+                            <section className='pic-upload'>
+                                <img src={ url } alt={ first_name } />
+                                <Dropzone
+                                    onDropAccepted={ getSignedRequest }
+                                    accept='image/*'
+                                    multiple={ false }>
+                                    {({ getRootProps, getInputProps }) => (
+                                        <div
+                                        className='dropzone'
+                                        { ...getRootProps() }>
+                                            <input { ...getInputProps() } />
+                                            { isUploading ? <BarLoader color='#484D6D' /> : <p>Drop fies here, or click to select files</p> }
+                                        </div>
+                                    )}
+                                </Dropzone>
+                            </section>
+                            <button onClick={ updateProfilePic }>Submit</button>
+                        </section>
+                    </section>
+                )
+                : null
+            }
 
             <ProfileHeader />
             <section className='profile'>
                 <section className='user-info'>
-                    <img src={ profile_pic } alt={ first_name } />
+                    <img 
+                        src={ profile_pic } 
+                        alt={ first_name }
+                        onClick={ () => setUpdatingPic(!updatingPic) } />
                     <h2>{ first_name } { last_name }</h2>
                     <h2 className='email'>Email: { email }</h2>
                 </section>
                 <button id='edit' onClick={ () => setIsEditing(!isEditing) }>Edit Profile</button>
-                <Dropzone
-                    onDropAccepted={ getSignedRequest }
-                    accept='image/*'
-                    multiple={ false }>
-                    {({ getRootProps, getInputProps }) => (
-                        <div
-                            style={{
-                                position: 'relative',
-                                width: 160,
-                                height: 80,
-                                borderWidth: 5,
-                                marginTop: 25,
-                                borderColor: 'gray',
-                                borderStyle: 'dashed',
-                                borderRadius: 5,
-                                display: 'inline-block',
-                                fontSize: 17,
-                            }}
-                            { ...getRootProps() }>
-                            <input { ...getInputProps() } />
-                            { isUploading ? <GridLoader /> : <p>Drop fies here, or click to select files</p> }
-                        </div>
-                    )}
-                </Dropzone>
             </section>
         </section>
     )

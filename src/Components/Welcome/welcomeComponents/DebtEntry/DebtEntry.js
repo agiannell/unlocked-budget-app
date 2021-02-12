@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import loadingSpinner from '../../../../img/loading.gif';
+import { SyncLoader } from 'react-spinners';
 import './DebtEntry.css'
 
 const DebtEntry = props => {
@@ -20,11 +20,10 @@ const DebtEntry = props => {
             .catch(err => console.log(err))
     }, [user_id])
 
-    const handleSubmit = (e) => {
+    const handleSubmit = e => {
         e.preventDefault()
         const { group_id } = groupInfo;
         setLoading(true);
-                // catArr = [creditCard, carPayment, studentLoan];
 
         axios.post('/api/category', { group_id, user_id, categoryName: creditCard.name, categoryAmount: +creditCard.amount })
             .then(() => {
@@ -37,14 +36,6 @@ const DebtEntry = props => {
                     })
             })
             .catch(err => console.log(err));
-
-        // catArr.map(e => (
-        //     axios.post('/api/category', { group_id, user_id, categoryName: e.name, categoryAmount: +e.amount })
-        //         .then()
-        //         .catch(err => console.log(err))
-        // ))
-
-        // props.history.push('/welcome/debt-insight');
     }
     return (
         <section className='intro'>
@@ -109,7 +100,9 @@ const DebtEntry = props => {
                 )
                 : (
                     <section className='loading'>
-                        <img src={ loadingSpinner } alt='loading' />
+                        <SyncLoader
+                            color='#fff'
+                            size='30px' />
                     </section>
                 ) 
             }

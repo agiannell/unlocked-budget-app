@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import loadingSpinner from '../../../../img/loading.gif';
+import { SyncLoader } from 'react-spinners';
 import './ExpensesLifestyle.css'
 
 const ExpensesLifestyle = props => {
@@ -26,7 +26,6 @@ const ExpensesLifestyle = props => {
         e.preventDefault()
         const { group_id } = groupInfo;
         setLoading(true);
-            //   catArr = [clothing, phone, funMoney, subscriptions, misc];
 
         axios.post('/api/category', { group_id, user_id, categoryName: clothing.name, categoryAmount: +clothing.amount })
             .then(() =>{
@@ -45,14 +44,6 @@ const ExpensesLifestyle = props => {
                     })
             })
             .catch(err => console.log(err));
-
-        // catArr.map(e => (
-        //     axios.post('/api/category', { group_id, user_id, categoryName: e.name, categoryAmount: +e.amount })
-        //         .then()
-        //         .catch(err => console.log(err))
-        // ))
-
-        // props.history.push('/welcome/expenses-insight');
     }
 
     return (
@@ -144,7 +135,9 @@ const ExpensesLifestyle = props => {
                 ) 
                 : (
                     <section className='loading'>
-                        <img src={ loadingSpinner } alt='loading' />
+                        <SyncLoader
+                            color='#fff'
+                            size='30px' />
                     </section>
                 )
             }

@@ -35,10 +35,10 @@ const EditTransaction = props => {
     // console.log(`Description: ${name}`)
     // console.log(`Notes: ${notes}`)
     return (
-        <section className='add-transaction'>
+        <section className='edit-transaction'>
             <form className='new-trans-info'>
                 <header>
-                    <h2>Add New Expense</h2>
+                    <h2>Edit { transType === 'expense' ? 'Expense' : 'Income' }</h2>
                     <h3 onClick={ toggleFn }>X</h3>
                 </header>
                 <section className='set-type' onChange={ e => setTransType(e.target.value) }>
@@ -77,6 +77,7 @@ const EditTransaction = props => {
                             onChange={ e => setTransName(e.target.value) } />
                     </div>
                     <select value={ catId } id='category' placeholder='Category' onChange={ e => setCatId(e.target.value) }>
+                        <option value='' selected disabled hidden>Choose One</option>
                         { categories.map(e => (
                             <option value={ e.cat_id }>{ e.name }</option>
                         )) }
@@ -85,10 +86,10 @@ const EditTransaction = props => {
                         value={ notes }
                         type='text' 
                         id='notes' 
-                        placeholder='Notes(optional)'
+                        placeholder='Notes (optional)'
                         onChange={ e => setTransNotes(e.target.value) } />
                 </section>
-                <button onClick ={ e => updateTransaction(e) }>Add Expense</button>
+                <button onClick ={ e => updateTransaction(e) }>Update</button>
             </form>
         </section>
     )

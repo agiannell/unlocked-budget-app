@@ -24,6 +24,7 @@
         // width: 250px;
         border-radius: 50%;
         margin-bottom: 50px;
+        cursor: pointer;
     }
 
     h2 {
@@ -51,7 +52,6 @@
     
     form {
         background-color: white;
-        opacity: 1;
         border-radius: 5px;
         padding: 20px 40px;
         width: 500px;
@@ -84,7 +84,7 @@
     @include flex(space-evenly, column);
     align-items: flex-start;
     height: 100px;
-
+    
     input {
         // @include border(red);
         border-bottom: 1px solid $gray;
@@ -102,5 +102,67 @@
     input {
         // @include border(blue);
         width: 50%;
+    }
+}
+
+.pic-edit {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.75);
+    position: fixed;
+    z-index: 1;
+    @include flex(center, column);
+}
+
+.pic-window {
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px 40px;
+    width: 500px;
+    @include flex(center, column);
+}
+
+.pic-form-header {
+    // @include border(blue);
+    @include flex(center, row);
+    padding: 0;
+    margin-bottom: 30px;
+    
+    h3 {
+        // @include border(blue);
+        cursor: pointer;
+        position: relative;
+        left: 110px;
+        font-weight: 900;
+        color: $gray;
+        font-family: sans-serif;
+    }
+}
+
+.pic-upload {
+    // @include border(pink);
+    @include flex(center, row);
+    margin-bottom: 30px;
+
+    img {
+        height: 80px;
+        margin: 0 30px;
+        border-radius: 50%;
+    }
+}
+
+.dropzone {
+    width: 200px;
+    height: 80px;
+    margin: 0 30px;
+    padding: 10px;
+    @include flex(center, column);
+    border: 2px dashed $purple;
+    position: relative;
+    border-radius: 5px;
+    font-size: 1em;
+
+    p {
+        color: $purple;
     }
 }

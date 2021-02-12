@@ -43,5 +43,16 @@ module.exports = {
 
             return res.send(returnData)
         });
+    },
+    updateProfilePic: (req, res) => {
+        const { profile_pic } = req.body,
+              { user_id } = req.params,
+              db = req.app.get('db');
+
+        db.users.update_profile_pic(user_id, profile_pic)
+            .then(user => {
+                res.status(200).send(user[0])
+            })
+            .catch(err => res.status(500).send(err))
     }   
 }

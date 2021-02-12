@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import loadingSpinner from '../../../../img/loading.gif';
+import { SyncLoader } from 'react-spinners';
 import './GivingEntry.css'
 
 const GivingEntry = props => {
@@ -68,7 +68,9 @@ const GivingEntry = props => {
                 )
                 : (
                     <section className='loading'>
-                        <img src={ loadingSpinner } alt='loading' />
+                        <SyncLoader
+                            color='#fff'
+                            size='30px' />
                     </section>
                 ) 
             }

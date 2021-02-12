@@ -32,6 +32,7 @@
   height: 250px;
   border-radius: 50%;
   margin-bottom: 50px;
+  cursor: pointer;
 }
 
 .user-info h2 {
@@ -70,7 +71,6 @@
 
 .profile-edit form {
   background-color: white;
-  opacity: 1;
   border-radius: 5px;
   padding: 20px 40px;
   width: 500px;
@@ -153,5 +153,124 @@
 
 .name-input input {
   width: 50%;
+}
+
+.pic-edit {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.pic-window {
+  background-color: white;
+  border-radius: 5px;
+  padding: 20px 40px;
+  width: 500px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.pic-form-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.pic-form-header h3 {
+  cursor: pointer;
+  position: relative;
+  left: 110px;
+  font-weight: 900;
+  color: #666;
+  font-family: sans-serif;
+}
+
+.pic-upload {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-bottom: 30px;
+}
+
+.pic-upload img {
+  height: 80px;
+  margin: 0 30px;
+  border-radius: 50%;
+}
+
+.dropzone {
+  width: 200px;
+  height: 80px;
+  margin: 0 30px;
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 2px dashed #484D6D;
+  position: relative;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.dropzone p {
+  color: #484D6D;
 }
 /*# sourceMappingURL=Profile.css.map */

@@ -21,6 +21,7 @@
   height: 300px;
   @include flex(space-between, column);
   align-items: flex-start;
+  animation: flyInRight 1s ease-in-out;
 
   p {
     line-height: 1.5em;
@@ -36,6 +37,7 @@
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 0 10px 3px rgba(0,0,0,.2);
+  animation: flyInLeft 1s ease-in-out;
 
   h2 {
     // @include border(green);

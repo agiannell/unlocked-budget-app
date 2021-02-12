@@ -20,6 +20,7 @@
   margin: 10px 0;
   -webkit-box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
           box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
 .expense span {
@@ -70,6 +71,7 @@
   margin: 10px 0;
   -webkit-box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
           box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
 .income span {

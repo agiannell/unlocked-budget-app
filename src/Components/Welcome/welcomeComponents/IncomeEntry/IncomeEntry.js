@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import loadingSpinner from '../../../../img/loading.gif'
+import { SyncLoader } from 'react-spinners';
 import './IncomeEntry.css';
 
 const IncomeEntry = props => {
@@ -24,7 +24,6 @@ const IncomeEntry = props => {
         e.preventDefault()
         const { group_id } = groupInfo[0];
         setLoading(true);
-        // paychecksArr = [paycheck1, paycheck2, paycheck3];
 
         axios.post('/api/category', { group_id, user_id, categoryName: paycheck1.name, categoryAmount: +paycheck1.amount })
             .then(() => {
@@ -37,16 +36,6 @@ const IncomeEntry = props => {
                     })
             })
             .catch(err => console.log(err))
-        
-        // paychecksArr.map(e => {
-        //     console.log(e.amount)
-        //     axios.post('/api/category', { group_id, user_id, categoryName: e.name, categoryAmount: +e.amount })
-        //     .then(res => {
-        //         console.log(res.data)
-        //     })
-        //     .catch(err => console.log(err))
-        // })
-        // props.history.push('/welcome/income-insight');
     }
 
     // console.log(props);
@@ -113,7 +102,9 @@ const IncomeEntry = props => {
                 )
                 : (
                     <section className='loading'>
-                        <img src={ loadingSpinner } alt='loading' />
+                        <SyncLoader
+                            color='#fff'
+                            size='30px' />
                     </section>
                 ) 
             }

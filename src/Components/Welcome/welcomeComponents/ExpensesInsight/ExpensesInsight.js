@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import loadingSpinner from '../../../../img/loading.gif';
+import { SyncLoader } from 'react-spinners';
 import './ExpensesInsight.css'
 
 const ExpensesInsight = props => {
@@ -28,18 +28,7 @@ const ExpensesInsight = props => {
             setTimeout(() => {
                 setLoading(false)
             }, 1000)
-        // axios.get(`/api/expense-sum/${ user_id }`)
-        //     .then(res => {
-        //         setExpenseSum(res.data[0].sum);
-        //         setLeftToBudget(incomeSum - expenseSum);
-        //         setLoading(false);
-        //     })
-        //     .catch(err => console.log(err));
     }, [user_id, groupName, incomeSum, expenseSum])
-
-    // useEffect(() => {
-    //     setLoading(false)
-    // }, [leftToBudget])
 
     return (
         <section>
@@ -59,7 +48,9 @@ const ExpensesInsight = props => {
                 )
                 : (
                     <section className='loading'>
-                        <img src={ loadingSpinner } alt='loading' />
+                        <SyncLoader
+                            color='#fff'
+                            size='30px' />
                     </section>
                 ) 
             }

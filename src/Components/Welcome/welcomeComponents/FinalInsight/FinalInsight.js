@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import loadingSpinner from '../../../../img/loading.gif'
+import { SyncLoader } from 'react-spinners';
 import './FinalInsight.css'
 
 const FinalInsight = props => {
@@ -27,15 +27,6 @@ const FinalInsight = props => {
         setTimeout(() => {
             setLoading(false);
         }, 1000)
-
-        // axios.get(`/api/expense-sum/${ user_id }`)
-        //     .then(res => {
-        //         setExpenseSum(res.data[0].sum);
-        //         setLeftToBudget(incomeSum - expenseSum);
-        //         setLoading(false);
-        //     })
-        //     .catch(err => console.log(err));
-
         
     }, [user_id, groupName, incomeSum, expenseSum])
 
@@ -71,37 +62,6 @@ const FinalInsight = props => {
             .catch(err => console.log(err));
     }
 
-    // const handleSubmit = () => {
-    //     const groupsArr = ['health', 'savings'],
-    //           catArr = [
-    //             { name: 'medicine', amount: 0.00, group: 'health' },
-    //             { name: 'doctor visits', amount: 0.00, group: 'health' },
-    //             { name: 'emergency fund', amount: 0.00, group: 'savings' },
-    //             { name: 'retirement', amount: 0.00, group: 'savings' }
-    //         ];
-    //     let group_id
-            
-    //     groupsArr.map(e => (
-    //         axios.post('/api/group', { user_id, groupName: e })
-    //         .then(res => {
-    //             group_id = res.data[0].user_id
-    //             catArr.map(el => {
-    //                 if(el.group === e) {
-    //                     return (
-    //                         axios.post('/api/category', { group_id, user_id, categoryName: el.name, categoryAmount: el.amount  })
-    //                             .then()
-    //                             .catch(err => console.log(err))
-    //                     )
-    //                 } else {
-    //                     return console.log('no!')
-    //                 }
-    //             })
-    //         })
-    //         .catch(err => console.log(err))
-    //     ))
-    //     props.history.push('/dash')
-    // }
-
     return (
         <section>
             { !loading
@@ -120,7 +80,9 @@ const FinalInsight = props => {
                 )
                 : (
                     <section className='loading'>
-                        <img src={ loadingSpinner } alt='loading' />
+                        <SyncLoader
+                            color='#fff'
+                            size='30px' />
                     </section>
                 )
             }

@@ -69,3 +69,36 @@ input {
 .hidden {
     display: none;
 }
+
+@keyframes flyInDown {
+    0% {
+       opacity: 0; 
+       transform: translateY(-200px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes flyInRight {
+    0% {
+       opacity: 0; 
+       transform: translateX(-200px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes flyInLeft {
+    0% {
+       opacity: 0; 
+       transform: translateX(200px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
