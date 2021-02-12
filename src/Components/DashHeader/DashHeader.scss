@@ -3,18 +3,27 @@
 
 .dash-header {
     // @include border(red);
-    @include flex(space-between, row);
+    @include flex(center, row);
     width: 100%;
     height: 100px;
-    padding: 0 15%;
     position: fixed;
     z-index: 0;
-
-    img {
-        height: 60px;
-    }
 }
 
+.dash-head-container {
+    // @include border(yellowgreen);
+    @include flex(space-between, row);
+    padding: 0 20px;
+    width: 85vw;
+}
+
+.dash-head-logo {
+    height: 60px;
+}
+
+.dash-head-icon {
+    display: none;
+}
 
 .dash-nav {
     // @include border(green);
@@ -25,11 +34,16 @@
 .user {
     // @include border(orange);
     @include flex(space-between, row);
+    cursor: pointer;
 
     img {
         border-radius: 50%;
         height: 40px;
         margin-right: 10px;
+    }
+
+    p {
+        text-decoration: none;
     }
 }
 

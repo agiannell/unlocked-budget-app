@@ -56,6 +56,7 @@
 .update-group input {
   -webkit-transition: .1s;
   transition: .1s;
+  width: 230px;
 }
 
 .update-group input:focus {
@@ -137,5 +138,22 @@
   margin: 0 30px 20px 0;
   -webkit-transition: .1s;
   transition: .1s;
+}
+
+@media (max-width: 1100px) {
+  .group-titles h1 {
+    font-size: 1.2em;
+  }
+  .group-titles input {
+    width: 180px;
+    font-size: 1.2em;
+  }
+  .group-money {
+    width: 210px;
+  }
+  .group-money h2 {
+    font-size: .9em;
+    width: 100px;
+  }
 }
 /*# sourceMappingURL=Groups.css.map */

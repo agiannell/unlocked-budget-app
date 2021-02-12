@@ -36,6 +36,7 @@
 
     input {
         transition: .1s;
+        width: 230px;
 
         &:focus {
             transform: scale(1.1);
@@ -82,4 +83,27 @@
     height: 20px;
     margin: 0 30px 20px 0;
     transition: .1s;
+}
+
+@media(max-width: 1100px) {
+    .group-titles {
+
+        h1 {
+            font-size: 1.2em;
+        }
+
+        input {
+            width: 180px;
+            font-size: 1.2em;
+        }
+    }
+
+    .group-money {
+        width: 210px;
+
+        h2 {
+            font-size: .9em;
+            width: 100px;
+        }
+    }
 }

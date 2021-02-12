@@ -11,6 +11,7 @@
   // border: 2px dotted yellowgreen;
   width: 900px;
   color: $gray;
+  padding: 30px;
   @include flex(space-between, row);
 }
 
@@ -21,6 +22,7 @@
   height: 300px;
   @include flex(space-between, column);
   align-items: flex-start;
+  transition: .2s;
   animation: flyInRight 1s ease-in-out;
 
   p {
@@ -31,18 +33,19 @@
 
 .budget-preview {
   // border: 2px dotted rebeccapurple;
-  width: 420px;
+  width: 380px;
   padding: 25px 10px;
   @include flex(space-evenly, column);
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 0 10px 3px rgba(0,0,0,.2);
+  transition: .2s;
   animation: flyInLeft 1s ease-in-out;
 
   h2 {
     // @include border(green);
     margin-bottom: 20px;
-    width: 350px;
+    width: 320px;
     text-align: left;
   }
 }
@@ -50,7 +53,7 @@
 .transaction {
   border: 1px solid $red;
   height: 40px;
-  width: 350px;
+  width: 320px;
   border-radius: 20px;
   @include flex(space-between, row);
   padding: 0 10px;
@@ -91,5 +94,70 @@
   img {
     height: 25px;
     margin: 0 10px;
+  }
+}
+
+@media(max-width: 900px) {
+  .landing-info {
+    transform: scale(.85);
+    height: 340px;
+
+    h1 {
+      font-size: 2em;
+    }
+  }
+  
+  .budget-preview {
+    transform: scale(.9);
+  }
+
+  .landing-content {
+    width: 700px;
+  }
+}
+
+@media(max-width: 700px) {
+  .landing-footer{
+
+    p {
+      display: none;
+    }
+  }
+
+  .landing-main {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .landing-content {
+    flex-direction: column;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin-top: 350px;
+  }
+
+  .landing-info {
+    transform: scale(1);
+    width: 90%;
+    height: 200px;
+    align-items: center;
+    margin: 0;
+
+    h1 {
+      text-align: center;
+    }
+
+    p {
+      text-align: center;
+    }
+  }
+  
+  .budget-preview {
+    display: none;
+  }
+  
+  #sign-in {
+    width: 300px;
   }
 }

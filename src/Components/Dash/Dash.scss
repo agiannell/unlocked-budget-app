@@ -6,7 +6,6 @@
     @include flex(center, row);
     align-items: flex-start;
     height: 100vh;
-    padding: 0 7%;
     padding-top: 150px;
 }
 
@@ -87,4 +86,14 @@
     font-weight: 700;
     color: $blue;
     border-bottom: 2px solid $blue;
+}
+
+.dash-logout {
+    display: none;
+}
+
+@media(max-width: 1100px) {
+    .transactions {
+        width: 350px;
+    }
 }

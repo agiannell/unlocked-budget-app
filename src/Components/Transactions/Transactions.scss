@@ -15,6 +15,7 @@
     span {
       font-size: .7em;
       font-weight: 700;
+      color: $gray;
     }
   }
   
@@ -42,6 +43,7 @@
     span {
       font-size: .7em;
       font-weight: 700;
+      color: $gray;
     }
   }
   
@@ -52,5 +54,15 @@
   
     span {
       font-size: 1.2em;
+    }
+  }
+
+  @media(max-width: 1100px) {
+    .income {
+      width: 300px;
+    }
+
+    .expense {
+      width: 300px;
     }
   }

@@ -2,8 +2,10 @@ import axios from 'axios';
 // import { useEffect } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { clearUser, getUser } from '../../ducks/userReducer'
-import logo from '../../img/logo-linear-color.svg'
+import { clearUser, getUser } from '../../ducks/userReducer';
+import logo from '../../img/logo-linear-color.svg';
+import icon from '../../img/icon-color.svg';
+import signOut from '../../img/logout-icon.svg';
 import './DashHeader.css';
 
 const DashHeader = props => {
@@ -29,13 +31,17 @@ const DashHeader = props => {
     // console.log(props)
     return (
         <header className='dash-header'>
-            <img src={ logo } alt='logo' />
-            <section className='dash-nav'>
-                <div className='user'>
-                    <Link to='/profile'><img src={ profile_pic } alt={ first_name } /></Link>
-                    <p>{ first_name }</p>
-                </div>
-                <button className='sign-out' onClick={ logout }>Sign Out</button>
+            <section className='dash-head-container'>
+                <img src={ logo } alt='logo' className='dash-head-logo' />
+                <img src={ icon } alt='icon' className='dash-head-icon' />
+                <section className='dash-nav'>
+                <Link to='/profile'><div className='user'>
+                        <img src={ profile_pic } alt={ first_name } />
+                        <p>{ first_name }</p>
+                    </div></Link>
+                    <button className='sign-out' onClick={ logout }>Sign Out</button>
+                    <img src={ signOut } alt='sign-out' className='dash-logout' />
+                </section>
             </section>
         </header>
     )

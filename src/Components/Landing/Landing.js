@@ -14,7 +14,7 @@ function Landing() {
                     <section className='landing-info'>
                         <h1>Take Control of Your Finances</h1>
                         <p>With unlocked, you can take back control of your money. It's time you make your money work for you, not the other way around. Simply sign in, get your monthly plan set up, and start telling your money what to do.</p>
-                        <Link to='/signin'><button>Sign In</button></Link>
+                        <Link to='/signin'><button id='sign-in'>Sign In</button></Link>
                     </section>
                     <section className='budget-preview'>
                         <h2>Your Transactions</h2>
