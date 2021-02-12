@@ -11,6 +11,7 @@ import './Dash.css';
 
 const Dash = props => {
     const [ groups, setGroups ] = useState([]),
+          [ groupSums, setGroupSums ] = useState([]),
           [ categories, setCategories ] = useState([]),
           [ loading, setLoading ] = useState(true),
           [ trackedTransactions, setTrackedTransactions ] = useState([]),
@@ -30,6 +31,18 @@ const Dash = props => {
                   }
               ]
           };
+
+    const getGroupSums = useCallback(() => {
+        groups.map(e => (
+            axios.get(`/api/category-sum/${ user_id }/${ e.name }`)
+                .then(res => {
+                    console.log(e.name)
+                    console.log(res.data)
+                    setGroupSums([...groupSums, res.data.sum])
+                })
+                .catch(err => console.log(err))
+        ))
+    }, [user_id, groups, groupSums])
 
     const getGroups = useCallback(() => {
         axios.get(`/api/groups/${ user_id }`)
@@ -57,6 +70,7 @@ const Dash = props => {
 
     useEffect(() => {
         getGroups()
+        getGroupSums()
         getTrackedTrans()
         getUntrackedTrans()
 
@@ -69,7 +83,7 @@ const Dash = props => {
         setTimeout(() => {
             setLoading(false);
         }, 3000);
-    }, [user_id, getGroups, getTrackedTrans, getUntrackedTrans])
+    }, [user_id, getGroups, getTrackedTrans, getUntrackedTrans, getGroupSums])
 
     // useEffect(() => {
     //     axios.get(`/api/transactions/${ user_id }`)
@@ -95,11 +109,7 @@ const Dash = props => {
         props.history.push('/signin')
     }
 
-    // console.log(user_id);
-    // console.log(groups);
-    // console.log(showTracked);
-    // console.log(trackedTransactions);
-    // console.log(untrackedTransactions);
+    console.log(groupSums);
     return (
         <section>
             { !editTrans

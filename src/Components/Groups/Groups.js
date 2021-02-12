@@ -31,7 +31,7 @@ const Groups = props => {
             .catch(err => console.log(err))
     }
 
-    const updateGroup = (e) => {
+    const updateGroup = e => {
         e.preventDefault()
 
         axios.put(`/api/group/${ id }`, { groupName })
