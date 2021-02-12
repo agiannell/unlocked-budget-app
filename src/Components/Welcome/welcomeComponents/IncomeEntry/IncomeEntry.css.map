@@ -2,7 +2,9 @@
     "version": 3,
     "mappings": "",
     "sources": [
-        "IncomeEntry.scss"
+        "IncomeEntry.scss",
+        "../../../../scss/_mixins.scss",
+        "../../../../scss/_variables.scss"
     ],
     "names": [],
     "file": "IncomeEntry.css"

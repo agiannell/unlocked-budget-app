@@ -8,7 +8,7 @@
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 5px 2px rgba(0,0,0,0.2);
-    padding: 10px;
+    padding: 20px;
 
 }
 
@@ -20,9 +20,34 @@
         font-size: 1.5em;
         margin-bottom: 20px;
     }
+
+    input {
+        font-family: 'aglet-slab', sans-serif;
+        color: $purple;
+        font-size: 1.5em;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+}
+
+.update-group {
+    // @include border(red);
+    @include flex(flex-start, row);
+
+    input {
+        transition: .1s;
+        width: 230px;
+
+        &:focus {
+            transform: scale(1.1);
+            background-color: rgb(243, 243, 243);
+            padding: 5px
+        }
+    }
 }
 
 .group-money {
+    // @include border(orange);
     @include flex(space-between, row);
     width: 250px;
     
@@ -30,5 +55,55 @@
         // @include border(blue);
         font-size: 1em;
         width: 110px;
+        text-align: right;
+    }
+}
+
+.add-category {
+    margin-top: 30px;
+    @include flex(flex-start, row);
+    color: $blue;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.add-btn {
+    border-radius: 50%;
+    background-color: $blue;
+    color: white;
+    height: 20px;
+    width: 20px;
+    @include flex(center, column);
+    margin-right: 10px;
+    font-weight: 900;
+    font-size: 1.3em;
+}
+
+.delete-group {
+    height: 20px;
+    margin: 0 30px 20px 0;
+    transition: .1s;
+}
+
+@media(max-width: 1100px) {
+    .group-titles {
+
+        h1 {
+            font-size: 1.2em;
+        }
+
+        input {
+            width: 180px;
+            font-size: 1.2em;
+        }
+    }
+
+    .group-money {
+        width: 210px;
+
+        h2 {
+            font-size: .9em;
+            width: 100px;
+        }
     }
 }

@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import loadingSpinner from '../../../../img/loading.gif';
-import './IncomeInsight.css'
+import { SyncLoader } from 'react-spinners';
+import './IncomeInsight.css';
 
 const IncomeInsight = props => {
     const groupName = 'income',
@@ -14,26 +14,33 @@ const IncomeInsight = props => {
     useEffect(() => {
         axios.get(`/api/category-sum/${ user_id }/${ groupName }`)
             .then(res => {
-                setSum(res.data[0].sum)
-                setLoading(false)
+                // console.log(res.data)
+                setSum(res.data.sum)
+                setTimeout(setLoading(false), 10000);
             })
             .catch(err => console.log(err));
-    }, [user_id, groupName])
+            
+    }, [sum, user_id, groupName])
 
     // console.log(props);
     return (
         <section>
             { !loading
                 ? (
-                    <>
-                        <h1>${ sum }!</h1>
-                        <p>Nice job, { first_name }! Now let's make a plan to tell this money what to do.</p>
-                        <Link to='/welcome/expenses-intro'><button>Continue</button></Link>
-                    </>
+                    <section className='intro'>
+                        <section className='intro-content'>
+                            <h1>${ sum }!</h1>
+                            <p>Nice job, <span className='first-name'>{ first_name }!</span> Now let's make a plan to tell this money what to do.</p>
+                            <Link to='/welcome/expenses-intro'><button className='continue'>Continue</button></Link>
+                            <div className='go-back' onClick={ props.history.goBack }>&#60; Back</div>
+                        </section>
+                    </section>
                 )
                 : (
-                    <section className='welcome-loading'>
-                        <img src={ loadingSpinner } alt='loading' />
+                    <section className='loading'>
+                        <SyncLoader
+                            color='#fff'
+                            size='30px' />
                     </section>
                 ) 
             }

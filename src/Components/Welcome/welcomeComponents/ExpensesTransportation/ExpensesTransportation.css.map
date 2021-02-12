@@ -1,8 +1,10 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AAGA,AAAA,cAAc,CAAC;EACX,SAAS,EAAE,KAAK;CACnB",
     "sources": [
-        "ExpensesTransportation.scss"
+        "ExpensesTransportation.scss",
+        "../../../../scss/_mixins.scss",
+        "../../../../scss/_variables.scss"
     ],
     "names": [],
     "file": "ExpensesTransportation.css"

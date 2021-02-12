@@ -10,7 +10,7 @@ export default (
         <Route exact path='/' component={ Landing } />
         <Route path='/signin' component={ SignIn } />
         <Route path='/dash' component={ Dash } />
-        <Route path='/profile/:id' component={ Profile } />
+        <Route path='/profile' component={ Profile } />
         <Route path='/welcome' component={ Welcome } />
     </Switch>
 )

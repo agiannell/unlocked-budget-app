@@ -49,4 +49,117 @@ h2 {
   font-size: 1.5em;
   font-weight: 700;
 }
+
+p {
+  text-transform: initial;
+}
+
+input {
+  text-transform: capitalize;
+  color: #666;
+  letter-spacing: .1em;
+  outline: none;
+}
+
+.focused {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.2);
+  padding: 0 10px;
+  background-color: white;
+}
+
+.focused input {
+  background-color: #f3f3f3;
+  padding: 12px 12px;
+}
+
+.hidden {
+  display: none;
+}
+
+.blank {
+  visibility: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+@-webkit-keyframes flyInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-200px);
+            transform: translateY(-200px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes flyInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-200px);
+            transform: translateY(-200px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@-webkit-keyframes flyInRight {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-200px);
+            transform: translateX(-200px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@keyframes flyInRight {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-200px);
+            transform: translateX(-200px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@-webkit-keyframes flyInLeft {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(200px);
+            transform: translateX(200px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@keyframes flyInLeft {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(200px);
+            transform: translateX(200px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
 /*# sourceMappingURL=App.css.map */

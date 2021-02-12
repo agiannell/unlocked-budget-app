@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import loadingSpinner from '../../../../img/loading.gif';
+import { SyncLoader } from 'react-spinners';
 import './ExpensesInsight.css'
 
 const ExpensesInsight = props => {
@@ -16,33 +16,43 @@ const ExpensesInsight = props => {
     useEffect(() => {
         axios.get(`/api/category-sum/${ user_id }/${ groupName }`)
             .then(res => {
-                setIncomeSum(res.data[0].sum);
-            })
-            .catch(err => console.log(err));
-
-        axios.get(`/api/expense-sum/${ user_id }`)
-            .then(res => {
-                setExpenseSum(res.data[0].sum);
-                setLeftToBudget(incomeSum - expenseSum);
-                setLoading(false);
-            })
-            .catch(err => console.log(err));
+                // console.log(res.data)
+                setIncomeSum(res.data.sum);
+                axios.get(`/api/expense-sum/${ user_id }`)
+                    .then(results => {
+                        // console.log(results.data)
+                        setExpenseSum(results.data.sum);
+                    })
+                })
+                .catch(err => console.log(err));
+                
+            setLeftToBudget(incomeSum - expenseSum);
+            setTimeout(() => {
+                setLoading(false)
+            }, 1000)
     }, [user_id, groupName, incomeSum, expenseSum])
 
     return (
         <section>
             { !loading
                 ? (
-                    <>
-                        <h1>${ leftToBudget }</h1>
-                        <h4>left to budget</h4>
-                        <p>Great job, { first_name }! You've got the basics covered.</p>
-                        <Link to='/welcome/giving-intro'><button>Continue</button></Link>
-                    </>
+                    <section className='intro'>
+                        <section className='intro-content'>
+                            <div>
+                                <h1>${ leftToBudget }</h1>
+                                <p>left to budget</p>
+                            </div>
+                            <p>Great job, <span className='first-name'>{ first_name }!</span> You've got the basics covered.</p>
+                            <Link to='/welcome/giving-intro'><button className='continue'>Continue</button></Link>
+                            <div className='go-back' onClick={ props.history.goBack }>&#60; Back</div>
+                        </section>
+                    </section>
                 )
                 : (
-                    <section className='welcome-loading'>
-                        <img src={ loadingSpinner } alt='loading' />
+                    <section className='loading'>
+                        <SyncLoader
+                            color='#fff'
+                            size='30px' />
                     </section>
                 ) 
             }

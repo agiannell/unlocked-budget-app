@@ -4,14 +4,14 @@ import axios from 'axios';
 import './ExpensesTransportation.css'
 
 const ExpensesTransportation = props => {
-    const [ gas, setGas ] = useState({ name: 'gas', amount: '0.00' }),
-          [ maintenance, setMaintenance ] = useState({ name: 'maintenance', amount: '0.00' }),
-          [ registration, setRegistration ] = useState({ name: 'registration & title', amount: '0.00' }),
+    const [ gas, setGas ] = useState({ name: 'gas', amount: '' }),
+          [ maintenance, setMaintenance ] = useState({ name: 'maintenance', amount: '' }),
+          [ registration, setRegistration ] = useState({ name: 'registration & title', amount: '' }),
           [ groupInfo, setGroupInfo ] = useState({}),
           { user_id } = props.user;
 
     useEffect(() => {
-        axios.post('/api/group', { user_id, groupName: 'transportation' })
+        axios.post('/api/group-init', { user_id, groupName: 'transportation' })
             .then(res => {
                 setGroupInfo(res.data[0])
             })
@@ -33,45 +33,63 @@ const ExpensesTransportation = props => {
     }
 
     return (
-        <section>
-            <h1>Enter your transportation expenses</h1>
-            <h2>These can be edited later.</h2>
-            <form>
-                <div className='expenses-entry-headers'>
-                    <h1>Transportation</h1>
-                    <h3>Planned</h3>
-                    <p>Received</p>
-                </div>
-                <div className='expense-line'>
-                    <input 
-                        value={ gas.name }
-                        onChange={ e => setGas((s) => ({ ...s, name: e.target.value })) } />
-                    <input 
-                        value={ gas.amount }
-                        onChange={ e => setGas((s) => ({ ...s, amount: e.target.value })) } />
-                    <p>$0.00</p>
-                </div>
-                <div className='expense-line'>
-                    <input 
-                        value={ maintenance.name }
-                        onChange={ e => setMaintenance((s) => ({ ...s, name: e.target.value })) } />
-                    <input 
-                        value={ maintenance.amount }
-                        onChange={ e => setMaintenance((s) => ({ ...s, amount: e.target.value })) } />
-                    <p>$0.00</p>
-                </div>
-                <div className='expense-line'>
-                    <input 
-                        value={ registration.name }
-                        onChange={ e => setRegistration((s) => ({ ...s, name: e.target.value })) } />
-                    <input 
-                        value={ registration.amount }
-                        onChange={ e => setRegistration((s) => ({ ...s, amount: e.target.value })) } />
-                    <p>$0.00</p>
-                </div>
-            </form>
-            <button onClick={ e => handleSubmit(e) }>Continue</button>
-            <span onClick={ props.history.goBack }>&#60; Back</span>
+        <section className='intro'>
+            <section className='entry'>
+                <h1>Enter your<br /> transportation expenses</h1>
+                <p>These can be edited later.</p>
+                <form>
+                    <section className='entry-form'>
+                        <div className='entry-headers'>
+                            <h1 id='transpo-title'>Transportation</h1>
+                            <div className='entry-money'>
+                                <p>Planned</p>
+                                <p>Received</p>
+                            </div>
+                        </div>
+                        <div className='entry-line'>
+                            <input
+                                placeholder='Gas'
+                                value={ gas.name }
+                                onChange={ e => setGas((s) => ({ ...s, name: e.target.value })) } />
+                            <div className='entry-money'>
+                                <input
+                                    placeholder='$0.00'
+                                    value={ gas.amount }
+                                    onChange={ e => setGas((s) => ({ ...s, amount: e.target.value })) } />
+                                <p>$0.00</p>
+                            </div>
+                        </div>
+                        <div className='entry-line'>
+                            <input
+                                placeholder='Maintenance'
+                                value={ maintenance.name }
+                                onChange={ e => setMaintenance((s) => ({ ...s, name: e.target.value })) } />
+                            <div className='entry-money'>
+                                <input
+                                    placeholder='$0.00'
+                                    value={ maintenance.amount }
+                                    onChange={ e => setMaintenance((s) => ({ ...s, amount: e.target.value })) } />
+                                <p>$0.00</p>
+                            </div>
+                        </div>
+                        <div className='entry-line'>
+                            <input
+                                placeholder='Registration & Title'
+                                value={ registration.name }
+                                onChange={ e => setRegistration((s) => ({ ...s, name: e.target.value })) } />
+                            <div className='entry-money'>
+                                <input
+                                    placeholder='$0.00'
+                                    value={ registration.amount }
+                                    onChange={ e => setRegistration((s) => ({ ...s, amount: e.target.value })) } />
+                                <p>$0.00</p>
+                            </div>
+                        </div>
+                    </section>
+                    <button className='continue' onClick={ e => handleSubmit(e) }>Continue</button>
+                </form>
+                <div className='go-back' onClick={ props.history.goBack }>&#60; Back</div>
+            </section>
         </section>
     )
 }

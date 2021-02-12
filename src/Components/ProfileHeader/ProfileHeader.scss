@@ -1,0 +1,99 @@
+@import '../../scss/mixins';
+@import '../../scss/variables';
+
+.profile-header {
+    // @include border(red);
+    @include flex(center, row);
+    width: 100%;
+    height: 100px;
+    position: fixed;
+    z-index: 0;
+}
+
+.profile-head-container {
+    // @include border(yellowgreen);
+    @include flex(space-between, row);
+    padding: 0 20px;
+    width: 85vw;
+}
+
+.profile-head-logo {
+    height: 60px;
+}
+
+.profile-head-icon {
+    display: none;
+}
+
+.to-budget {
+    width: 200px;
+
+    &:hover {
+        background-color: $green;
+    }
+}
+
+.to-budget-mobile {
+    display: none;
+}
+
+.profile-nav {
+    // @include border(green);
+    @include flex(space-between, row);
+    width: 400px;
+}
+
+.profile-sign-out {
+    width: 150px;
+
+    &:hover {
+        background-color: $red;
+    }
+}
+
+.profile-logout {
+    display: none;
+}
+
+@media(max-width: 900px) {
+    .to-budget {
+        display: none;
+    }
+
+    .profile-sign-out {
+        display: none;
+    }
+
+    .profile-nav {
+        justify-content: flex-end;
+        width: auto;
+    }
+
+    .to-budget-mobile {
+        display: initial;
+        height: 40px;
+        cursor: pointer;
+    }
+
+    .profile-logout {
+        display: initial;
+        height: 40px;
+        margin-left: 50px;
+        cursor: pointer;
+    }
+}
+
+@media(max-width: 600px) {
+    .profile-header {
+        height: 140px;
+    }
+    
+    .profile-head-logo {
+        display: none;
+    }
+
+    .profile-head-icon {
+        display: initial;
+        height: 70px;
+    }
+}

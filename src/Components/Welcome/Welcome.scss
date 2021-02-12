@@ -1,0 +1,150 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.continue {
+    width: 200px;
+}
+
+p {
+    color: $gray;
+    line-height: 1.5em;
+}
+
+.intro {
+    height: 100vh;
+    width: 100vw;
+    @include flex(center, column);
+    animation: flyInDown 1s ease;
+}
+
+.intro-content {
+    // @include border(red);
+    width: 500px;
+    height: 300px;
+    @include flex(space-evenly, column);
+
+    h1 {
+        font-size: 2.5em;
+    }
+}
+
+.loading {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    background-color: $purple;
+    color: white;
+    @include flex(center, column);
+}
+
+.entry {
+    @include border(green);
+    width: 550px;
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+}
+
+.entry-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 1px rgba(0,0,0,0.3);
+    margin: 20px 0;
+}
+
+.entry-headers {
+    @include border(orange);
+    @include flex(space-between, row);
+    align-items: flex-end;
+    margin-bottom: 20px;
+
+    h1 {
+        font-size: 2em;
+    }
+}
+
+.entry-money {
+    @include border(red);
+    @include flex(space-between, row);
+    
+    p {
+        // @include border(yellowgreen);
+        width: 150px;
+        text-align: right;
+    }
+}
+
+.entry-line {
+    // @include border(red);
+    @include flex(space-between, row);
+    border-bottom: 1px solid $purple;
+    margin-bottom: 15px;
+    transition: .1s;
+
+    input {
+        @include border(blue);
+        width: 250px;
+
+        &:hover {
+            background-color: rgb(243, 243, 243)
+        }
+
+        &:focus {
+            background-color: rgb(243, 243, 243)
+        }
+    }
+}
+
+.entry-money {
+    // @include border(red);
+    @include flex(space-between, row);
+    
+    input {
+        // @include border(green);
+        text-align: right;
+        width: 80px;
+    }
+
+    p {
+        width: 150px;
+        text-align: right;
+    }
+}
+
+.go-back {
+    // @include border(green);
+    color: $gray;
+    opacity: .5;
+    margin-top: 15px;
+}
+
+@keyframes flyInDown {
+    0% {
+       opacity: 0; 
+       transform: translateY(-200px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media(max-width: 600px) {
+    .entry {
+        transform: scale(.9);
+    }
+
+    .entry-form {
+        width: 90%;
+    }
+
+    .continue {
+        width: 90%;
+    }
+}

@@ -1,0 +1,8 @@
+@import '../../../../scss/variables';
+@import '../../../../scss/mixins';
+
+.first-name {
+    font-weight: 900;
+    color: $purple;
+    text-transform: capitalize;
+}

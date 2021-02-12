@@ -7,12 +7,20 @@ module.exports = {
             .then(group => res.status(200).send(group))
             .catch(err => res.status(500).send(err));
     },
+    newUserGroup: (req, res) => {
+        const { user_id, groupName } = req.body,
+              db = req.app.get('db');
+
+        db.budget.new_user_groups(user_id, groupName)
+            .then(group => res.status(200).send(group))
+            .catch(err => res.status(500).send(err));
+    },
     createCategory: (req, res) => {
         const { group_id, user_id, categoryName, categoryAmount } = req.body,
               db = req.app.get('db');
 
         db.budget.create_category(group_id, user_id, categoryName, categoryAmount)
-            .then(() => res.sendStatus(200))
+            .then(cat => res.status(200).send(cat))
             .catch(err => res.status(500).send(err));
     },
     getUserGroups: (req, res) => {
@@ -21,7 +29,7 @@ module.exports = {
 
         db.budget.get_user_groups(userId)
             .then(groups => res.status(200).send(groups))
-            .catch(err => res.status(500).send(err));
+            .catch(err => res.status(500).send(err))
     },
     getCategories: (req, res) => {
         const { groupId } = req.params,
@@ -40,22 +48,13 @@ module.exports = {
             .then(group => res.status(200).send(group))
             .catch(err => res.status(500).send(err));
     },
-    updateCatName: (req, res) => {
-        const { catName } = req.body,
+    updateCategory: (req, res) => {
+        const { catName, catAmount } = req.body,
               { catId } = req.params,
               db = req.app.get('db');
 
-        db.budget.update_category_name(catId, catName)
-            .then(cat => res.status(200).send(cat))
-            .catch(err => res.status(500).send(err));
-    },
-    updateCatAmount: (req, res) => {
-        const { catAmount } = req.body,
-              { catId } = req.params,
-              db = req.app.get('db');
-
-        db.budget.update_category_amount(catId, catAmount)
-            .then(cat => res.status(200).send(cat))
+        db.budget.update_category(catId, catName, catAmount)
+            .then(() => res.sendStatus(200))
             .catch(err => res.status(500).send(err));
     },
     deleteGroup: (req, res) => {
@@ -71,7 +70,7 @@ module.exports = {
               db = req.app.get('db');
 
         db.budget.delete_category(catId)
-            .then(() => res.sendStatus(200))
+            .then(cat => res.status(200).send(cat))
             .catch(err => res.status(500).send(err));
     },
     categorySum: (req, res) => {
@@ -80,7 +79,7 @@ module.exports = {
 
         db.budget.get_category_sum(userId, groupName)
             .then(sum => {
-                res.status(200).send(sum)
+                res.status(200).send(sum[0])
             })
             .catch(err => res.status(500).send(err));
     },
@@ -90,7 +89,17 @@ module.exports = {
 
         db.budget.get_expense_sum(userId)
             .then(sum => {
-                res.status(200).send(sum)
+                res.status(200).send(sum[0])
+            })
+            .catch(err => res.status(500).send(err));
+    },
+    getUserCategories: (req, res) => {
+        const { userId } = req.params,
+              db = req.app.get('db');
+
+        db.budget.get_user_categories(userId)
+            .then(cat => {
+                res.status(200).send(cat);
             })
             .catch(err => res.status(500).send(err));
     }

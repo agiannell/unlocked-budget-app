@@ -1,0 +1,113 @@
+.expense {
+  border: 1px solid #EE6352;
+  height: 40px;
+  width: 350px;
+  border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding: 0 10px;
+  margin: 10px 0;
+  -webkit-box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.expense span {
+  font-size: .7em;
+  font-weight: 700;
+  color: #666;
+}
+
+.expense-content {
+  width: 230px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.expense-content span {
+  font-size: 1.2em;
+}
+
+.income {
+  border: 1px solid #08B2E3;
+  height: 40px;
+  width: 350px;
+  border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding: 0 10px;
+  margin: 10px 0;
+  -webkit-box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.income span {
+  font-size: .7em;
+  font-weight: 700;
+  color: #666;
+}
+
+.income-content {
+  width: 230px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.income-content span {
+  font-size: 1.2em;
+}
+
+@media (max-width: 1100px) {
+  .income {
+    width: 300px;
+  }
+  .expense {
+    width: 300px;
+  }
+}
+/*# sourceMappingURL=Transactions.css.map */

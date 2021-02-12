@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express'),
       massive = require('massive'),
       session = require('express-session'),
+      path = require('path'),
       authCtrl = require('./controllers/authController'),
       userCtrl = require('./controllers/userController'),
       budgetCtrl = require('./controllers/budgetController'),
@@ -16,6 +17,8 @@ app.use(session({
     secret: SESSION_SECRET,
     cookie: { maxAge: 1000 * 60 * 60 * 24 * 30 }
 }));
+
+app.use(express.static(__dirname + '/../build'));
 
 massive({
     connectionString: CONNECTION_STRING,
@@ -33,19 +36,31 @@ app.get('/auth/logout', authCtrl.logout);
 app.get('/auth/get', authCtrl.getUser);
 
 // user endpoints
+app.get('/sign-s3', userCtrl.getSignedUrl);
+app.put('/api/user-info/:user_id', userCtrl.updateUserInfo);
+app.put('/api/user-pic/:user_id', userCtrl.updateProfilePic);
 
-
-// budget endpoints
+// group endpoints
 app.post('/api/group', budgetCtrl.createGroup);
-app.post('/api/category', budgetCtrl.createCategory);
+app.post('/api/group-init', budgetCtrl.newUserGroup);
 app.get('/api/groups/:userId', budgetCtrl.getUserGroups);
+app.put('/api/group/:groupId', budgetCtrl.updateGroup);
+app.delete('/api/group/:groupId', budgetCtrl.deleteGroup);
+
+//category endpoints
+app.post('/api/category', budgetCtrl.createCategory);
 app.get('/api/categories/:groupId', budgetCtrl.getCategories);
 app.get('/api/category-sum/:userId/:groupName', budgetCtrl.categorySum);
+app.get('/api/user-categories/:userId', budgetCtrl.getUserCategories);
 app.get('/api/expense-sum/:userId', budgetCtrl.expenseSum);
-app.put('/api/group/:groupId', budgetCtrl.updateGroup);
-app.put('/api/category-name/:catId', budgetCtrl.updateCatName);
-app.put('/api/category-amount/:catId', budgetCtrl.updateCatAmount);
-app.delete('/api/group/:groupId', budgetCtrl.deleteGroup);
+app.put('/api/category/:catId', budgetCtrl.updateCategory);
 app.delete('/api/category/:catId', budgetCtrl.deleteCategory);
 
 // transaction endpoints
+app.get('/api/transactions/:userId', transCtrl.getUserTransactions);
+app.get('/api/transactions-tracked/:userId', transCtrl.getTrackedTransactions);
+app.get('/api/transactions-untracked/:userId', transCtrl.getUntrackedTransactions);
+app.get('/api/transaction-sum/:catId', transCtrl.getSumByCategory);
+app.post('/api/transaction', transCtrl.createTransaction);
+app.put('/api/transaction/:transId', transCtrl.updateTransaction);
+app.delete('/api/transaction/:transId', transCtrl.deleteTransaction);
