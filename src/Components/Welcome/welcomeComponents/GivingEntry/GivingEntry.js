@@ -8,7 +8,6 @@ const GivingEntry = props => {
     const [ charity, setCharity ] = useState({ name: 'charity', amount: '' }),
           [ groupInfo, setGroupInfo ] = useState({}),
           [ loading, setLoading ] = useState(false),
-          [ isFocused, setIsFocused ] = useState(false),
           { user_id } = props.user;
 
     useEffect(() => {
@@ -50,15 +49,11 @@ const GivingEntry = props => {
                                 </div>
                                 <div className='entry-line'>
                                     <input 
-                                        onFocus={ () => setIsFocused(true) }
-                                        onBlur={ () => setIsFocused(false) }
                                         placeholder='Charity'
                                         value={ charity.name }
                                         onChange={ e => setCharity((s) => ({ ...s, name: e.target.value })) } />
                                     <div className='entry-money'>
                                         <input 
-                                            onFocus={ () => setIsFocused(true) }
-                                            onBlur={ () => setIsFocused(false) }
                                             placeholder='$0.00'
                                             value={ charity.amount }
                                             onChange={ e => setCharity((s) => ({ ...s, amount: e.target.value })) } />

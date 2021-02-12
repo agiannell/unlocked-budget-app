@@ -10,7 +10,6 @@ const IncomeEntry = props => {
           [ paycheck3, setPaycheck3 ] = useState({ name: 'paycheck 3', amount: '' }),
           [ groupInfo, setGroupInfo ] = useState({}),
           [ loading, setLoading ] = useState(false),
-          [ isFocused, setIsFocused ] = useState(false),
           { user_id } = props.user;
 
     useEffect(() => {
@@ -58,8 +57,6 @@ const IncomeEntry = props => {
                                 </div>
                                 <div className='entry-line'>
                                     <input 
-                                        onFocus={ () => setIsFocused(true) }
-                                        onBlur={ () => setIsFocused(false) }
                                         value={ paycheck1.name }
                                         onChange={ e => setPaycheck1((s) => ({ ...s, name: e.target.value })) }
                                         placeholder='Paycheck 1' />

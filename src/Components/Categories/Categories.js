@@ -4,7 +4,7 @@ import trash from '../../img/trash-can.svg';
 import './Categories.css';
 
 const Categories = props => {
-    const { name, amount, catId, groupName, getCategoriesFn } = props,
+    const { name, amount, catId, groupName, getCategoriesFn, getGroupSums } = props,
           [ catName, setCatName ] = useState(name),
           [ catAmount, setCatAmount ] = useState(amount),
           [ remaining, setRemaining ] = useState(amount),
@@ -30,6 +30,7 @@ const Categories = props => {
 
         axios.put(`/api/category/${ catId }`, { catName, catAmount })
             .then(() => {
+                getGroupSums();
                 setIsFocused(false);
             })
             .catch(err => console.log(err));

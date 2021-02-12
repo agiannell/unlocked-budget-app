@@ -35,6 +35,10 @@
   cursor: pointer;
 }
 
+.user-info img:hover {
+  border: 5px solid #08B2E3;
+}
+
 .user-info h2 {
   margin-top: 20px;
 }

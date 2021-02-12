@@ -8,7 +8,6 @@ const ExpensesTransportation = props => {
           [ maintenance, setMaintenance ] = useState({ name: 'maintenance', amount: '' }),
           [ registration, setRegistration ] = useState({ name: 'registration & title', amount: '' }),
           [ groupInfo, setGroupInfo ] = useState({}),
-          [ isFocused, setIsFocused ] = useState(false),
           { user_id } = props.user;
 
     useEffect(() => {
@@ -49,15 +48,11 @@ const ExpensesTransportation = props => {
                         </div>
                         <div className='entry-line'>
                             <input
-                                onFocus={ () => setIsFocused(true) }
-                                onBlur={ () => setIsFocused(false) } 
                                 placeholder='Gas'
                                 value={ gas.name }
                                 onChange={ e => setGas((s) => ({ ...s, name: e.target.value })) } />
                             <div className='entry-money'>
                                 <input
-                                    onFocus={ () => setIsFocused(true) }
-                                    onBlur={ () => setIsFocused(false) } 
                                     placeholder='$0.00'
                                     value={ gas.amount }
                                     onChange={ e => setGas((s) => ({ ...s, amount: e.target.value })) } />
@@ -66,15 +61,11 @@ const ExpensesTransportation = props => {
                         </div>
                         <div className='entry-line'>
                             <input
-                                onFocus={ () => setIsFocused(true) }
-                                onBlur={ () => setIsFocused(false) } 
                                 placeholder='Maintenance'
                                 value={ maintenance.name }
                                 onChange={ e => setMaintenance((s) => ({ ...s, name: e.target.value })) } />
                             <div className='entry-money'>
                                 <input
-                                    onFocus={ () => setIsFocused(true) }
-                                    onBlur={ () => setIsFocused(false) } 
                                     placeholder='$0.00'
                                     value={ maintenance.amount }
                                     onChange={ e => setMaintenance((s) => ({ ...s, amount: e.target.value })) } />
@@ -83,15 +74,11 @@ const ExpensesTransportation = props => {
                         </div>
                         <div className='entry-line'>
                             <input
-                                onFocus={ () => setIsFocused(true) }
-                                onBlur={ () => setIsFocused(false) } 
                                 placeholder='Registration & Title'
                                 value={ registration.name }
                                 onChange={ e => setRegistration((s) => ({ ...s, name: e.target.value })) } />
                             <div className='entry-money'>
                                 <input
-                                    onFocus={ () => setIsFocused(true) }
-                                    onBlur={ () => setIsFocused(false) } 
                                     placeholder='$0.00'
                                     value={ registration.amount }
                                     onChange={ e => setRegistration((s) => ({ ...s, amount: e.target.value })) } />

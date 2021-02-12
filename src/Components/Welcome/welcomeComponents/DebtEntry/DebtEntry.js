@@ -10,7 +10,6 @@ const DebtEntry = props => {
           [ studentLoan, setStudentLoan ] = useState({ name: 'student loan', amount: '' }),
           [ groupInfo, setGroupInfo ] = useState({}),
           [ loading, setLoading ] = useState(false),
-          [ isFocused, setIsFocused ] = useState(false),
           { user_id } = props.user;
 
     useEffect(() => {
@@ -56,15 +55,11 @@ const DebtEntry = props => {
                                 </div>
                                 <div className='entry-line'>
                                     <input
-                                        onFocus={ () => setIsFocused(true) }
-                                        onBlur={ () => setIsFocused(false) } 
                                         placeholder='Credit Card'
                                         value={ creditCard.name }
                                         onChange={ e => setCreditCard((s) => ({ ...s, name: e.target.value })) } />
                                     <div className='entry-money'>
                                         <input
-                                            onFocus={ () => setIsFocused(true) }
-                                            onBlur={ () => setIsFocused(false) } 
                                             placeholder='$0.00'
                                             value={ creditCard.amount }
                                             onChange={ e => setCreditCard((s) => ({ ...s, amount: e.target.value })) } />
@@ -73,15 +68,11 @@ const DebtEntry = props => {
                                 </div>
                                 <div className='entry-line'>
                                     <input
-                                        onFocus={ () => setIsFocused(true) }
-                                        onBlur={ () => setIsFocused(false) } 
                                         placeholder='Car Payment'
                                         value={ carPayment.name }
                                         onChange={ e => setCarPayment((s) => ({ ...s, name: e.target.value })) } />
                                     <div className='entry-money'>
                                         <input
-                                            onFocus={ () => setIsFocused(true) }
-                                            onBlur={ () => setIsFocused(false) } 
                                             placeholder='$0.00'
                                             value={ carPayment.amount }
                                             onChange={ e => setCarPayment((s) => ({ ...s, amount: e.target.value })) } />
@@ -90,15 +81,11 @@ const DebtEntry = props => {
                                 </div>
                                 <div className='entry-line'>
                                     <input
-                                        onFocus={ () => setIsFocused(true) }
-                                        onBlur={ () => setIsFocused(false) } 
                                         placeholder='Student Loan'
                                         value={ studentLoan.name }
                                         onChange={ e => setStudentLoan((s) => ({ ...s, name: e.target.value })) } />
                                     <div className='entry-money'>
                                         <input
-                                            onFocus={ () => setIsFocused(true) }
-                                            onBlur={ () => setIsFocused(false) } 
                                             placeholder='$0.00'
                                             value={ studentLoan.amount }
                                             onChange={ e => setStudentLoan((s) => ({ ...s, amount: e.target.value })) } />

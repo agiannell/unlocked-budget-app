@@ -11,7 +11,6 @@ const ExpensesHousing = props => {
           [ cable, setCable ] = useState({ name: 'cable', amount: '' }),
           [ trash, setTrash ] = useState({ name: 'trash', amount: '' }),
           [ groupInfo, setGroupInfo ] = useState({}),
-          [ isFocused, setIsFocused ] = useState(false),
           { user_id } = props.user;
 
     useEffect(() => {
@@ -53,8 +52,6 @@ const ExpensesHousing = props => {
                         </div>
                         <div className='entry-line'>
                             <input 
-                                onFocus={ () => setIsFocused(true) }
-                                onBlur={ () => setIsFocused(false) }
                                 placeholder='Mortgage/Rent'
                                 value={ rent.name }
                                 onChange={ e => setRent((s) => ({ ...s, name: e.target.value })) } />
@@ -62,23 +59,17 @@ const ExpensesHousing = props => {
                                 <input
                                     placeholder='$0.00' 
                                     value={ rent.amount }
-                                    onChange={ e => setRent((s) => ({ ...s, amount: e.target.value })) }
-                                    onFocus={ () => setIsFocused(true) }
-                                    onBlur={ () => setIsFocused(false) } />
+                                    onChange={ e => setRent((s) => ({ ...s, amount: e.target.value })) } />
                                 <p>$0.00</p>
                             </div>
                         </div>
                         <div className='entry-line'>
                             <input 
-                                onFocus={ () => setIsFocused(true) }
-                                onBlur={ () => setIsFocused(false) }
                                 placeholder='Water'
                                 value={ water.name }
                                 onChange={ e => setWater((s) => ({ ...s, name: e.target.value })) } />
                             <div className='entry-money'>
                                 <input
-                                    onFocus={ () => setIsFocused(true) }
-                                    onBlur={ () => setIsFocused(false) }
                                     placeholder='$0.00' 
                                     value={ water.amount }
                                     onChange={ e => setWater((s) => ({ ...s, amount: e.target.value })) } />
@@ -87,15 +78,11 @@ const ExpensesHousing = props => {
                         </div>
                         <div className='entry-line'>
                             <input 
-                                onFocus={ () => setIsFocused(true) }
-                                onBlur={ () => setIsFocused(false) }
                                 placeholder='Natural Gas'
                                 value={ naturalGas.name }
                                 onChange={ e => setNaturalGas((s) => ({ ...s, name: e.target.value })) } />
                             <div className='entry-money'>
                                 <input
-                                    onFocus={ () => setIsFocused(true) }
-                                    onBlur={ () => setIsFocused(false) }
                                     placeholder='$0.00' 
                                     value={ naturalGas.amount }
                                     onChange={ e => setNaturalGas((s) => ({ ...s, amount: e.target.value })) } />
@@ -104,15 +91,11 @@ const ExpensesHousing = props => {
                         </div>
                         <div className='entry-line'>
                             <input 
-                                onFocus={ () => setIsFocused(true) }
-                                onBlur={ () => setIsFocused(false) }
                                 placeholder='Electricity'
                                 value={ electricity.name }
                                 onChange={ e => setElectricity((s) => ({ ...s, name: e.target.value })) } />
                             <div className='entry-money'>
                                 <input
-                                    onFocus={ () => setIsFocused(true) }
-                                    onBlur={ () => setIsFocused(false) }
                                     placeholder='$0.00' 
                                     value={ electricity.amount }
                                     onChange={ e => setElectricity((s) => ({ ...s, amount: e.target.value })) } />
@@ -121,15 +104,11 @@ const ExpensesHousing = props => {
                         </div>
                         <div className='entry-line'>
                             <input 
-                                onFocus={ () => setIsFocused(true) }
-                                onBlur={ () => setIsFocused(false) }
                                 placeholder='Cable'
                                 value={ cable.name }
                                 onChange={ e => setCable((s) => ({ ...s, name: e.target.value })) } />
                             <div className='entry-money'>
                                 <input
-                                    onFocus={ () => setIsFocused(true) }
-                                    onBlur={ () => setIsFocused(false) }
                                     placeholder='$0.00' 
                                     value={ cable.amount }
                                     onChange={ e => setCable((s) => ({ ...s, amount: e.target.value })) } />
@@ -138,15 +117,11 @@ const ExpensesHousing = props => {
                         </div>
                         <div className='entry-line'>
                             <input 
-                                onFocus={ () => setIsFocused(true) }
-                                onBlur={ () => setIsFocused(false) }
                                 placeholder='Trash'
                                 value={ trash.name }
                                 onChange={ e => setTrash((s) => ({ ...s, name: e.target.value })) } />
                             <div className='entry-money'>
                                 <input
-                                    onFocus={ () => setIsFocused(true) }
-                                    onBlur={ () => setIsFocused(false) }
                                     placeholder='$0.00' 
                                     value={ trash.amount }
                                     onChange={ e => setTrash((s) => ({ ...s, amount: e.target.value })) } />

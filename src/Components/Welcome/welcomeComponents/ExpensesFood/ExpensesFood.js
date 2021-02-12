@@ -7,7 +7,6 @@ const ExpensesFood = props => {
     const [ groceries, setGroceries ] = useState({ name: 'groceries', amount: '' }),
           [ restaurants, setRestaurants ] = useState({ name: 'restaurants', amount: '' }),
           [ groupInfo, setGroupInfo ] = useState({}),
-          [ isFocused, setIsFocused ] = useState(false),
           { user_id } = props.user;
 
     useEffect(() => {
@@ -48,15 +47,11 @@ const ExpensesFood = props => {
                         </div>
                         <div className='entry-line'>
                             <input
-                                onFocus={ () => setIsFocused(true) }
-                                onBlur={ () => setIsFocused(false) } 
                                 placeholder='Groceries'
                                 value={ groceries.name }
                                 onChange={ e => setGroceries((s) => ({ ...s, name: e.target.value })) } />
                             <div className='entry-money'>
                                 <input
-                                    onFocus={ () => setIsFocused(true) }
-                                    onBlur={ () => setIsFocused(false) } 
                                     placeholder='$0.00'
                                     value={ groceries.amount }
                                     onChange={ e => setGroceries((s) => ({ ...s, amount: e.target.value })) } />
@@ -65,15 +60,11 @@ const ExpensesFood = props => {
                         </div>
                         <div className='entry-line'>
                             <input
-                                onFocus={ () => setIsFocused(true) }
-                                onBlur={ () => setIsFocused(false) } 
                                 placeholder='Restaurants'
                                 value={ restaurants.name }
                                 onChange={ e => setRestaurants((s) => ({ ...s, name: e.target.value })) } />
                             <div className='entry-money'>
                                 <input
-                                    onFocus={ () => setIsFocused(true) }
-                                    onBlur={ () => setIsFocused(false) } 
                                     placeholder='$0.00'
                                     value={ restaurants.amount }
                                     onChange={ e => setRestaurants((s) => ({ ...s, amount: e.target.value })) } />

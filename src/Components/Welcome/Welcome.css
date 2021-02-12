@@ -71,6 +71,7 @@ p {
 }
 
 .entry {
+  border: 2px dotted green;
   width: 550px;
 }
 
@@ -92,6 +93,7 @@ p {
 }
 
 .entry-headers {
+  border: 2px dotted orange;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -116,6 +118,7 @@ p {
 }
 
 .entry-money {
+  border: 2px dotted red;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -157,6 +160,7 @@ p {
 }
 
 .entry-line input {
+  border: 2px dotted blue;
   width: 250px;
 }
 
@@ -223,6 +227,19 @@ p {
     opacity: 1;
     -webkit-transform: translateY(0);
             transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .entry {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  .entry-form {
+    width: 90%;
+  }
+  .continue {
+    width: 90%;
   }
 }
 /*# sourceMappingURL=Welcome.css.map */

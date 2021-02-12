@@ -95,6 +95,7 @@ const Groups = props => {
                     catId={ e.cat_id }
                     groupId={ id }
                     groupName={ name }
+                    getGroupSums={ getGroupSums }
                     getCategoriesFn={getCategories} />
             )) }
             { groupName === 'income'
