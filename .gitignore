@@ -18,6 +18,7 @@
 .env.test.local
 .env.production.local
 .env
+.eslintcache
 /src/img/img-src
 
 npm-debug.log*
