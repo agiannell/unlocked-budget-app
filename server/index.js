@@ -33,9 +33,9 @@ massive({
 app.post('/auth/register', authCtrl.register);
 app.post('/auth/login', authCtrl.login);
 app.get('/auth/logout', authCtrl.logout);
-app.get('/auth/get', authCtrl.getUser);
 
 // user endpoints
+app.get('/api/user', userCtrl.getUser);
 app.get('/sign-s3', userCtrl.getSignedUrl);
 app.put('/api/user-info/:user_id', userCtrl.updateUserInfo);
 app.put('/api/user-pic/:user_id', userCtrl.updateProfilePic);

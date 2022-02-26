@@ -104,11 +104,11 @@ const Dash = props => {
         .catch(err => console.log(err))
     }
         
-    if(!user_id) {
-        props.history.push('/signin')
-    }
+    // if(!user_id) {
+    //     props.history.push('/signin')
+    // }
 
-    // console.log(groupSums);
+    console.log(props);
     return (
         <section>
             { !editTrans

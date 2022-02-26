@@ -1,5 +1,5 @@
 import axios from 'axios';
-// import { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { clearUser, getUser } from '../../ducks/userReducer';
@@ -9,15 +9,17 @@ import signOut from '../../img/logout-icon.svg';
 import './DashHeader.css';
 
 const DashHeader = props => {
-    const { first_name, profile_pic } = props.user;
+    const { first_name, profile_pic } = props.user,
+          { getUser, user } = props;
 
-    // useEffect(() => {
-    //     axios.get('auth/get')
-    //         .then(res => {
-    //             props.getUser(res.data)
-    //         })
-    //         .catch(err => console.log(err))
-    // }, [props])
+    useEffect(() => {
+        axios.get('api/user')
+            .then(res => {
+                console.log(res.data)
+                getUser(res.data)
+            })
+            .catch(err => console.log(err))
+    }, [])
 
     const logout = () => {
         axios.get('auth/logout')
@@ -28,7 +30,7 @@ const DashHeader = props => {
             .catch(err => console.log(err));
     }
 
-    // console.log(props)
+    console.log(user)
     return (
         <header className='dash-header'>
             <section className='dash-head-container'>
