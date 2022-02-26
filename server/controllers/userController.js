@@ -1,4 +1,4 @@
-const { S3_BUCKET, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY } = process.env,
+const { S3_BUCKET, AMAZON_ACCESS_KEY_ID, AMAZON_SECRET_ACCESS_KEY } = process.env,
       aws = require('aws-sdk');
 
 module.exports = {
