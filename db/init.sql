@@ -1,36 +1,36 @@
-drop table if exists
+DROP TABLE IF EXISTS
 users, groups, categories, transactions;
 
-create table users (
-  user_id serial primary key,
-  first_name varchar(50) not null,
-  last_name varchar(50) not null,
-  email varchar(100) not null,
-  password varchar not null,
+CREATE TABLE users (
+  user_id uuid PRIMARY KEY,
+  first_name text NOT NULL,
+  last_name text NOT NULL,
+  email text NOT NULL,
+  password text NOT NULL,
   profile_pic text
 );
 
-create table groups (
-  group_id serial primary key,
-  user_id int references users(user_id) not null,
-  name varchar
+CREATE TABLE groups (
+  group_id uuid PRIMARY KEY,
+  user_id uuid REFERENCES users(user_id) NOT NULL,
+  name text
 );
 
-create table categories (
-  cat_id serial primary key,
-  group_id int references groups(group_id) not null,
-  user_id int references users(user_id) not null,
-  name varchar,
-  amount numeric default 0
+CREATE TABLE categories (
+  cat_id uuid PRIMARY KEY,
+  group_id uuid REFERENCES groups(group_id) NOT NULL,
+  user_id uuid REFERENCES users(user_id) NOT NULL,
+  name text,
+  amount decimal DEFAULT 0
 );
 
-create table transactions (
-  trans_id serial primary key,
-  user_id int references users(user_id),
-  cat_id int references categories(cat_id),
-  name varchar,
-  date date,
-  amount numeric default 0,
+CREATE TABLE transactions (
+  trans_id uuid PRIMARY KEY,
+  user_id uuid REFERENCES users(user_id),
+  cat_id uuid REFERENCES categories(cat_id),
+  name text,
+  date timestamp without time zone,
+  amount decimal DEFAULT 0,
   notes text,
-  type varchar(10) not null
+  type text NOT NULL
 );
